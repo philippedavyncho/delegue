@@ -1,0 +1,25 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import ServicesSection from '../components/ServicesSection.astro';
+import AboutSection from '../components/AboutSection.astro';
+import PartnersSection from '../components/PartnersSection.astro';
+import SiteScripts from '../components/SiteScripts.astro';
+import Loader from '../components/Loader.astro';
+---
+
+<Layout
+	title="DASMARK PHARMA | Les As du Marketing"
+	description="Agence specialisee dans la promotion medicale et pharmaceutique."
+>
+	<Loader />
+	<Header />
+	<main>
+		<Hero />
+		<ServicesSection />
+		<AboutSection />
+		<PartnersSection />
+	</main>
+	<SiteScripts />
+</Layout>

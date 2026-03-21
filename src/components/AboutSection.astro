@@ -1,0 +1,128 @@
+<section class="about section" id="apropos">
+	<div class="container about-shell">
+		<div class="about-copy">
+			<h2>A propos de DASMARK Pharma</h2>
+			<p>
+				DASMARK Pharma est une agence specialisee dans la promotion medicale et
+				pharmaceutique.
+			</p>
+			<p>
+				Nous accompagnons les laboratoires dans le developpement et la valorisation de leurs
+				produits a travers des strategies aux exigences du secteur de la sante.
+			</p>
+		</div>
+
+		<div class="about-cards">
+			<article class="about-card">
+				<h3>Representation de Laboratoires</h3>
+				<p>Partenaire des laboratoires pharmaceutiques.</p>
+			</article>
+			<article class="about-card">
+				<h3>Enregistrement de Produits</h3>
+				<p>Enregistrement et conformite reglementaire.</p>
+			</article>
+			<article class="about-card">
+				<h3>Formation des Delegues Medical</h3>
+				<p>Formation et developpement des competences.</p>
+			</article>
+		</div>
+	</div>
+</section>
+
+<style>
+	.about {
+		padding-top: 1.1rem;
+	}
+
+	.about-shell {
+		padding: 1.3rem 1.25rem 1.75rem;
+		border-radius: 3rem;
+		background: rgba(255, 255, 255, 0.56);
+		border: 1px solid rgba(255, 255, 255, 0.74);
+		box-shadow: 0 26px 68px rgba(161, 152, 233, 0.16);
+		position: relative;
+		overflow: hidden;
+	}
+
+	.about-shell::after {
+		content: '';
+		position: absolute;
+		inset: auto 0 -10% 0;
+		height: 36%;
+		background:
+			radial-gradient(80% 100% at 0% 100%, rgba(186, 175, 255, 0.24), transparent 55%),
+			radial-gradient(100% 100% at 60% 100%, rgba(186, 220, 255, 0.24), transparent 52%),
+			radial-gradient(70% 100% at 100% 100%, rgba(232, 202, 255, 0.2), transparent 58%);
+		pointer-events: none;
+	}
+
+	.about-copy,
+	.about-cards {
+		position: relative;
+		z-index: 1;
+	}
+
+	.about-copy h2 {
+		margin: 0;
+		font-family: 'Plus Jakarta Sans', 'Segoe UI', sans-serif;
+		font-size: clamp(2rem, 4vw, 3.05rem);
+		line-height: 1.04;
+		letter-spacing: -0.05em;
+		color: #30449f;
+	}
+
+	.about-copy p {
+		max-width: 72ch;
+		margin: 1rem 0 0;
+		font-size: 1.05rem;
+		color: #48557f;
+	}
+
+	.about-cards {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 1rem;
+		margin-top: 1.8rem;
+	}
+
+	.about-card {
+		padding: 1.45rem 1.3rem;
+		border-radius: 1.35rem;
+		background:
+			radial-gradient(circle at top right, rgba(255, 255, 255, 0.18), transparent 28%),
+			linear-gradient(135deg, rgba(112, 130, 255, 0.9), rgba(164, 142, 255, 0.84) 52%, rgba(108, 198, 255, 0.8));
+		color: #fff;
+		box-shadow: 0 18px 44px rgba(133, 122, 221, 0.18);
+	}
+
+	.about-card h3 {
+		margin: 0;
+		font-family: 'Plus Jakarta Sans', 'Segoe UI', sans-serif;
+		font-size: 1.8rem;
+		line-height: 1.08;
+		letter-spacing: -0.04em;
+	}
+
+	.about-card p {
+		margin: 1rem 0 0;
+		font-size: 1rem;
+		color: rgba(255, 255, 255, 0.9);
+	}
+
+	@media (max-width: 900px) {
+		.about-cards {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	@media (max-width: 640px) {
+		.about-shell {
+			padding: 1rem;
+			border-radius: 1.6rem;
+		}
+
+		.about-card h3 {
+			font-size: 1.5rem;
+		}
+	}
+</style>

@@ -1,0 +1,248 @@
+<section class="hero section" id="top">
+	<div class="container hero-shell">
+		<div class="hero-copy">
+			<p class="hero-title">DASMARK PHARMA</p>
+			<h1>Les As du Marketing Medical et Pharmaceutique</h1>
+			<p class="hero-text">
+				Abidjan Cocody Angre Djrorobite 2, derriere la pharmacie sainte Clementine.
+			</p>
+
+			<div class="hero-actions">
+				<a class="hero-btn hero-btn-primary" href="#services">Nos Services</a>
+				<a class="hero-btn hero-btn-secondary" href="#contact">Contactez-nous</a>
+			</div>
+
+			<div class="hero-meta">
+				<div class="hero-meta-item">
+					<span class="hero-meta-icon">⌖</span>
+					<p>Abidjan Cocody Angre Djrorobite 2, derriere la pharmacie sainte Clementine.</p>
+				</div>
+				<div class="hero-meta-item hero-meta-phone">
+					<span class="hero-meta-icon">✆</span>
+					<a href="tel:+2250749942744">+225 07 49 94 27 44</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="hero-visual">
+			<div class="hero-image-frame">
+				<img src="/bg.jpeg" alt="Equipe Dasmark Pharma en reunion" />
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.hero {
+		padding-top: 2.2rem;
+		padding-bottom: 1.8rem;
+	}
+
+	.hero-shell {
+		display: grid;
+		grid-template-columns: minmax(0, 0.92fr) minmax(320px, 1.08fr);
+		align-items: center;
+		gap: 2rem;
+		padding: 1.8rem 1.8rem 2.2rem;
+		border-radius: 3rem;
+		background:
+			radial-gradient(circle at top left, rgba(255, 255, 255, 0.2), transparent 32%),
+			radial-gradient(circle at bottom left, rgba(255, 255, 255, 0.14), transparent 26%),
+			linear-gradient(135deg, rgba(120, 123, 255, 0.88), rgba(177, 124, 252, 0.82) 42%, rgba(156, 196, 255, 0.74) 100%);
+		border: 1px solid rgba(255, 255, 255, 0.4);
+		box-shadow: 0 30px 90px rgba(121, 105, 221, 0.22);
+		position: relative;
+		overflow: hidden;
+	}
+
+	.hero-shell::before,
+	.hero-shell::after {
+		content: '';
+		position: absolute;
+		inset: auto auto 0 0;
+		width: 100%;
+		height: 46%;
+		pointer-events: none;
+	}
+
+	.hero-shell::before {
+		background:
+			radial-gradient(circle at 10% 10%, rgba(255, 255, 255, 0.12), transparent 18%),
+			radial-gradient(circle at 22% 20%, rgba(255, 255, 255, 0.12), transparent 12%),
+			radial-gradient(circle at 74% 18%, rgba(255, 255, 255, 0.16), transparent 12%);
+		opacity: 0.6;
+	}
+
+	.hero-shell::after {
+		inset: auto 0 -4% 0;
+		height: 38%;
+		background:
+			radial-gradient(100% 120% at 20% 100%, rgba(255, 255, 255, 0.42) 0%, rgba(255, 255, 255, 0.04) 44%, transparent 46%),
+			radial-gradient(92% 100% at 60% 100%, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.04) 48%, transparent 50%),
+			radial-gradient(92% 100% at 100% 100%, rgba(255, 255, 255, 0.26) 0%, rgba(255, 255, 255, 0.03) 50%, transparent 52%);
+	}
+
+	.hero-copy,
+	.hero-visual {
+		position: relative;
+		z-index: 1;
+	}
+
+	.hero-title {
+		margin: 0;
+		font-family: 'Plus Jakarta Sans', 'Segoe UI', sans-serif;
+		font-size: clamp(2.6rem, 6vw, 4.6rem);
+		font-weight: 800;
+		line-height: 0.95;
+		letter-spacing: -0.06em;
+		color: #fff;
+	}
+
+	.hero-copy h1 {
+		margin: 0.7rem 0 0;
+		max-width: 12ch;
+		font-size: clamp(1.95rem, 4vw, 3.05rem);
+		line-height: 1.12;
+		color: rgba(255, 255, 255, 0.96);
+	}
+
+	.hero-text {
+		margin: 1.1rem 0 0;
+		max-width: 30ch;
+		font-size: 1.05rem;
+		color: rgba(255, 255, 255, 0.82);
+	}
+
+	.hero-actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.95rem;
+		margin-top: 1.7rem;
+	}
+
+	.hero-btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0.92rem 1.45rem;
+		border-radius: 999px;
+		font-weight: 700;
+		box-shadow: 0 14px 34px rgba(108, 89, 204, 0.2);
+	}
+
+	.hero-btn-primary {
+		background: linear-gradient(135deg, #6c68ff, #9278ff);
+		color: #fff;
+	}
+
+	.hero-btn-secondary {
+		background: rgba(255, 255, 255, 0.86);
+		color: #7b58db;
+	}
+
+	.hero-meta {
+		display: grid;
+		gap: 1rem;
+		margin-top: 1.8rem;
+	}
+
+	.hero-meta-item {
+		display: flex;
+		align-items: flex-start;
+		gap: 0.8rem;
+		max-width: 34ch;
+		color: #fff;
+	}
+
+	.hero-meta-item p,
+	.hero-meta-item a {
+		margin: 0;
+		color: inherit;
+		font-size: 1rem;
+		line-height: 1.45;
+	}
+
+	.hero-meta-phone a {
+		font-size: 1.9rem;
+		font-weight: 800;
+		line-height: 1.05;
+	}
+
+	.hero-meta-icon {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 2rem;
+		height: 2rem;
+		border-radius: 999px;
+		background: rgba(255, 255, 255, 0.16);
+		font-size: 1rem;
+	}
+
+	.hero-image-frame {
+		padding: 0.8rem;
+		border-radius: 4rem 4rem 4rem 6rem;
+		background: rgba(255, 255, 255, 0.34);
+		box-shadow: 0 24px 50px rgba(122, 103, 224, 0.18);
+	}
+
+	.hero-image-frame img {
+		width: 100%;
+		height: 100%;
+		min-height: 300px;
+		max-height: 420px;
+		object-fit: cover;
+		border-radius: 3.3rem 3.3rem 3.3rem 5rem;
+		display: block;
+	}
+
+	@media (max-width: 980px) {
+		.hero-shell {
+			grid-template-columns: 1fr;
+			padding: 1.25rem;
+			border-radius: 2.2rem;
+		}
+
+		.hero-copy h1,
+		.hero-text,
+		.hero-meta-item {
+			max-width: none;
+		}
+	}
+
+	@media (max-width: 640px) {
+		.hero {
+			padding-top: 1.2rem;
+		}
+
+		.hero-shell {
+			padding: 1rem;
+			border-radius: 1.8rem;
+		}
+
+		.hero-title {
+			font-size: clamp(2.1rem, 11vw, 3rem);
+		}
+
+		.hero-copy h1 {
+			font-size: clamp(1.65rem, 8vw, 2.3rem);
+		}
+
+		.hero-actions {
+			flex-direction: column;
+		}
+
+		.hero-btn {
+			width: 100%;
+		}
+
+		.hero-meta-phone a {
+			font-size: 1.5rem;
+		}
+
+		.hero-image-frame,
+		.hero-image-frame img {
+			border-radius: 2.2rem;
+		}
+	}
+</style>

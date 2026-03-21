@@ -1,0 +1,129 @@
+<footer class="site-footer section" id="contact">
+	<div class="container footer-shell card mirror-panel">
+		<div class="footer-copy">
+			<span class="eyebrow">Contact</span>
+			<h2>Construisons une presence terrain a la hauteur de votre ambition.</h2>
+			<p>
+				Discutons de vos enjeux de couverture, de lancement ou d'externalisation avec une
+				equipe qui maitrise les codes du secteur sante.
+			</p>
+		</div>
+
+		<div class="footer-grid">
+			<div class="mirror-panel">
+				<strong>Email</strong>
+				<a href="mailto:contact@deleguemedical.fr">contact@deleguemedical.fr</a>
+			</div>
+			<div class="mirror-panel">
+				<strong>Telephone</strong>
+				<a href="tel:+33180000000">+33 1 80 00 00 00</a>
+			</div>
+			<div class="mirror-panel">
+				<strong>Adresse</strong>
+				<span>48 avenue de la Sante, 75013 Paris</span>
+			</div>
+			<div class="mirror-panel">
+				<strong>Reseaux</strong>
+				<div class="social-links">
+					<a href="/">LinkedIn</a>
+					<a href="/">X</a>
+					<a href="/">YouTube</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+
+<style>
+	.site-footer {
+		padding-top: 2rem;
+	}
+
+	.footer-shell {
+		padding: 2.2rem;
+		background:
+			radial-gradient(circle at top right, rgba(13, 99, 177, 0.14), transparent 24%),
+			linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(237, 246, 251, 0.92));
+	}
+
+	.footer-copy h2 {
+		margin: 1rem 0 0.8rem;
+		font-family: 'Plus Jakarta Sans', 'Segoe UI', sans-serif;
+		font-size: clamp(2rem, 4vw, 3.4rem);
+		line-height: 1.03;
+		letter-spacing: -0.05em;
+	}
+
+	.footer-copy p {
+		max-width: 48rem;
+		margin: 0;
+		color: var(--muted);
+	}
+
+	.footer-grid {
+		display: grid;
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+		gap: 1rem;
+		margin-top: 2.3rem;
+	}
+
+	.footer-grid > div {
+		padding: 1.2rem;
+		border-radius: 1.45rem;
+		background: rgba(255, 255, 255, 0.64);
+		border: 1px solid rgba(255, 255, 255, 0.88);
+		backdrop-filter: blur(16px);
+	}
+
+	.footer-grid strong,
+	.footer-grid a,
+	.footer-grid span {
+		display: block;
+	}
+
+	.footer-grid strong {
+		margin-bottom: 0.45rem;
+		font-family: 'Plus Jakarta Sans', 'Segoe UI', sans-serif;
+	}
+
+	.footer-grid a,
+	.footer-grid span {
+		color: var(--muted);
+	}
+
+	.social-links {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem;
+	}
+
+	.social-links a {
+		padding: 0.55rem 0.8rem;
+		border-radius: 999px;
+		background: rgba(13, 99, 177, 0.08);
+		color: var(--primary);
+		font-weight: 700;
+		transition: transform 220ms ease, background-color 220ms ease;
+	}
+
+	.social-links a:hover {
+		transform: translateY(-2px);
+		background: rgba(13, 99, 177, 0.14);
+	}
+
+	@media (max-width: 900px) {
+		.footer-grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+
+	@media (max-width: 640px) {
+		.footer-shell {
+			padding: 1.35rem;
+		}
+
+		.footer-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

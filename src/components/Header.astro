@@ -1,0 +1,208 @@
+<header class="site-header" data-header>
+	<div class="container header-inner">
+		<a class="brand" href="#top" aria-label="Retour a l'accueil">
+			<img class="brand-mark" src="/logodasm.png" alt="Logo Dasmark Pharma" />
+			<span class="brand-copy">
+				<strong>DASMARK PHARMA</strong>
+				<small>Les As du Marketing</small>
+			</span>
+		</a>
+
+		<nav class="desktop-nav" aria-label="Navigation principale">
+			<a href="#top">Accueil</a>
+			<a href="#apropos">Apropos</a>
+			<a href="#services">Services</a>
+			<a href="#contact">Contact</a>
+		</nav>
+
+		<div class="header-actions">
+			<a class="header-phone" href="tel:+2250749942744">+225 07 49 94 27 44</a>
+			<button class="menu-toggle" type="button" data-nav-toggle aria-expanded="false" aria-label="Ouvrir le menu">
+				<span></span>
+				<span></span>
+			</button>
+		</div>
+	</div>
+
+	<div class="mobile-panel" data-mobile-nav>
+		<nav class="mobile-nav" aria-label="Navigation mobile">
+			<a href="#top">Accueil</a>
+			<a href="#apropos">Apropos</a>
+			<a href="#services">Services</a>
+			<a href="#contact">Contact</a>
+			<a class="header-phone mobile-phone" href="tel:+2250749942744">+225 07 49 94 27 44</a>
+		</nav>
+	</div>
+</header>
+
+<style>
+	.site-header {
+		position: sticky;
+		top: 0;
+		z-index: 40;
+		padding-top: 1rem;
+	}
+
+	.header-inner {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1.25rem;
+		padding: 0.9rem 1.3rem;
+		border-radius: 999px;
+		background: rgba(255, 255, 255, 0.18);
+		border: 1px solid rgba(255, 255, 255, 0.36);
+		backdrop-filter: blur(20px);
+		box-shadow: 0 18px 50px rgba(111, 94, 218, 0.16);
+	}
+
+	.site-header.is-scrolled .header-inner {
+		background: rgba(255, 255, 255, 0.28);
+	}
+
+	.brand {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.85rem;
+		min-width: 0;
+	}
+
+	.brand-mark {
+		width: 4.5rem;
+		height: 4.5rem;
+		object-fit: cover;
+		
+	}
+
+	.brand-copy {
+		display: grid;
+		line-height: 1.1;
+	}
+
+	.brand-copy strong {
+		font-family: 'Plus Jakarta Sans', 'Segoe UI', sans-serif;
+		font-size: 1.15rem;
+		color: #fff;
+		letter-spacing: -0.03em;
+	}
+
+	.brand-copy small {
+		font-size: 0.82rem;
+		color: rgba(255, 255, 255, 0.82);
+	}
+
+	.desktop-nav {
+		display: inline-flex;
+		align-items: center;
+		gap: 1.6rem;
+		color: rgba(255, 255, 255, 0.9);
+		font-size: 0.96rem;
+	}
+
+	.desktop-nav a {
+		opacity: 0.88;
+		transition: opacity 180ms ease, transform 180ms ease;
+	}
+
+	.desktop-nav a:hover {
+		opacity: 1;
+		transform: translateY(-1px);
+	}
+
+	.header-actions {
+		display: flex;
+		align-items: center;
+		gap: 0.9rem;
+	}
+
+	.header-phone {
+		display: inline-flex;
+		align-items: center;
+		padding: 0.72rem 1rem;
+		border-radius: 999px;
+		background: rgba(255, 255, 255, 0.16);
+		border: 1px solid rgba(255, 255, 255, 0.32);
+		color: #fff;
+		font-weight: 700;
+		font-size: 0.95rem;
+		white-space: nowrap;
+	}
+
+	.menu-toggle {
+		display: none;
+		position: relative;
+		width: 3rem;
+		height: 3rem;
+		border: 0;
+		border-radius: 999px;
+		background: rgba(255, 255, 255, 0.16);
+		color: #fff;
+	}
+
+	.menu-toggle span {
+		position: absolute;
+		left: 0.92rem;
+		width: 1.16rem;
+		height: 2px;
+		border-radius: 999px;
+		background: currentColor;
+		transition: transform 220ms ease, top 220ms ease;
+	}
+
+	.menu-toggle span:first-child { top: 1.12rem; }
+	.menu-toggle span:last-child { top: 1.72rem; }
+	.menu-toggle.is-open span:first-child { top: 1.42rem; transform: rotate(45deg); }
+	.menu-toggle.is-open span:last-child { top: 1.42rem; transform: rotate(-45deg); }
+
+	.mobile-panel {
+		display: none;
+		width: var(--container);
+		margin: 0.8rem auto 0;
+		padding: 1rem;
+		border-radius: 1.8rem;
+		background: rgba(255, 255, 255, 0.22);
+		border: 1px solid rgba(255, 255, 255, 0.34);
+		backdrop-filter: blur(18px);
+		opacity: 0;
+		transform: translateY(-12px);
+		pointer-events: none;
+	}
+
+	.mobile-nav {
+		display: grid;
+		gap: 0.95rem;
+		color: #fff;
+	}
+
+	.mobile-phone {
+		justify-content: center;
+		margin-top: 0.3rem;
+	}
+
+	@media (max-width: 980px) {
+		.desktop-nav,
+		.header-phone {
+			display: none;
+		}
+
+		.menu-toggle,
+		.mobile-panel {
+			display: block;
+		}
+	}
+
+	@media (max-width: 640px) {
+		.site-header {
+			padding-top: 0.7rem;
+		}
+
+		.header-inner {
+			border-radius: 1.6rem;
+			padding: 0.85rem 1rem;
+		}
+
+		.brand-copy strong {
+			font-size: 1rem;
+		}
+	}
+</style>

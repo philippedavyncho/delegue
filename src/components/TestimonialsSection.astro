@@ -1,0 +1,89 @@
+---
+import SectionHeading from './SectionHeading.astro';
+
+interface Testimonial {
+	quote: string;
+	name: string;
+	role: string;
+}
+
+interface Props {
+	testimonials: Testimonial[];
+}
+
+const { testimonials } = Astro.props;
+---
+
+<section class="section testimonials-section" id="temoignages">
+	<div class="container section-shell mirror-panel">
+		<SectionHeading
+			eyebrow="Temoignages"
+			title="Une relation de confiance construite sur la preuve"
+			description="Nos clients recherchent une representation premium, des retours terrain precis et une dynamique de collaboration durable."
+		/>
+
+		<div class="splide testimonials-splide reveal" aria-label="Avis clients">
+			<div class="splide__track">
+				<ul class="splide__list">
+					{
+						testimonials.map((item) => (
+							<li class="splide__slide">
+								<article class="testimonial-card card mirror-panel">
+									<div class="testimonial-top">
+										<span class="testimonial-mark">Temoignage</span>
+									</div>
+									<p>"{item.quote}"</p>
+									<footer>
+										<strong>{item.name}</strong>
+										<span>{item.role}</span>
+									</footer>
+								</article>
+							</li>
+						))
+					}
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.testimonial-card {
+		height: 100%;
+		padding: 1.85rem;
+	}
+
+	.testimonial-mark {
+		display: inline-flex;
+		padding: 0.42rem 0.8rem;
+		border-radius: 999px;
+		background: rgba(13, 99, 177, 0.08);
+		color: var(--primary);
+		font-size: 0.8rem;
+		font-weight: 800;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+	}
+
+	.testimonial-card p {
+		margin: 1.2rem 0 2.2rem;
+		font-size: 1.14rem;
+		line-height: 1.8;
+		color: var(--text);
+	}
+
+	.testimonial-card footer strong,
+	.testimonial-card footer span {
+		display: block;
+	}
+
+	.testimonial-card footer strong {
+		font-family: 'Plus Jakarta Sans', 'Segoe UI', sans-serif;
+		font-size: 1rem;
+	}
+
+	.testimonial-card footer span {
+		color: var(--muted);
+		font-size: 0.92rem;
+	}
+</style>

@@ -1,0 +1,101 @@
+---
+import SectionHeading from './SectionHeading.astro';
+
+interface Stat {
+	value: number;
+	suffix: string;
+	label: string;
+}
+
+interface Props {
+	stats: Stat[];
+}
+
+const { stats } = Astro.props;
+---
+
+<section class="section stats-section" id="statistiques">
+	<div class="container stats-wrap reveal">
+		<div class="stats-copy section-shell mirror-panel">
+			<SectionHeading
+				eyebrow="Statistiques"
+				title="Des indicateurs qui traduisent une execution lisible"
+				description="Notre promesse tient dans la regularite, la qualite d'interaction et la precision du pilotage commercial et medical."
+			/>
+		</div>
+
+		<div class="stats-grid" data-parallax="20">
+			{
+				stats.map((stat) => (
+					<article class="stat-card card mirror-panel">
+						<strong class="stat-value" data-counter={stat.value} data-suffix={stat.suffix}>
+							0{stat.suffix}
+						</strong>
+						<p>{stat.label}</p>
+					</article>
+				))
+			}
+		</div>
+	</div>
+</section>
+
+<style>
+	.stats-wrap {
+		display: grid;
+		grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+		gap: 1.8rem;
+		align-items: stretch;
+	}
+
+	.stats-copy {
+		display: flex;
+		align-items: center;
+		padding: 2.2rem;
+	}
+
+	.stats-copy :global(.section-heading) {
+		margin-bottom: 0;
+	}
+
+	.stats-grid {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 1rem;
+	}
+
+	.stat-card {
+		padding: 1.5rem;
+		background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(226, 241, 249, 0.88));
+	}
+
+	.stat-value {
+		display: block;
+		font-family: 'Plus Jakarta Sans', 'Segoe UI', sans-serif;
+		font-size: clamp(2.3rem, 4vw, 3.7rem);
+		line-height: 0.95;
+		letter-spacing: -0.07em;
+		color: var(--primary);
+	}
+
+	.stat-card p {
+		margin: 0.8rem 0 0;
+		max-width: 20ch;
+		color: var(--muted);
+	}
+
+	@media (max-width: 960px) {
+		.stats-wrap {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	@media (max-width: 640px) {
+		.stats-copy {
+			padding: 1.35rem;
+		}
+
+		.stats-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

@@ -1,0 +1,150 @@
+<section class="partners section" id="contact">
+	<div class="container partners-shell">
+		<h2>Nos Partenaires</h2>
+
+		<div class="partners-grid">
+			<div class="partner-card">
+				<span class="partner-badge">A</span>
+				<div>
+					<strong>Veur Pharma Goals</strong>
+					<small>Partenaire sante</small>
+				</div>
+			</div>
+			<div class="partner-card">
+				<span class="partner-badge partner-badge-alt">N</span>
+				<div>
+					<strong>NIYA</strong>
+					<small>Réseau partenaire</small>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.partners {
+		padding-top: 1rem;
+		padding-bottom: 3rem;
+	}
+
+	.partners-shell {
+		padding: 1.2rem 1.2rem 2rem;
+		border-radius: 3rem;
+		background: rgba(255, 255, 255, 0.58);
+		border: 1px solid rgba(255, 255, 255, 0.74);
+		box-shadow: 0 24px 68px rgba(166, 156, 235, 0.14);
+		position: relative;
+		overflow: hidden;
+	}
+
+	.partners-shell::after {
+		content: '';
+		position: absolute;
+		inset: auto 0 -10% 0;
+		height: 42%;
+		background:
+			radial-gradient(80% 100% at 20% 100%, rgba(186, 175, 255, 0.18), transparent 56%),
+			radial-gradient(100% 100% at 80% 100%, rgba(186, 220, 255, 0.16), transparent 56%);
+		pointer-events: none;
+	}
+
+	.partners-shell h2,
+	.partners-grid {
+		position: relative;
+		z-index: 1;
+	}
+
+	.partners-shell h2 {
+		margin: 0;
+		text-align: center;
+		font-family: 'Plus Jakarta Sans', 'Segoe UI', sans-serif;
+		font-size: clamp(2rem, 4vw, 3rem);
+		line-height: 1;
+		letter-spacing: -0.05em;
+		color: #3d43a0;
+	}
+
+	.partners-grid {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 1.2rem;
+		margin-top: 1.6rem;
+	}
+
+	.partner-card {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 1rem;
+		min-height: 160px;
+		padding: 1rem;
+		border-radius: 2rem;
+		background: rgba(255, 255, 255, 0.82);
+		box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.88);
+	}
+
+	.partner-badge {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 5.6rem;
+		height: 5.6rem;
+		border-radius: 999px;
+		border: 3px solid rgba(179, 123, 168, 0.42);
+		color: #b34d67;
+		font-family: 'Plus Jakarta Sans', 'Segoe UI', sans-serif;
+		font-size: 3.2rem;
+		font-weight: 800;
+	}
+
+	.partner-badge-alt {
+		border-color: rgba(90, 173, 110, 0.42);
+		color: #5b8ac8;
+	}
+
+	.partner-card strong,
+	.partner-card small {
+		display: block;
+		text-align: left;
+	}
+
+	.partner-card strong {
+		font-family: 'Plus Jakarta Sans', 'Segoe UI', sans-serif;
+		font-size: 1.7rem;
+		letter-spacing: -0.04em;
+		color: #42539e;
+	}
+
+	.partner-card small {
+		margin-top: 0.25rem;
+		font-size: 0.95rem;
+		color: #7683af;
+	}
+
+	@media (max-width: 700px) {
+		.partners-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.partner-card {
+			min-height: 140px;
+		}
+	}
+
+	@media (max-width: 640px) {
+		.partners-shell {
+			padding: 1rem 1rem 1.4rem;
+			border-radius: 1.6rem;
+		}
+
+		.partner-card {
+			flex-direction: column;
+			text-align: center;
+		}
+
+		.partner-card strong,
+		.partner-card small {
+			text-align: center;
+		}
+	}
+</style>

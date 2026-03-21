@@ -1,0 +1,67 @@
+<div class="site-loader" data-loader aria-hidden="true">
+	<div class="loader-mark">
+		<span></span>
+		<span></span>
+	</div>
+	<p>Delegue Medical</p>
+</div>
+
+<style>
+	.site-loader {
+		position: fixed;
+		inset: 0;
+		z-index: 100;
+		display: grid;
+		place-items: center;
+		gap: 1rem;
+		background:
+			radial-gradient(circle at top, rgba(13, 99, 177, 0.14), transparent 28%),
+			linear-gradient(180deg, rgba(248, 252, 255, 0.98), rgba(238, 245, 250, 0.98));
+		backdrop-filter: blur(12px);
+		transition: opacity 500ms ease, visibility 500ms ease;
+	}
+
+	.site-loader.is-hidden {
+		opacity: 0;
+		visibility: hidden;
+		pointer-events: none;
+	}
+
+	.loader-mark {
+		position: relative;
+		width: 4.5rem;
+		height: 4.5rem;
+		border-radius: 1.6rem;
+		background: linear-gradient(135deg, rgba(13, 99, 177, 0.12), rgba(31, 155, 136, 0.16));
+		box-shadow: 0 20px 55px rgba(13, 41, 67, 0.14);
+	}
+
+	.loader-mark span {
+		position: absolute;
+		inset: 50%;
+		border-radius: 999px;
+		transform: translate(-50%, -50%);
+	}
+
+	.loader-mark span:first-child {
+		width: 2.4rem;
+		height: 2.4rem;
+		border: 2px solid rgba(13, 99, 177, 0.26);
+	}
+
+	.loader-mark span:last-child {
+		width: 0.9rem;
+		height: 0.9rem;
+		background: linear-gradient(135deg, var(--primary), var(--accent));
+	}
+
+	.site-loader p {
+		margin: 0;
+		font-family: 'Plus Jakarta Sans', 'Segoe UI', sans-serif;
+		font-size: 0.95rem;
+		font-weight: 700;
+		letter-spacing: 0.18em;
+		text-transform: uppercase;
+		color: rgba(16, 45, 71, 0.7);
+	}
+</style>
