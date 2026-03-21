@@ -144,12 +144,20 @@ import MobileCarousel from './MobileCarousel.astro';
 		border: 1px solid rgba(255, 255, 255, 0.34);
 		color: #00c853;
 		box-shadow: 0 10px 24px rgba(0, 200, 83, 0.18);
+		transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease;
 	}
 
 	.header-phone svg {
 		width: 1.35rem;
 		height: 1.35rem;
 		fill: currentColor;
+		filter: none;
+	}
+
+	.header-phone:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 14px 28px rgba(0, 200, 83, 0.22);
+		filter: none;
 	}
 
 	.menu-toggle {

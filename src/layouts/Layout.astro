@@ -1,6 +1,8 @@
 ---
 import '../styles/global.css';
 import '@splidejs/splide/css';
+import Footer from '../components/Footer.astro';
+import SiteScripts from '../components/SiteScripts.astro';
 
 interface Props {
 	title?: string;
@@ -38,5 +40,7 @@ const {
 	</head>
 	<body>
 		<slot />
+		<Footer />
+		<SiteScripts />
 	</body>
 </html>

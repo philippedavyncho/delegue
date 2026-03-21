@@ -1,117 +1,280 @@
-<footer class="site-footer section" id="contact">
-	<div class="container footer-shell card mirror-panel">
-		<div class="footer-copy">
-			<span class="eyebrow">Contact</span>
-			<h2>Construisons une presence terrain a la hauteur de votre ambition.</h2>
-			<p>
-				Discutons de vos enjeux de couverture, de lancement ou d'externalisation avec une
-				equipe qui maitrise les codes du secteur sante.
-			</p>
-		</div>
+---
+const company = {
+	name: 'DASMARK PHARMA',
+	tagline: 'Spécialiste en promotion médicale, pharmaceutique et accompagnement des laboratoires.',
+	address: "Abidjan, Cote d'Ivoire",
+	phoneLabel: '+225 07 49 94 27 44',
+	phoneHref: 'tel:+2250749942744',
+	email: 'dasmarkpharmaci@gmail.com'
+};
 
+const socialLinks = [
+	{
+		label: 'WhatsApp',
+		href: 'https://wa.me/2250749942744',
+		color: 'rgba(37, 211, 102, 0.16)',
+		icon: 'whatsapp'
+	},
+	{
+		label: 'Facebook',
+		href: 'https://facebook.com',
+		color: 'rgba(24, 119, 242, 0.16)',
+		icon: 'facebook'
+	},
+	{
+		label: 'LinkedIn',
+		href: 'https://linkedin.com',
+		color: 'rgba(10, 102, 194, 0.16)',
+		icon: 'linkedin'
+	}
+];
+
+const quickLinks = [
+	{ label: 'Accueil', href: '#top' },
+	{ label: 'Services', href: '#services' },
+	{ label: 'A propos', href: '#apropos' },
+	{ label: 'Contact', href: '#contact' }
+];
+---
+
+<footer class="site-footer section footer-reveal" id="contact">
+	<div class="container footer-shell">
 		<div class="footer-grid">
-			<div class="mirror-panel">
-				<strong>Email</strong>
-				<a href="mailto:contact@deleguemedical.fr">contact@deleguemedical.fr</a>
+			<div class="footer-column footer-column-brand">
+				<span class="footer-kicker">DASMARK PHARMA</span>
+				<h2>{company.name}</h2>
+				<p>{company.tagline}</p>
 			</div>
-			<div class="mirror-panel">
-				<strong>Telephone</strong>
-				<a href="tel:+33180000000">+33 1 80 00 00 00</a>
+
+			<div class="footer-column">
+				<h3>Coordonnees</h3>
+				<ul class="footer-list">
+					<li>
+						<span class="footer-icon" aria-hidden="true">
+							<svg viewBox="0 0 24 24"><path d="M12 2.25a7.5 7.5 0 0 1 7.5 7.5c0 4.92-5.24 10.38-6.37 11.5a1.6 1.6 0 0 1-2.26 0C9.74 20.13 4.5 14.67 4.5 9.75A7.5 7.5 0 0 1 12 2.25Zm0 4a3.5 3.5 0 1 0 0 7a3.5 3.5 0 0 0 0-7Z"></path></svg>
+						</span>
+						<span>{company.address}</span>
+					</li>
+					<li>
+						<span class="footer-icon" aria-hidden="true">
+							<svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.46 15.46 0 0 0 6.59 6.59l2.2-2.2a1.5 1.5 0 0 1 1.53-.36c1.13.38 2.33.58 3.56.58A1.5 1.5 0 0 1 22 16.9V21a1.5 1.5 0 0 1-1.5 1.5C10.84 22.5 1.5 13.16 1.5 1.5A1.5 1.5 0 0 1 3 0h4.1a1.5 1.5 0 0 1 1.5 1.5c0 1.23.2 2.43.58 3.56a1.5 1.5 0 0 1-.36 1.53l-2.2 2.2Z"></path></svg>
+						</span>
+						<a href={company.phoneHref}>{company.phoneLabel}</a>
+					</li>
+					<li>
+						<span class="footer-icon" aria-hidden="true">
+							<svg viewBox="0 0 24 24"><path d="M2.25 5.25A2.25 2.25 0 0 1 4.5 3h15a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 19.5 21h-15a2.25 2.25 0 0 1-2.25-2.25V5.25Zm2.4-.75 7.35 5.88 7.35-5.88h-14.7Zm15.6 2.67-7.31 5.84a1.5 1.5 0 0 1-1.88 0L3.75 7.17v11.58c0 .41.34.75.75.75h15c.41 0 .75-.34.75-.75V7.17Z"></path></svg>
+						</span>
+						<a href={`mailto:${company.email}`} class="email">{company.email}</a>
+					</li>
+				</ul>
 			</div>
-			<div class="mirror-panel">
-				<strong>Adresse</strong>
-				<span>48 avenue de la Sante, 75013 Paris</span>
+
+			<div class="footer-column">
+				<h3>Navigation</h3>
+				<ul class="footer-list footer-links">
+					{quickLinks.map((link) => (
+						<li>
+							<a href={link.href}>{link.label}</a>
+						</li>
+					))}
+				</ul>
 			</div>
-			<div class="mirror-panel">
-				<strong>Reseaux</strong>
+
+			<div class="footer-column">
+				<h3>Reseaux sociaux</h3>
 				<div class="social-links">
-					<a href="/">LinkedIn</a>
-					<a href="/">X</a>
-					<a href="/">YouTube</a>
+					{socialLinks.map((link) => (
+						<a href={link.href} target="_blank" rel="noreferrer" style={`--social-accent: ${link.color};`}>
+							<span class="footer-icon social-icon" aria-hidden="true">
+								{
+									link.icon === 'whatsapp' && (
+										<svg viewBox="0 0 24 24"><path d="M20.52 3.48A11.86 11.86 0 0 0 12.07 0C5.53 0 .2 5.33.2 11.87c0 2.1.55 4.15 1.59 5.95L0 24l6.39-1.67a11.8 11.8 0 0 0 5.67 1.45h.01c6.54 0 11.87-5.33 11.87-11.87 0-3.17-1.24-6.15-3.42-8.43Zm-8.45 18.3h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.79.99 1.01-3.69-.23-.38a9.87 9.87 0 0 1-1.51-5.24c0-5.45 4.44-9.88 9.9-9.88 2.64 0 5.11 1.03 6.98 2.9a9.8 9.8 0 0 1 2.89 6.98c0 5.45-4.44 9.9-9.88 9.9Zm5.42-7.42c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.46-.88-.78-1.48-1.75-1.66-2.05-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.48-.5-.67-.5h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.5s1.07 2.9 1.22 3.1c.15.2 2.1 3.21 5.09 4.5.71.31 1.27.5 1.7.64.71.23 1.36.2 1.87.12.57-.08 1.77-.72 2.02-1.42.25-.7.25-1.29.17-1.42-.07-.12-.27-.2-.57-.35Z"></path></svg>
+									)
+								}
+								{
+									link.icon === 'facebook' && (
+										<svg viewBox="0 0 24 24"><path d="M13.5 21v-7.2h2.42l.36-2.8H13.5V9.2c0-.81.23-1.36 1.39-1.36h1.49V5.33c-.26-.04-1.13-.11-2.15-.11-2.13 0-3.59 1.3-3.59 3.68V11H8.25v2.8h2.39V21h2.86Z"></path></svg>
+									)
+								}
+								{
+									link.icon === 'linkedin' && (
+										<svg viewBox="0 0 24 24"><path d="M6.94 8.5a1.72 1.72 0 1 1 0-3.44a1.72 1.72 0 0 1 0 3.44ZM5.5 9.94h2.88V19H5.5V9.94Zm4.69 0h2.76v1.24h.04c.38-.73 1.33-1.49 2.73-1.49c2.92 0 3.46 1.92 3.46 4.41V19h-2.88v-4.35c0-1.04-.02-2.38-1.45-2.38c-1.45 0-1.67 1.13-1.67 2.3V19h-2.88V9.94Z"></path></svg>
+									)
+								}
+							</span>
+							<span>{link.label}</span>
+						</a>
+					))}
 				</div>
 			</div>
+		</div>
+
+		<div class="footer-bottom">
+			<p>&copy; 2026 {company.name}. Tous droits reserves.</p>
 		</div>
 	</div>
 </footer>
 
 <style>
 	.site-footer {
-		padding-top: 2rem;
+		padding: 1rem 0 1.4rem;
 	}
 
 	.footer-shell {
-		padding: 2.2rem;
+		padding: clamp(1.4rem, 2vw, 2rem);
+		border-radius: 2rem;
+		border: 1px solid rgba(255, 255, 255, 0.68);
 		background:
-			radial-gradient(circle at top right, rgba(13, 99, 177, 0.14), transparent 24%),
-			linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(237, 246, 251, 0.92));
-	}
-
-	.footer-copy h2 {
-		margin: 1rem 0 0.8rem;
-		font-family: 'Plus Jakarta Sans', 'Segoe UI', sans-serif;
-		font-size: clamp(2rem, 4vw, 3.4rem);
-		line-height: 1.03;
-		letter-spacing: -0.05em;
-	}
-
-	.footer-copy p {
-		max-width: 48rem;
-		margin: 0;
-		color: var(--muted);
+			radial-gradient(circle at top left, rgba(15, 90, 164, 0.16), transparent 32%),
+			radial-gradient(circle at bottom right, rgba(87, 181, 231, 0.18), transparent 28%),
+			linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(239, 247, 252, 0.96));
+		box-shadow: 0 24px 60px rgba(49, 88, 145, 0.16);
 	}
 
 	.footer-grid {
 		display: grid;
-		grid-template-columns: repeat(4, minmax(0, 1fr));
-		gap: 1rem;
-		margin-top: 2.3rem;
+		grid-template-columns: minmax(0, 1.35fr) repeat(3, minmax(0, 1fr));
+		gap: 1.25rem;
 	}
 
-	.footer-grid > div {
-		padding: 1.2rem;
-		border-radius: 1.45rem;
-		background: rgba(255, 255, 255, 0.64);
-		border: 1px solid rgba(255, 255, 255, 0.88);
+	.footer-column {
+		padding: 1.25rem;
+		border-radius: 1.5rem;
+		background: rgba(255, 255, 255, 0.6);
+		border: 1px solid rgba(255, 255, 255, 0.84);
 		backdrop-filter: blur(16px);
 	}
 
-	.footer-grid strong,
-	.footer-grid a,
-	.footer-grid span {
-		display: block;
+	.footer-kicker {
+		display: inline-flex;
+		padding: 0.4rem 0.7rem;
+		border-radius: 999px;
+		background: rgba(14, 94, 168, 0.1);
+		color: #0e5ea8;
+		font-size: 0.78rem;
+		font-weight: 800;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
 	}
 
-	.footer-grid strong {
-		margin-bottom: 0.45rem;
+	.footer-column h2,
+	.footer-column h3 {
+		margin: 0;
 		font-family: 'Plus Jakarta Sans', 'Segoe UI', sans-serif;
 	}
 
-	.footer-grid a,
-	.footer-grid span {
+	.footer-column h2 {
+		margin-top: 0.9rem;
+		font-size: clamp(1.8rem, 3vw, 2.5rem);
+		line-height: 1.05;
+		letter-spacing: -0.04em;
+	}
+
+	.footer-column h3 {
+		font-size: 1rem;
+	}
+
+	.footer-column p {
+		margin: 0.9rem 0 0;
 		color: var(--muted);
 	}
 
-	.social-links {
+	.footer-list {
+		display: grid;
+		gap: 0.95rem;
+		padding: 0;
+		margin: 1rem 0 0;
+		list-style: none;
+	}
+
+	.footer-list li {
 		display: flex;
-		flex-wrap: wrap;
+		align-items: flex-start;
 		gap: 0.75rem;
+		color: var(--muted);
+	}
+
+	.footer-links li {
+		display: block;
+	}
+
+	.footer-links a,
+	.footer-list a {
+		color: var(--muted);
+		transition: color 180ms ease, transform 180ms ease;
+	}
+
+	.footer-links a:hover,
+	.footer-list a:hover {
+		color: #0e5ea8;
+		transform: translateX(3px);
+	}
+
+	.footer-icon {
+		flex: 0 0 auto;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 2.3rem;
+		height: 2.3rem;
+		border-radius: 999px;
+		background: rgba(14, 94, 168, 0.1);
+		color: #0e5ea8;
+	}
+	.email {
+		font-size: 12px;
+		font-weight: 900;
+		color: blue;
+		
+	}
+
+	.footer-icon svg {
+		width: 1.05rem;
+		height: 1.05rem;
+		fill: currentColor;
+	}
+
+	.social-links {
+		display: grid;
+		gap: 0.8rem;
+		margin-top: 1rem;
 	}
 
 	.social-links a {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.7rem;
 		padding: 0.55rem 0.8rem;
-		border-radius: 999px;
-		background: rgba(13, 99, 177, 0.08);
-		color: var(--primary);
-		font-weight: 700;
-		transition: transform 220ms ease, background-color 220ms ease;
+		border-radius: 1rem;
+		background: var(--social-accent);
+		color: #1e4072;
+		font-weight: 800;
+		transition: transform 220ms ease, background-color 220ms ease, box-shadow 220ms ease;
 	}
 
 	.social-links a:hover {
-		transform: translateY(-2px);
-		background: rgba(13, 99, 177, 0.14);
+		transform: translateY(-3px);
+		box-shadow: 0 16px 24px rgba(30, 64, 114, 0.12);
 	}
 
-	@media (max-width: 900px) {
+	.social-icon {
+		background: rgba(255, 255, 255, 0.72);
+	}
+
+	.footer-bottom {
+		margin-top: 1rem;
+		padding-top: 1.1rem;
+		border-top: 1px solid rgba(30, 64, 114, 0.12);
+	}
+
+	.footer-bottom p {
+		margin: 0;
+		color: var(--muted);
+		font-size: 0.95rem;
+	}
+
+	@media (max-width: 980px) {
 		.footer-grid {
 			grid-template-columns: repeat(2, minmax(0, 1fr));
 		}
@@ -119,11 +282,18 @@
 
 	@media (max-width: 640px) {
 		.footer-shell {
-			padding: 1.35rem;
+			padding: 1rem;
 		}
 
 		.footer-grid {
 			grid-template-columns: 1fr;
 		}
+
+		.footer-column {
+			padding: 1rem;
+
+		}
+
 	}
+
 </style>
