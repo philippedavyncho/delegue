@@ -1,0 +1,132 @@
+---
+interface Props {
+	compact?: boolean;
+}
+
+const { compact = false } = Astro.props;
+---
+
+{
+	compact ? (
+		<div class="mobile-carousel-shell" aria-label="Galerie mobile">
+			<div class="splide mobile-carousel" aria-label="Carrousel mobile Dasmark">
+				<div class="splide__track">
+					<ul class="splide__list">
+						<li class="splide__slide">
+							<div class="mobile-carousel-card">
+								<img src="/slider.png" alt="Presentation Dasmark Pharma" />
+							</div>
+						</li>
+						<li class="splide__slide">
+							<div class="mobile-carousel-card">
+								<img src="/slidera.png" alt="Activite Dasmark Pharma" />
+							</div>
+						</li>
+						<li class="splide__slide">
+							<div class="mobile-carousel-card">
+								<img src="/sliderb.png" alt="Equipe Dasmark Pharma" />
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	) : (
+		<section class="mobile-carousel-section" aria-label="Galerie mobile">
+			<div class="container">
+				<div class="mobile-carousel-shell">
+					<div class="splide mobile-carousel" aria-label="Carrousel mobile Dasmark">
+						<div class="splide__track">
+							<ul class="splide__list">
+								<li class="splide__slide">
+									<div class="mobile-carousel-card">
+										<img src="/slider.png" alt="Presentation Dasmark Pharma" />
+									</div>
+								</li>
+								<li class="splide__slide">
+									<div class="mobile-carousel-card">
+										<img src="/slidera.png" alt="Activite Dasmark Pharma" />
+									</div>
+								</li>
+								<li class="splide__slide">
+									<div class="mobile-carousel-card">
+										<img src="/sliderb.png" alt="Equipe Dasmark Pharma" />
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	)
+}
+
+<style>
+	.mobile-carousel-section {
+		display: none;
+		padding: 0.35rem 0 0;
+		margin-top: 0;
+		position: relative;
+		z-index: 5;
+	}
+
+	.mobile-carousel-shell {
+		display: none;
+		position: relative;
+	}
+
+	.mobile-carousel-card {
+		border-radius: 0;
+		overflow: hidden;
+		background: transparent;
+		border: 0;
+		box-shadow: none;
+		backdrop-filter: none;
+	}
+
+	.mobile-carousel-card img {
+		width: 100%;
+		height: 220px;
+		object-fit: cover;
+		border-radius: 0;
+	}
+
+	.mobile-carousel :global(.splide__track) {
+		overflow: hidden;
+		border-radius: 0;
+	}
+
+	.mobile-carousel :global(.splide__slide) {
+		opacity: 0;
+		transition: opacity 600ms ease;
+	}
+
+	.mobile-carousel :global(.splide__slide.is-active) {
+		opacity: 1;
+	}
+
+	.mobile-carousel :global(.splide__pagination) {
+		bottom: -1.35rem;
+	}
+
+	.mobile-carousel :global(.splide__pagination__page) {
+		width: 0.52rem;
+		height: 0.52rem;
+		background: rgba(107, 96, 210, 0.24);
+		opacity: 1;
+	}
+
+	.mobile-carousel :global(.splide__pagination__page.is-active) {
+		background: #7a6fff;
+		transform: scale(1.2);
+	}
+
+	@media (max-width: 980px) {
+		.mobile-carousel-section,
+		.mobile-carousel-shell {
+			display: block;
+		}
+	}
+
+</style>

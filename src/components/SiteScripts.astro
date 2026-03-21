@@ -1,6 +1,7 @@
 <script>
 	import gsap from 'gsap';
 	import { ScrollTrigger } from 'gsap/ScrollTrigger';
+	import Splide from '@splidejs/splide';
 
 	gsap.registerPlugin(ScrollTrigger);
 
@@ -100,9 +101,28 @@
 			mobileLinks.forEach((link) => link.addEventListener('click', () => toggleMenu(false)));
 		}
 
+		document.querySelectorAll('.mobile-carousel').forEach((carousel) => {
+			if (carousel instanceof HTMLElement) {
+				new Splide(carousel, {
+					type: 'fade',
+					rewind: true,
+					perPage: 1,
+					arrows: false,
+					pagination: true,
+					autoplay: true,
+					interval: 5000,
+					speed: 1800,
+					pauseOnHover: true,
+					pauseOnFocus: true,
+					drag: true
+				}).mount();
+			}
+		});
+
 		gsap
 			.timeline({ defaults: { ease: 'power3.out' } })
 			.from('.site-header', { y: -18, opacity: 0, duration: 0.8 })
+			.from('.mobile-carousel-section', { y: 18, opacity: 0, duration: 0.55 }, '-=0.3')
 			.from('.hero-copy > *', { y: 22, opacity: 0, stagger: 0.08, duration: 0.7 }, '-=0.35')
 			.from('.hero-image-frame', { y: 28, opacity: 0, scale: 0.98, duration: 0.9 }, '-=0.65');
 
