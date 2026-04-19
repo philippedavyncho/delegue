@@ -1,0 +1,104 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+
+const formationSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'Service',
+	name: 'Formation delegue medical',
+	serviceType: 'Formation professionnelle et coaching terrain',
+	provider: {
+		'@type': 'Organization',
+		name: 'DASMARK PHARMA',
+		url: 'https://dasmarkpharma.ci'
+	},
+	areaServed: ['Abidjan', 'Cote d Ivoire']
+};
+---
+
+<Layout
+	title="Formation delegue medical Abidjan | DASMARK PHARMA"
+	description="Formation delegue medical a Abidjan avec coaching terrain et pratique de la visite medicale."
+	canonical="https://dasmarkpharma.ci/formation/"
+	structuredData={formationSchema}
+>
+	<Header />
+	<main id="top">
+		<section class="section">
+			<div class="container seo-page">
+				<h1>Formation delegue medical en Cote d Ivoire</h1>
+				<p>
+					Un parcours professionnalisant pour devenir delegue medical avec des competences
+					immediatement applicables sur le terrain.
+				</p>
+
+				<h2>Programme orienté terrain</h2>
+				<p>
+					Nos modules couvrent argumentaire produit, visite medicale, organisation et suivi
+					commercial.
+				</p>
+
+				<h2>Coaching pratique</h2>
+				<p>
+					Les apprenants sont accompagnes sur la posture, la communication et la performance
+					en contexte reel.
+				</p>
+
+				<h2>Insertion et debouches</h2>
+				<p>
+					La formation cible l employabilite dans les laboratoires pharmaceutiques en Cote d
+					Ivoire et en Afrique francophone.
+				</p>
+
+				<div class="seo-cta-row">
+					<a class="seo-btn" href="https://wa.me/2250749942744">Recevoir le programme</a>
+					<a class="seo-btn seo-btn-alt" href="/contact/">Demander un rendez-vous</a>
+				</div>
+			</div>
+		</section>
+	</main>
+</Layout>
+
+<style>
+	.seo-page h1,
+	.seo-page h2 {
+		line-height: 1.25;
+	}
+
+	.seo-page h1 {
+		margin-bottom: 0.8rem;
+	}
+
+	.seo-page h2 {
+		margin-top: 1.6rem;
+		margin-bottom: 0.6rem;
+	}
+
+	.seo-page p {
+		margin: 0;
+		max-width: 70ch;
+	}
+
+	.seo-cta-row {
+		display: flex;
+		gap: 0.8rem;
+		margin-top: 1.6rem;
+		flex-wrap: wrap;
+	}
+
+	.seo-btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0.7rem 1.1rem;
+		border-radius: 999px;
+		background: #0e5ea8;
+		color: #fff;
+		font-weight: 700;
+	}
+
+	.seo-btn-alt {
+		background: #fff;
+		color: #0e5ea8;
+	}
+</style>

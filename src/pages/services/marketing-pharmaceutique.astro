@@ -1,0 +1,104 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+
+const serviceSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'Service',
+	name: 'Marketing pharmaceutique en Cote d Ivoire',
+	serviceType: 'Accompagnement des laboratoires pharmaceutiques',
+	provider: {
+		'@type': 'Organization',
+		name: 'DASMARK PHARMA',
+		url: 'https://dasmarkpharma.ci'
+	},
+	areaServed: ['Abidjan', 'Cote d Ivoire', 'Afrique francophone']
+};
+---
+
+<Layout
+	title="Marketing pharmaceutique CI | DASMARK PHARMA"
+	description="Strategie et execution marketing pharmaceutique pour laboratoires en Cote d Ivoire et Afrique francophone."
+	canonical="https://dasmarkpharma.ci/services/marketing-pharmaceutique/"
+	structuredData={serviceSchema}
+>
+	<Header />
+	<main id="top">
+		<section class="section">
+			<div class="container seo-page">
+				<h1>Marketing pharmaceutique en Cote d Ivoire</h1>
+				<p>
+					DASMARK PHARMA aide les laboratoires pharmaceutiques a accelerer leur croissance
+					avec une strategie claire et une execution terrain mesuree.
+				</p>
+
+				<h2>Strategie commerciale et plan de penetration</h2>
+				<p>
+					Nous definissons le ciblage, le message medical et les priorites de deploiement
+					selon vos objectifs.
+				</p>
+
+				<h2>Activation terrain et promotion medicale</h2>
+				<p>
+					Nos equipes executent des plans d action orientés medecins, pharmacies et
+					etablissements de sante.
+				</p>
+
+				<h2>Pilotage de performance</h2>
+				<p>
+					Suivi KPI, ajustements rapides et focus conversion pour maximiser l impact
+					commercial.
+				</p>
+
+				<div class="seo-cta-row">
+					<a class="seo-btn" href="https://wa.me/2250749942744">Demander un devis laboratoire</a>
+					<a class="seo-btn seo-btn-alt" href="/contact/">Prendre un rendez-vous</a>
+				</div>
+			</div>
+		</section>
+	</main>
+</Layout>
+
+<style>
+	.seo-page h1,
+	.seo-page h2 {
+		line-height: 1.25;
+	}
+
+	.seo-page h1 {
+		margin-bottom: 0.8rem;
+	}
+
+	.seo-page h2 {
+		margin-top: 1.6rem;
+		margin-bottom: 0.6rem;
+	}
+
+	.seo-page p {
+		margin: 0;
+		max-width: 70ch;
+	}
+
+	.seo-cta-row {
+		display: flex;
+		gap: 0.8rem;
+		margin-top: 1.6rem;
+		flex-wrap: wrap;
+	}
+
+	.seo-btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0.7rem 1.1rem;
+		border-radius: 999px;
+		background: #0e5ea8;
+		color: #fff;
+		font-weight: 700;
+	}
+
+	.seo-btn-alt {
+		background: #fff;
+		color: #0e5ea8;
+	}
+</style>

@@ -21,29 +21,37 @@
 				document.body.classList.remove('is-loading');
 			};
 
-			window.addEventListener('load', () => {
-				gsap
-					.timeline()
-					.from('.loader-mark', { scale: 0.9, opacity: 0, duration: 0.45, ease: 'power2.out' })
-					.from('.loader-mark span:first-child', {
-						rotate: 180,
-						duration: 1.1,
-						ease: 'power2.out'
-					})
-					.from('.loader-mark span:last-child', {
-						scale: 0.2,
-						opacity: 0,
-						duration: 0.35,
-						ease: 'back.out(1.8)'
-					}, '-=0.9')
-					.from('.site-loader p', { y: 10, opacity: 0, duration: 0.35 }, '-=0.5')
-					.to(loader, {
-						opacity: 0,
-						duration: 0.5,
-						delay: 0.15,
-						onComplete: hideLoader
-					});
-			}, { once: true });
+			window.addEventListener(
+				'load',
+				() => {
+					gsap
+						.timeline()
+						.from('.loader-mark', { scale: 0.9, opacity: 0, duration: 0.45, ease: 'power2.out' })
+						.from('.loader-mark span:first-child', {
+							rotate: 180,
+							duration: 1.1,
+							ease: 'power2.out'
+						})
+						.from(
+							'.loader-mark span:last-child',
+							{
+								scale: 0.2,
+								opacity: 0,
+								duration: 0.35,
+								ease: 'back.out(1.8)'
+							},
+							'-=0.9'
+						)
+						.from('.site-loader p', { y: 10, opacity: 0, duration: 0.35 }, '-=0.5')
+						.to(loader, {
+							opacity: 0,
+							duration: 0.5,
+							delay: 0.15,
+							onComplete: hideLoader
+						});
+				},
+				{ once: true }
+			);
 		} else {
 			document.body.classList.remove('is-loading');
 		}
@@ -119,6 +127,25 @@
 			}
 		});
 
+		document.querySelectorAll('.rubrique-carousel').forEach((carousel) => {
+			if (carousel instanceof HTMLElement) {
+				new Splide(carousel, {
+					type: 'fade',
+					rewind: true,
+					perPage: 1,
+					perMove: 1,
+					arrows: false,
+					pagination: true,
+					autoplay: true,
+					interval: 7200,
+					speed: 2400,
+					pauseOnHover: true,
+					pauseOnFocus: true,
+					drag: true
+				}).mount();
+			}
+		});
+
 		gsap
 			.timeline({ defaults: { ease: 'power3.out' } })
 			.from('.site-header', { y: -18, opacity: 0, duration: 0.8 })
@@ -126,18 +153,21 @@
 			.from('.hero-copy > *', { y: 22, opacity: 0, stagger: 0.08, duration: 0.7 }, '-=0.35')
 			.from('.hero-image-frame', { y: 28, opacity: 0, scale: 0.98, duration: 0.9 }, '-=0.65');
 
-		gsap.utils.toArray('.services-copy, .services-gallery, .about-copy, .about-cards, .partners-shell').forEach((element) => {
-			gsap.from(element, {
-				y: 30,
-				opacity: 0,
-				duration: 0.85,
-				ease: 'power3.out',
-				scrollTrigger: {
-					trigger: element,
-					start: 'top 84%'
-				}
+		gsap
+			.utils
+			.toArray('.services-copy, .services-gallery, .about-copy, .about-cards, .partners-shell, .rubrique-shell')
+			.forEach((element) => {
+				gsap.from(element, {
+					y: 30,
+					opacity: 0,
+					duration: 0.85,
+					ease: 'power3.out',
+					scrollTrigger: {
+						trigger: element,
+						start: 'top 84%'
+					}
+				});
 			});
-		});
 
 		const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 

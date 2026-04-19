@@ -5,12 +5,43 @@ import Hero from '../components/Hero.astro';
 import ServicesSection from '../components/ServicesSection.astro';
 import AboutSection from '../components/AboutSection.astro';
 import PartnersSection from '../components/PartnersSection.astro';
+import RubriqueSection from '../components/RubriqueSection.astro';
 import Loader from '../components/Loader.astro';
+
+const organizationSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'Organization',
+	name: 'DASMARK PHARMA',
+	url: 'https://dasmarkpharma.ci',
+	logo: 'https://dasmarkpharma.ci/logodasm.png',
+	areaServed: ['Cote d Ivoire', 'Afrique francophone'],
+	knowsAbout: [
+		'Marketing pharmaceutique',
+		'Promotion medicale',
+		'Visite medicale',
+		'Formation delegue medical'
+	]
+};
+
+const serviceSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'Service',
+	name: 'Accompagnement des laboratoires pharmaceutiques',
+	serviceType: 'Marketing pharmaceutique et visite medicale',
+	provider: {
+		'@type': 'Organization',
+		name: 'DASMARK PHARMA',
+		url: 'https://dasmarkpharma.ci'
+	},
+	areaServed: ['Abidjan', 'Cote d Ivoire', 'Afrique francophone']
+};
 ---
 
 <Layout
-	title="DASMARK PHARMA | Les As du Marketing"
-	description="Agence specialisee dans la promotion medicale et pharmaceutique."
+	title="DASMARK PHARMA | Marketing pharmaceutique et formation"
+	description="Accompagnement des laboratoires pharmaceutiques et formation de delegues medicaux en Cote d Ivoire."
+	canonical="https://dasmarkpharma.ci/"
+	structuredData={[organizationSchema, serviceSchema]}
 >
 	<Loader />
 	<Header />
@@ -19,5 +50,6 @@ import Loader from '../components/Loader.astro';
 		<ServicesSection />
 		<AboutSection />
 		<PartnersSection />
+		<RubriqueSection />
 	</main>
 </Layout>

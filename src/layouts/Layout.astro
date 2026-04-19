@@ -7,11 +7,19 @@ import SiteScripts from '../components/SiteScripts.astro';
 interface Props {
 	title?: string;
 	description?: string;
+	canonical?: string;
+	ogImage?: string;
+	noindex?: boolean;
+	structuredData?: Record<string, unknown> | Array<Record<string, unknown>>;
 }
 
 const {
-	title = 'Delegue Medical',
-	description = 'Societe de delegues medicaux specialisee en promotion pharmaceutique et accompagnement terrain.'
+	title = 'DASMARK PHARMA | Marketing pharmaceutique et formation',
+	description = 'DASMARK PHARMA accompagne les laboratoires pharmaceutiques et forme les delegues medicaux en Cote d Ivoire.',
+	canonical = 'https://dasmarkpharma.ci/',
+	ogImage = 'https://dasmarkpharma.ci/logodasm.png',
+	noindex = false,
+	structuredData
 } = Astro.props;
 ---
 
@@ -25,17 +33,33 @@ const {
 		<link rel="apple-touch-icon" href="/logodasm.png?v=2" />
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content={description} />
+		<meta name="robots" content={noindex ? 'noindex,nofollow' : 'index,follow'} />
+		<link rel="canonical" href={canonical} />
 		<meta name="theme-color" content="#0e5ea8" />
 		<meta property="og:type" content="website" />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
+		<meta property="og:url" content={canonical} />
+		<meta property="og:image" content={ogImage} />
 		<meta property="og:locale" content="fr_FR" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={ogImage} />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
 			href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
 			rel="stylesheet"
 		/>
+		{
+			structuredData && (
+				<script
+					type="application/ld+json"
+					set:html={JSON.stringify(structuredData)}
+				/>
+			)
+		}
 		<title>{title}</title>
 	</head>
 	<body>

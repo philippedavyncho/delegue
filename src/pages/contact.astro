@@ -1,0 +1,96 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+
+const contactSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'Organization',
+	name: 'DASMARK PHARMA',
+	url: 'https://dasmarkpharma.ci',
+	contactPoint: [
+		{
+			'@type': 'ContactPoint',
+			telephone: '+2250749942744',
+			contactType: 'customer service',
+			areaServed: ['Cote d Ivoire', 'Afrique francophone'],
+			availableLanguage: ['French']
+		}
+	]
+};
+---
+
+<Layout
+	title="Contact DASMARK PHARMA | Marketing pharma et formation"
+	description="Contactez DASMARK PHARMA pour vos besoins en marketing pharmaceutique et formation delegue medical."
+	canonical="https://dasmarkpharma.ci/contact/"
+	structuredData={contactSchema}
+>
+	<Header />
+	<main id="top">
+		<section class="section">
+			<div class="container seo-page">
+				<h1>Contact DASMARK PHARMA</h1>
+				<p>
+					Parlez avec notre equipe pour un accompagnement laboratoire pharmaceutique ou une
+					inscription en formation delegue medical.
+				</p>
+
+				<h2>Prendre contact rapidement</h2>
+				<p>
+					Le moyen le plus rapide est WhatsApp, avec un retour de notre equipe dans les plus
+					brefs delais.
+				</p>
+
+				<div class="seo-cta-row">
+					<a class="seo-btn" href="https://wa.me/2250749942744">Parler sur WhatsApp</a>
+					<a class="seo-btn seo-btn-alt" href="/formation/">Voir la formation</a>
+					<a class="seo-btn seo-btn-alt" href="/services/">Voir les services</a>
+				</div>
+			</div>
+		</section>
+	</main>
+</Layout>
+
+<style>
+	.seo-page h1,
+	.seo-page h2 {
+		line-height: 1.25;
+	}
+
+	.seo-page h1 {
+		margin-bottom: 0.8rem;
+	}
+
+	.seo-page h2 {
+		margin-top: 1.6rem;
+		margin-bottom: 0.6rem;
+	}
+
+	.seo-page p {
+		margin: 0;
+		max-width: 70ch;
+	}
+
+	.seo-cta-row {
+		display: flex;
+		gap: 0.8rem;
+		margin-top: 1.6rem;
+		flex-wrap: wrap;
+	}
+
+	.seo-btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0.7rem 1.1rem;
+		border-radius: 999px;
+		background: #0e5ea8;
+		color: #fff;
+		font-weight: 700;
+	}
+
+	.seo-btn-alt {
+		background: #fff;
+		color: #0e5ea8;
+	}
+</style>
