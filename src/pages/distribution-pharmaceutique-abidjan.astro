@@ -1,0 +1,93 @@
+﻿---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+
+const localSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'Service',
+	name: 'Distribution pharmaceutique a Abidjan',
+	provider: {
+		'@type': 'Organization',
+		name: 'DASMARK PHARMA',
+		url: 'https://dasmarkpharma.ci'
+	},
+	areaServed: ['Abidjan', 'Cote d Ivoire']
+};
+---
+
+<Layout
+	title="Distribution pharmaceutique Abidjan | DASMARK PHARMA"
+	description="Service B2B de distribution pharmaceutique a Abidjan pour pharmacies, hopitaux, cliniques et laboratoires en Cote d Ivoire."
+	canonical="https://dasmarkpharma.ci/distribution-pharmaceutique-abidjan/"
+	structuredData={localSchema}
+>
+	<Header />
+	<main id="top">
+		<section class="section">
+			<div class="container seo-page">
+				<h1>Distribution pharmaceutique a Abidjan</h1>
+				<p>
+					DASMARK PHARMA assure la distribution medicaments Abidjan pour les etablissements de
+					sante qui demandent fiabilite, tracabilite et conformite.
+				</p>
+
+				<h2>Services B2B a Abidjan</h2>
+				<h3>Approvisionnement des pharmacies</h3>
+				<p>
+					Mise a disposition des references prioritaires et suivi des volumes selon les besoins terrain.
+				</p>
+				<h3>Fourniture pour hopitaux et cliniques</h3>
+				<p>
+					Pilotage des besoins institutionnels avec un cadre operationnel adapte a Cote d Ivoire.
+				</p>
+
+				<h2>Coordonnees locales</h2>
+				<p>
+					Adresse: Cocody Angre Djrorobite 2, derriere la pharmacie Sainte Clementine, Abidjan.
+					Telephone: +225 07 49 94 27 44.
+				</p>
+
+				<h2>Pages associees</h2>
+				<p>
+					Consultez aussi notre page
+					<a href="/fournisseur-pharmaceutique-cote-divoire/">fournisseur pharmaceutique en Cote d Ivoire</a>
+					et nos <a href="/services/">services de distribution pharmaceutique en Cote d Ivoire</a>.
+				</p>
+			</div>
+		</section>
+	</main>
+</Layout>
+
+<style>
+	.seo-page h1,
+	.seo-page h2,
+	.seo-page h3 {
+		line-height: 1.25;
+	}
+
+	.seo-page h1 {
+		margin-bottom: 0.8rem;
+	}
+
+	.seo-page h2 {
+		margin-top: 1.6rem;
+		margin-bottom: 0.6rem;
+	}
+
+	.seo-page h3 {
+		margin-top: 1rem;
+		margin-bottom: 0.4rem;
+		font-size: 1.05rem;
+	}
+
+	.seo-page p {
+		margin: 0;
+		max-width: 70ch;
+	}
+
+	.seo-page a {
+		color: #0e5ea8;
+		text-decoration: underline;
+		font-weight: 700;
+	}
+</style>

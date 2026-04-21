@@ -1,0 +1,104 @@
+﻿---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+
+const aboutSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'Organization',
+	name: 'DASMARK PHARMA',
+	url: 'https://dasmarkpharma.ci',
+	address: {
+		'@type': 'PostalAddress',
+		streetAddress: 'Cocody Angre Djrorobite 2, derriere la pharmacie Sainte Clementine',
+		addressLocality: 'Abidjan',
+		addressCountry: 'CI'
+	},
+	telephone: '+2250749942744',
+	areaServed: ['Abidjan', 'Cote d Ivoire', 'Afrique de l Ouest']
+};
+---
+
+<Layout
+	title="A Propos DASMARK PHARMA | Fournisseur pharmaceutique CI"
+	description="Decouvrez DASMARK PHARMA, partenaire institutionnel des acteurs de sante pour la distribution pharmaceutique B2B a Abidjan et en Afrique de l Ouest."
+	canonical="https://dasmarkpharma.ci/a-propos/"
+	structuredData={aboutSchema}
+>
+	<Header />
+	<main id="top">
+		<section class="section">
+			<div class="container seo-page">
+				<h1>A propos de DASMARK PHARMA</h1>
+				<p>
+					DASMARK PHARMA est un grossiste pharmaceutique Cote d Ivoire dedie aux professionnels de
+					sante, aux pharmacies, aux hopitaux, aux cliniques et aux laboratoires.
+				</p>
+
+				<h2>Positionnement institutionnel</h2>
+				<h3>Partenaire B2B du secteur pharmaceutique</h3>
+				<p>
+					Nous structurons les operations de distribution medicaments Abidjan avec une approche
+					conforme, durable et orientee performance.
+				</p>
+				<h3>Couverture locale et regionale</h3>
+				<p>
+					Nos services couvrent Abidjan, la Cote d Ivoire et des projets cibles en Afrique de l Ouest.
+				</p>
+
+				<h2>Informations entreprise</h2>
+				<ul>
+					<li>Adresse: Cocody Angre Djrorobite 2, derriere la pharmacie Sainte Clementine, Abidjan.</li>
+					<li>Telephone: +225 07 49 94 27 44.</li>
+					<li>Zones desservies: Abidjan, Cote d Ivoire, Afrique de l Ouest.</li>
+				</ul>
+
+				<h2>Pages associees</h2>
+				<p>
+					Consultez nos services de
+					<a href="/services/">distribution pharmaceutique en Cote d Ivoire</a>
+					et notre offre de <a href="/produits/">produits pharmaceutiques B2B</a>.
+				</p>
+			</div>
+		</section>
+	</main>
+</Layout>
+
+<style>
+	.seo-page h1,
+	.seo-page h2,
+	.seo-page h3 {
+		line-height: 1.25;
+	}
+
+	.seo-page h1 {
+		margin-bottom: 0.8rem;
+	}
+
+	.seo-page h2 {
+		margin-top: 1.6rem;
+		margin-bottom: 0.6rem;
+	}
+
+	.seo-page h3 {
+		margin-top: 1rem;
+		margin-bottom: 0.4rem;
+		font-size: 1.05rem;
+	}
+
+	.seo-page p {
+		margin: 0;
+		max-width: 70ch;
+	}
+
+	.seo-page ul {
+		margin: 0;
+		padding-left: 1.2rem;
+		max-width: 70ch;
+	}
+
+	.seo-page a {
+		color: #0e5ea8;
+		text-decoration: underline;
+		font-weight: 700;
+	}
+</style>

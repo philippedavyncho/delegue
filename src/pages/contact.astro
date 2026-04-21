@@ -1,4 +1,4 @@
----
+﻿---
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 
@@ -12,7 +12,7 @@ const contactSchema = {
 			'@type': 'ContactPoint',
 			telephone: '+2250749942744',
 			contactType: 'customer service',
-			areaServed: ['Cote d Ivoire', 'Afrique francophone'],
+			areaServed: ['Abidjan', 'Cote d Ivoire', 'Afrique de l Ouest'],
 			availableLanguage: ['French']
 		}
 	]
@@ -20,8 +20,8 @@ const contactSchema = {
 ---
 
 <Layout
-	title="Contact DASMARK PHARMA | Marketing pharma et formation"
-	description="Contactez DASMARK PHARMA pour vos besoins en marketing pharmaceutique et formation delegue medical."
+	title="Contact DASMARK PHARMA | Distribution pharma CI"
+	description="Contactez DASMARK PHARMA a Abidjan pour vos besoins de distribution pharmaceutique B2B en Cote d Ivoire et en Afrique de l Ouest."
 	canonical="https://dasmarkpharma.ci/contact/"
 	structuredData={contactSchema}
 >
@@ -31,20 +31,27 @@ const contactSchema = {
 			<div class="container seo-page">
 				<h1>Contact DASMARK PHARMA</h1>
 				<p>
-					Parlez avec notre equipe pour un accompagnement laboratoire pharmaceutique ou une
-					inscription en formation delegue medical.
+					Parlez avec notre equipe pour vos besoins de grossiste pharmaceutique Cote d Ivoire
+					et de distribution medicaments Abidjan.
 				</p>
 
-				<h2>Prendre contact rapidement</h2>
+				<h2>Coordonnees entreprise</h2>
+				<ul>
+					<li>Adresse: Cocody Angre Djrorobite 2, derriere la pharmacie Sainte Clementine, Abidjan.</li>
+					<li>Telephone: +225 07 49 94 27 44.</li>
+					<li>Zones desservies: Abidjan, Cote d Ivoire, Afrique de l Ouest.</li>
+				</ul>
+
+				<h2>Demande rapide</h2>
 				<p>
-					Le moyen le plus rapide est WhatsApp, avec un retour de notre equipe dans les plus
-					brefs delais.
+					Le moyen le plus rapide est WhatsApp. Nous accompagnons pharmacies,
+					hopitaux, cliniques et laboratoires.
 				</p>
 
 				<div class="seo-cta-row">
 					<a class="seo-btn" href="https://wa.me/2250749942744">Parler sur WhatsApp</a>
-					<a class="seo-btn seo-btn-alt" href="/formation/">Voir la formation</a>
 					<a class="seo-btn seo-btn-alt" href="/services/">Voir les services</a>
+					<a class="seo-btn seo-btn-alt" href="/produits/">Voir les produits</a>
 				</div>
 			</div>
 		</section>
@@ -69,6 +76,16 @@ const contactSchema = {
 	.seo-page p {
 		margin: 0;
 		max-width: 70ch;
+	}
+
+	.seo-page ul {
+		margin: 0;
+		padding-left: 1.2rem;
+		max-width: 70ch;
+	}
+
+	.seo-page li {
+		margin-bottom: 0.35rem;
 	}
 
 	.seo-cta-row {

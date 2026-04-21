@@ -5,6 +5,10 @@ const BASE_URL = 'https://dasmarkpharma.ci';
 const staticRoutes = [
 	'/services/',
 	'/services/marketing-pharmaceutique/',
+	'/produits/',
+	'/a-propos/',
+	'/distribution-pharmaceutique-abidjan/',
+	'/fournisseur-pharmaceutique-cote-divoire/',
 	'/formation/',
 	'/formation/delegue-medical/',
 	'/zones/abidjan/',

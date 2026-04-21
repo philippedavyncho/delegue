@@ -1,0 +1,93 @@
+﻿---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+
+const supplierSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'Service',
+	name: 'Fournisseur pharmaceutique en Cote d Ivoire',
+	provider: {
+		'@type': 'Organization',
+		name: 'DASMARK PHARMA',
+		url: 'https://dasmarkpharma.ci'
+	},
+	areaServed: ['Cote d Ivoire', 'Afrique de l Ouest']
+};
+---
+
+<Layout
+	title="Fournisseur pharmaceutique CI | DASMARK PHARMA"
+	description="DASMARK PHARMA, fournisseur pharmaceutique en Cote d Ivoire, accompagne pharmacies, hopitaux, cliniques et laboratoires en Afrique de l Ouest."
+	canonical="https://dasmarkpharma.ci/fournisseur-pharmaceutique-cote-divoire/"
+	structuredData={supplierSchema}
+>
+	<Header />
+	<main id="top">
+		<section class="section">
+			<div class="container seo-page">
+				<h1>Fournisseur pharmaceutique en Cote d Ivoire</h1>
+				<p>
+					DASMARK PHARMA opere comme grossiste pharmaceutique Cote d Ivoire pour la distribution
+					B2B a destination des structures de sante.
+				</p>
+
+				<h2>Accompagnement des acteurs de sante</h2>
+				<h3>Pharmacies et groupements officinaux</h3>
+				<p>
+					Approvisionnement structure et suivi des references pour la distribution medicaments Abidjan.
+				</p>
+				<h3>Hopitaux, cliniques et laboratoires</h3>
+				<p>
+					Coordination logistique et deploiement des produits en Cote d Ivoire.
+				</p>
+
+				<h2>Rayonnement Afrique de l Ouest</h2>
+				<p>
+					Notre organisation repond aux attentes des partenaires cherchant un fournisseur
+					pharmaceutique Afrique de l Ouest avec ancrage local a Abidjan.
+				</p>
+
+				<h2>Continuer la navigation</h2>
+				<p>
+					Consultez la page
+					<a href="/distribution-pharmaceutique-abidjan/">distribution pharmaceutique a Abidjan</a>
+					ou contactez notre <a href="/contact/">equipe commerciale</a>.
+				</p>
+			</div>
+		</section>
+	</main>
+</Layout>
+
+<style>
+	.seo-page h1,
+	.seo-page h2,
+	.seo-page h3 {
+		line-height: 1.25;
+	}
+
+	.seo-page h1 {
+		margin-bottom: 0.8rem;
+	}
+
+	.seo-page h2 {
+		margin-top: 1.6rem;
+		margin-bottom: 0.6rem;
+	}
+
+	.seo-page h3 {
+		margin-top: 1rem;
+		margin-bottom: 0.4rem;
+		font-size: 1.05rem;
+	}
+
+	.seo-page p {
+		margin: 0;
+		max-width: 70ch;
+	}
+
+	.seo-page a {
+		color: #0e5ea8;
+		text-decoration: underline;
+		font-weight: 700;
+	}
+</style>

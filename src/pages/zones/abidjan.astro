@@ -1,24 +1,24 @@
----
+﻿---
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 
 const localServiceSchema = {
 	'@context': 'https://schema.org',
 	'@type': 'Service',
-	name: 'Marketing pharmaceutique a Abidjan',
-	serviceType: 'Accompagnement des laboratoires pharmaceutiques',
+	name: 'Distribution pharmaceutique a Abidjan',
+	serviceType: 'Grossiste pharmaceutique et accompagnement laboratoires',
 	provider: {
 		'@type': 'Organization',
 		name: 'DASMARK PHARMA',
 		url: 'https://dasmarkpharma.ci'
 	},
-	areaServed: ['Abidjan']
+	areaServed: ['Abidjan', 'Cote d Ivoire']
 };
 ---
 
 <Layout
-	title="Marketing pharmaceutique a Abidjan | DASMARK PHARMA"
-	description="Accompagnement marketing pharmaceutique, visite medicale et formation delegue medical a Abidjan."
+	title="Distribution pharmaceutique Abidjan | DASMARK PHARMA"
+	description="Accompagnement B2B de distribution pharmaceutique a Abidjan pour pharmacies, hopitaux, cliniques et laboratoires en Cote d Ivoire."
 	canonical="https://dasmarkpharma.ci/zones/abidjan/"
 	structuredData={localServiceSchema}
 >
@@ -26,32 +26,34 @@ const localServiceSchema = {
 	<main id="top">
 		<section class="section">
 			<div class="container seo-page">
-				<h1>Marketing pharmaceutique a Abidjan</h1>
+				<h1>Distribution pharmaceutique a Abidjan</h1>
 				<p>
-					DASMARK PHARMA accompagne les laboratoires pharmaceutiques a Abidjan avec une
-					approche terrain orientee resultats.
+					DASMARK PHARMA accompagne les acteurs de sante a Abidjan avec une approche terrain
+					orientee resultats et conformite.
 				</p>
 
-				<h2>Services B2B pour laboratoires</h2>
+				<h2>Services B2B pour etablissements de sante</h2>
 				<p>
-					Promotion medicale, visite medicale, pilotage de la couverture et plans d action
-					par secteur.
+					Distribution medicaments Abidjan, suivi des besoins officinaux et appui aux structures
+					hospitalieres et cliniques.
 				</p>
 
-				<h2>Formation delegue medical a Abidjan</h2>
+				<h2>Accompagnement des laboratoires</h2>
 				<p>
-					Nous formons des profils operationnels avec coaching terrain et suivi des acquis.
+					Support au deploiement local et coordination avec les objectifs commerciaux
+					en Cote d Ivoire.
 				</p>
 
-				<h2>Pourquoi choisir DASMARK PHARMA</h2>
+				<h2>Coordonnees et zones desservies</h2>
 				<p>
-					Une execution locale, un langage metier pharma et des objectifs de conversion
-					clairs.
+					Adresse: Cocody Angre Djrorobite 2, derriere la pharmacie Sainte Clementine, Abidjan.
+					Telephone: +225 07 49 94 27 44. Zones: Abidjan, Cote d Ivoire, Afrique de l Ouest.
 				</p>
 
 				<div class="seo-cta-row">
 					<a class="seo-btn" href="https://wa.me/2250749942744">Parler a un expert</a>
 					<a class="seo-btn seo-btn-alt" href="/services/">Voir les services</a>
+					<a class="seo-btn seo-btn-alt" href="/contact/">Contacter l equipe</a>
 				</div>
 			</div>
 		</section>

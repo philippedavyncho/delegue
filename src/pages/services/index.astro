@@ -1,24 +1,24 @@
----
+﻿---
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 
 const serviceSchema = {
 	'@context': 'https://schema.org',
 	'@type': 'Service',
-	name: 'Services pour laboratoires pharmaceutiques',
-	serviceType: 'Marketing pharmaceutique, promotion medicale et visite medicale',
+	name: 'Services de distribution pharmaceutique B2B',
+	serviceType: 'Grossiste pharmaceutique et accompagnement laboratoires',
 	provider: {
 		'@type': 'Organization',
 		name: 'DASMARK PHARMA',
 		url: 'https://dasmarkpharma.ci'
 	},
-	areaServed: ['Abidjan', 'Cote d Ivoire', 'Afrique francophone']
+	areaServed: ['Abidjan', 'Cote d Ivoire', 'Afrique de l Ouest']
 };
 ---
 
 <Layout
-	title="Services laboratoires pharmaceutiques | DASMARK PHARMA"
-	description="Services de marketing pharmaceutique, promotion medicale et visite medicale en Cote d Ivoire."
+	title="Services B2B pharma en Cote d Ivoire | DASMARK PHARMA"
+	description="Nos services couvrent la distribution pharmaceutique B2B, le support reglementaire et l accompagnement commercial des laboratoires en Cote d Ivoire."
 	canonical="https://dasmarkpharma.ci/services/"
 	structuredData={serviceSchema}
 >
@@ -26,31 +26,41 @@ const serviceSchema = {
 	<main id="top">
 		<section class="section">
 			<div class="container seo-page">
-				<h1>Services pour laboratoires pharmaceutiques</h1>
+				<h1>Services de distribution medicaments a Abidjan</h1>
 				<p>
-					DASMARK PHARMA accompagne les laboratoires pour accelerer leur impact terrain
-					en Cote d Ivoire et en Afrique francophone.
+					DASMARK PHARMA accompagne les pharmacies, hopitaux, cliniques et laboratoires en tant que
+					grossiste pharmaceutique Cote d Ivoire.
 				</p>
 
-				<h2>Marketing pharmaceutique et promotion medicale</h2>
+				<h2>Distribution pharmaceutique en Cote d Ivoire</h2>
+				<h3>Approvisionnement B2B des etablissements de sante</h3>
 				<p>
-					Nous structurons vos actions de promotion medicale avec une execution orientee
-					resultats.
+					Nous organisons la distribution medicaments Abidjan avec une logique de continuite,
+					de tracabilite et de performance operationnelle.
+				</p>
+				<h3>Support des laboratoires pharmaceutiques</h3>
+				<p>
+					Nos equipes pilotent le deploiement terrain, la couverture des acteurs de sante
+					et le suivi commercial.
 				</p>
 
-				<h2>Visite medicale et deployment terrain</h2>
+				<h2>Rayonnement regional</h2>
 				<p>
-					Nous renforcons la couverture medecins et pharmacies avec un pilotage KPI clair.
+					Nous intervenons egalement comme fournisseur pharmaceutique Afrique de l Ouest
+					pour des projets cibles.
 				</p>
 
-				<h2>Accompagnement des equipes et formation</h2>
+				<h2>Continuer vers le portefeuille produits</h2>
 				<p>
-					Notre accompagnement combine formation delegue medical et coaching terrain.
+					Consultez notre offre complete de
+					<a href="/produits/">distribution pharmaceutique en Cote d Ivoire</a>
+					et les categories dediees aux professionnels de sante.
 				</p>
 
 				<div class="seo-cta-row">
 					<a class="seo-btn" href="https://wa.me/2250749942744">Parler sur WhatsApp</a>
-					<a class="seo-btn seo-btn-alt" href="/formation/">Voir la formation</a>
+					<a class="seo-btn seo-btn-alt" href="/produits/">Voir les produits</a>
+					<a class="seo-btn seo-btn-alt" href="/contact/">Contacter l equipe</a>
 				</div>
 			</div>
 		</section>
@@ -59,7 +69,8 @@ const serviceSchema = {
 
 <style>
 	.seo-page h1,
-	.seo-page h2 {
+	.seo-page h2,
+	.seo-page h3 {
 		line-height: 1.25;
 	}
 
@@ -72,9 +83,21 @@ const serviceSchema = {
 		margin-bottom: 0.6rem;
 	}
 
+	.seo-page h3 {
+		margin-top: 1rem;
+		margin-bottom: 0.4rem;
+		font-size: 1.05rem;
+	}
+
 	.seo-page p {
 		margin: 0;
 		max-width: 70ch;
+	}
+
+	.seo-page a {
+		color: #0e5ea8;
+		text-decoration: underline;
+		font-weight: 700;
 	}
 
 	.seo-cta-row {
