@@ -1,15 +1,85 @@
-﻿---
-import Layout from '../../layouts/Layout.astro';
+---
 import Header from '../../components/Header.astro';
+import Layout from '../../layouts/Layout.astro';
+import { contactDetails } from '../../data/contact';
+
+const localStats = [
+	{ value: 'Cocody Angre', label: 'point d ancrage local' },
+	{ value: 'Abidjan', label: 'zone coeur de coordination' },
+	{ value: 'Terrain', label: 'approche orientee execution' }
+];
+
+const localServices = [
+	{
+		title: 'Presence de proximite',
+		text: 'Nous pilotons les echanges, la representation et les prises de contact depuis Abidjan avec une lecture concrete du terrain.'
+	},
+	{
+		title: 'Relation avec les structures de sante',
+		text: 'Pharmacies, cliniques, hopitaux et partenaires locaux peuvent etre accompagnes avec un point d entree clair.'
+	},
+	{
+		title: 'Coordination des actions',
+		text: 'Lancements, suivis, activations et relais d information peuvent etre organises plus rapidement a l echelle d Abidjan.'
+	}
+];
+
+const localTargets = [
+	'les laboratoires qui veulent une implantation ou une representation locale',
+	'les structures de sante qui cherchent un partenaire present a Abidjan',
+	'les equipes qui ont besoin d un relais terrain pour deploiement ou suivi',
+	'les projets qui doivent commencer a Abidjan avant extension plus large'
+];
+
+const localFlow = [
+	{
+		title: 'Prise de contact',
+		text: 'Vous partagez votre besoin et votre zone d intervention cible.'
+	},
+	{
+		title: 'Lecture du contexte local',
+		text: 'Nous identifions les points de contact, les structures et le mode de deploiement le plus pertinent a Abidjan.'
+	},
+	{
+		title: 'Execution et suivi',
+		text: 'Nous lancons les actions retenues puis nous suivons les retours terrain pour ajuster la suite.'
+	}
+];
+
+const breadcrumbSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'BreadcrumbList',
+	itemListElement: [
+		{
+			'@type': 'ListItem',
+			position: 1,
+			name: 'Accueil',
+			item: 'https://dasmarkpharma.ci/'
+		},
+		{
+			'@type': 'ListItem',
+			position: 2,
+			name: 'Zones',
+			item: 'https://dasmarkpharma.ci/zones/abidjan/'
+		},
+		{
+			'@type': 'ListItem',
+			position: 3,
+			name: 'Abidjan',
+			item: 'https://dasmarkpharma.ci/zones/abidjan/'
+		}
+	]
+};
 
 const localServiceSchema = {
 	'@context': 'https://schema.org',
 	'@type': 'Service',
-	name: 'Distribution pharmaceutique a Abidjan',
-	serviceType: 'Grossiste pharmaceutique et accompagnement laboratoires',
+	name: 'Accompagnement pharmaceutique a Abidjan',
+	serviceType:
+		'Representation de laboratoires, promotion medicale, coordination terrain et accompagnement des acteurs de sante',
 	provider: {
 		'@type': 'Organization',
-		name: 'DASMARK PHARMA',
+		name: contactDetails.companyName,
 		url: 'https://dasmarkpharma.ci'
 	},
 	areaServed: ['Abidjan', 'Cote d Ivoire']
@@ -17,43 +87,136 @@ const localServiceSchema = {
 ---
 
 <Layout
-	title="Distribution pharmaceutique Abidjan | DASMARK PHARMA"
-	description="Accompagnement B2B de distribution pharmaceutique a Abidjan pour pharmacies, hopitaux, cliniques et laboratoires en Cote d Ivoire."
+	title="Zone desservie Abidjan | DASMARK PHARMA"
+	description="DASMARK PHARMA accompagne les laboratoires et acteurs de sante a Abidjan avec une presence terrain, un ancrage local et une execution claire."
 	canonical="https://dasmarkpharma.ci/zones/abidjan/"
-	structuredData={localServiceSchema}
+	structuredData={[localServiceSchema, breadcrumbSchema]}
 >
 	<Header />
 	<main id="top">
-		<section class="section">
-			<div class="container seo-page">
-				<h1>Distribution pharmaceutique a Abidjan</h1>
-				<p>
-					DASMARK PHARMA accompagne les acteurs de sante a Abidjan avec une approche terrain
-					orientee resultats et conformite.
-				</p>
+		<section class="coverage-page section">
+			<div class="container coverage-shell">
+				<div class="coverage-hero">
+					<div class="coverage-copy">
+						<span class="page-kicker">Zone desservie</span>
+						<h1>Abidjan est notre base d action pour deployer les projets pharmaceutiques avec precision.</h1>
+						<p class="coverage-lead">
+							Depuis Cocody Angre, DASMARK PHARMA accompagne les laboratoires, pharmacies,
+							cliniques et hopitaux qui ont besoin d une presence locale solide. Ici, nous
+							organisons le lien entre la strategie, les prises de contact et l execution
+							terrain.
+						</p>
 
-				<h2>Services B2B pour etablissements de sante</h2>
-				<p>
-					Distribution medicaments Abidjan, suivi des besoins officinaux et appui aux structures
-					hospitalieres et cliniques.
-				</p>
+						<div class="hero-actions">
+							<a class="hero-btn" href={contactDetails.whatsappHref}>Parler a l equipe</a>
+							<a class="hero-btn hero-btn-alt" href="/contact/">Voir la page contact</a>
+						</div>
 
-				<h2>Accompagnement des laboratoires</h2>
-				<p>
-					Support au deploiement local et coordination avec les objectifs commerciaux
-					en Cote d Ivoire.
-				</p>
+						<div class="stats-grid" aria-label="Repere Abidjan">
+							{
+								localStats.map((stat) => (
+									<article class="stat-card">
+										<strong>{stat.value}</strong>
+										<span>{stat.label}</span>
+									</article>
+								))
+							}
+						</div>
+					</div>
 
-				<h2>Coordonnees et zones desservies</h2>
-				<p>
-					Adresse: Cocody Angre Djrorobite 2, derriere la pharmacie Sainte Clementine, Abidjan.
-					Telephone: +225 07 49 94 27 44. Zones: Abidjan, Cote d Ivoire, Afrique de l Ouest.
-				</p>
+					<div class="coverage-panel">
+						<span class="panel-kicker">Ancrage local</span>
+						<h2>Une lecture terrain qui commence a Abidjan.</h2>
+						<p>
+							Notre implantation locale facilite la coordination des echanges, la proximite
+							avec les structures de sante et le suivi des actions sur le terrain.
+						</p>
 
-				<div class="seo-cta-row">
-					<a class="seo-btn" href="https://wa.me/2250749942744">Parler a un expert</a>
-					<a class="seo-btn seo-btn-alt" href="/services/">Voir les services</a>
-					<a class="seo-btn seo-btn-alt" href="/contact/">Contacter l equipe</a>
+						<div class="panel-details">
+							<div class="detail-card">
+								<strong>Adresse</strong>
+								<span>{contactDetails.fullAddress}</span>
+							</div>
+							<div class="detail-card">
+								<strong>WhatsApp</strong>
+								<a href={contactDetails.whatsappHref}>{contactDetails.phoneDisplay}</a>
+							</div>
+							<div class="detail-card">
+								<strong>Couverture</strong>
+								<span>Grand Abidjan et projets relies a la Cote d Ivoire</span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="section-heading">
+					<span class="section-kicker">Ce que cela change</span>
+					<h2>Une implantation locale donne plus de vitesse, plus de lisibilite et plus de suivi.</h2>
+					<p>
+						Au lieu d une promesse abstraite, la couverture Abidjan devient ici un avantage
+						operationnel. C est ce qui permet de mieux lancer, mieux representer et mieux suivre
+						les actions mises en place.
+					</p>
+				</div>
+
+				<div class="service-grid">
+					{
+						localServices.map((service, index) => (
+							<article class="service-card">
+								<span class="service-number">0{index + 1}</span>
+								<h3>{service.title}</h3>
+								<p>{service.text}</p>
+							</article>
+						))
+					}
+				</div>
+
+				<div class="insight-grid">
+					<article class="insight-card">
+						<span class="section-kicker">Pour qui</span>
+						<h2>Les demandes les plus frequentes a Abidjan</h2>
+						<ul class="target-list">
+							{
+								localTargets.map((target) => (
+									<li>{target}</li>
+								))
+							}
+						</ul>
+					</article>
+
+					<div class="flow-shell">
+						<span class="section-kicker">Comment nous operons</span>
+						<h2>Une intervention simple, du premier echange au suivi local.</h2>
+						<div class="flow-grid">
+							{
+								localFlow.map((item, index) => (
+									<article class="flow-card">
+										<span class="flow-index">0{index + 1}</span>
+										<h3>{item.title}</h3>
+										<p>{item.text}</p>
+									</article>
+								))
+							}
+						</div>
+					</div>
+				</div>
+
+				<div class="bottom-cta">
+					<div>
+						<span class="section-kicker">Suite logique</span>
+						<h2>Besoin d aller au dela d Abidjan ?</h2>
+						<p>
+							Nous pouvons aussi vous orienter vers notre couverture plus large de la Cote d
+							Ivoire, tout en gardant Abidjan comme point d appui principal.
+						</p>
+					</div>
+
+					<div class="cta-actions">
+						<a class="hero-btn" href="/fournisseur-pharmaceutique-cote-divoire/">
+							Voir la couverture Cote d Ivoire
+						</a>
+						<a class="hero-btn hero-btn-alt" href="/contact/">Contacter Dasmark Pharma</a>
+					</div>
 				</div>
 			</div>
 		</section>
@@ -61,45 +224,425 @@ const localServiceSchema = {
 </Layout>
 
 <style>
-	.seo-page h1,
-	.seo-page h2 {
-		line-height: 1.25;
+	.coverage-page {
+		padding-top: 1.05rem;
 	}
 
-	.seo-page h1 {
-		margin-bottom: 0.8rem;
+	.coverage-shell {
+		position: relative;
+		padding: 1.45rem 1.3rem 1.9rem;
+		border-radius: 3rem;
+		background: rgba(255, 255, 255, 0.62);
+		border: 1px solid rgba(255, 255, 255, 0.84);
+		box-shadow:
+			0 30px 82px rgba(136, 143, 205, 0.16),
+			inset 0 1px 0 rgba(255, 255, 255, 0.88);
+		overflow: hidden;
 	}
 
-	.seo-page h2 {
-		margin-top: 1.6rem;
-		margin-bottom: 0.6rem;
+	.coverage-shell::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background:
+			radial-gradient(42% 48% at 8% 12%, rgba(123, 173, 255, 0.18), transparent 72%),
+			radial-gradient(34% 44% at 96% 80%, rgba(190, 166, 255, 0.18), transparent 72%);
+		pointer-events: none;
 	}
 
-	.seo-page p {
+	.coverage-hero,
+	.section-heading,
+	.service-grid,
+	.insight-grid,
+	.bottom-cta {
+		position: relative;
+		z-index: 1;
+	}
+
+	.coverage-hero {
+		display: grid;
+		grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+		gap: 1.1rem;
+		align-items: start;
+	}
+
+	.page-kicker,
+	.section-kicker,
+	.panel-kicker {
+		display: inline-flex;
+		align-items: center;
+		padding: 0.4rem 0.76rem;
+		border-radius: 999px;
+		font-size: 0.8rem;
+		font-weight: 800;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+	}
+
+	.page-kicker,
+	.section-kicker {
+		background: rgba(255, 255, 255, 0.82);
+		border: 1px solid rgba(152, 171, 234, 0.34);
+		box-shadow: 0 10px 24px rgba(118, 130, 198, 0.08);
+		color: #0e5ea8;
+	}
+
+	.panel-kicker {
+		background: rgba(255, 255, 255, 0.16);
+		border: 1px solid rgba(255, 255, 255, 0.24);
+		color: rgba(255, 255, 255, 0.92);
+	}
+
+	.coverage-copy h1,
+	.coverage-panel h2,
+	.section-heading h2,
+	.insight-card h2,
+	.flow-shell h2,
+	.bottom-cta h2,
+	.service-card h3,
+	.flow-card h3 {
 		margin: 0;
-		max-width: 70ch;
+		font-family: 'Plus Jakarta Sans', 'Segoe UI', sans-serif;
+		line-height: 1.03;
+		letter-spacing: -0.05em;
 	}
 
-	.seo-cta-row {
+	.coverage-copy h1 {
+		margin-top: 0.95rem;
+		font-size: clamp(2.35rem, 5vw, 4.1rem);
+		color: #30449f;
+		max-width: 13ch;
+	}
+
+	.coverage-lead,
+	.coverage-panel p,
+	.section-heading p,
+	.service-card p,
+	.insight-card p,
+	.flow-card p,
+	.bottom-cta p {
+		margin: 0.95rem 0 0;
+		color: #556286;
+		line-height: 1.75;
+	}
+
+	.hero-actions,
+	.cta-actions {
 		display: flex;
-		gap: 0.8rem;
-		margin-top: 1.6rem;
 		flex-wrap: wrap;
+		gap: 0.8rem;
+		margin-top: 1.2rem;
 	}
 
-	.seo-btn {
+	.hero-btn {
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		padding: 0.7rem 1.1rem;
+		padding: 0.82rem 1.2rem;
 		border-radius: 999px;
-		background: #0e5ea8;
+		background: linear-gradient(135deg, #365bc8, #1f8ccb);
 		color: #fff;
-		font-weight: 700;
+		font-weight: 800;
+		box-shadow: 0 16px 34px rgba(44, 97, 187, 0.2);
 	}
 
-	.seo-btn-alt {
-		background: #fff;
-		color: #0e5ea8;
+	.hero-btn-alt {
+		background: rgba(255, 255, 255, 0.84);
+		border: 1px solid rgba(173, 187, 236, 0.6);
+		color: #3056a7;
+		box-shadow: 0 14px 28px rgba(118, 130, 198, 0.08);
+	}
+
+	.stats-grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 0.85rem;
+		margin-top: 1.35rem;
+	}
+
+	.stat-card {
+		padding: 1rem 1.05rem;
+		border-radius: 1.4rem;
+		background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(246, 249, 255, 0.84));
+		border: 1px solid rgba(219, 226, 245, 0.94);
+		box-shadow:
+			0 18px 40px rgba(114, 123, 180, 0.1),
+			inset 0 1px 0 rgba(255, 255, 255, 0.98);
+	}
+
+	.stat-card strong,
+	.stat-card span {
+		display: block;
+	}
+
+	.stat-card strong {
+		font-family: 'Plus Jakarta Sans', 'Segoe UI', sans-serif;
+		font-size: clamp(1.35rem, 2.8vw, 2.1rem);
+		line-height: 1.05;
+		color: #30449f;
+	}
+
+	.stat-card span {
+		margin-top: 0.35rem;
+		color: #66739e;
+		font-size: 0.92rem;
+	}
+
+	.coverage-panel {
+		padding: 1.35rem 1.2rem;
+		border-radius: 2rem;
+		background:
+			radial-gradient(circle at top right, rgba(255, 255, 255, 0.16), transparent 28%),
+			linear-gradient(145deg, rgba(83, 108, 220, 0.96), rgba(116, 106, 222, 0.93) 54%, rgba(83, 176, 225, 0.9));
+		color: #fff;
+		box-shadow: 0 24px 52px rgba(110, 114, 197, 0.2);
+	}
+
+	.coverage-panel h2 {
+		margin-top: 0.9rem;
+		font-size: clamp(1.8rem, 3vw, 2.35rem);
+		color: #fff;
+	}
+
+	.coverage-panel p {
+		color: rgba(255, 255, 255, 0.92);
+	}
+
+	.panel-details {
+		display: grid;
+		gap: 0.8rem;
+		margin-top: 1.05rem;
+	}
+
+	.detail-card {
+		padding: 0.9rem 0.95rem;
+		border-radius: 1.3rem;
+		background: rgba(255, 255, 255, 0.12);
+		border: 1px solid rgba(255, 255, 255, 0.16);
+	}
+
+	.detail-card strong,
+	.detail-card span,
+	.detail-card a {
+		display: block;
+	}
+
+	.detail-card strong {
+		font-size: 0.82rem;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: rgba(255, 255, 255, 0.84);
+	}
+
+	.detail-card span,
+	.detail-card a {
+		margin-top: 0.24rem;
+		color: #fff;
+		font-weight: 700;
+		line-height: 1.55;
+	}
+
+	.section-heading {
+		max-width: 52rem;
+		margin-top: 1.95rem;
+	}
+
+	.section-heading h2,
+	.insight-card h2,
+	.flow-shell h2,
+	.bottom-cta h2 {
+		margin-top: 0.85rem;
+		font-size: clamp(2rem, 4vw, 3.1rem);
+		color: #30449f;
+	}
+
+	.service-grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 1rem;
+		margin-top: 1.2rem;
+	}
+
+	.service-card,
+	.insight-card,
+	.flow-shell {
+		position: relative;
+		padding: 1.3rem 1.2rem 1.25rem;
+		border-radius: 2rem;
+		background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(247, 249, 255, 0.9));
+		border: 1px solid rgba(219, 226, 245, 0.98);
+		box-shadow:
+			0 24px 48px rgba(115, 122, 180, 0.1),
+			inset 0 1px 0 rgba(255, 255, 255, 0.98);
+	}
+
+	.service-card::before,
+	.insight-card::before,
+	.flow-shell::before {
+		content: '';
+		position: absolute;
+		inset: 0 0 auto 0;
+		height: 4px;
+		background: linear-gradient(90deg, rgba(72, 112, 219, 0.92), rgba(108, 194, 231, 0.82));
+	}
+
+	.service-number {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 2.45rem;
+		height: 2.45rem;
+		border-radius: 999px;
+		background: rgba(53, 92, 203, 0.08);
+		color: #365bc8;
+		font-size: 0.88rem;
+		font-weight: 800;
+		letter-spacing: 0.08em;
+	}
+
+	.service-card h3 {
+		margin-top: 0.95rem;
+		font-size: clamp(1.45rem, 2.2vw, 1.85rem);
+		color: #30449f;
+	}
+
+	.insight-grid {
+		display: grid;
+		grid-template-columns: minmax(0, 0.94fr) minmax(0, 1.06fr);
+		gap: 1rem;
+		margin-top: 1.95rem;
+	}
+
+	.target-list {
+		display: grid;
+		gap: 0.78rem;
+		padding: 0;
+		margin: 1rem 0 0;
+		list-style: none;
+	}
+
+	.target-list li {
+		display: flex;
+		gap: 0.7rem;
+		align-items: flex-start;
+		color: #44517d;
+	}
+
+	.target-list li::before {
+		content: '+';
+		flex: 0 0 auto;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 1.55rem;
+		height: 1.55rem;
+		border-radius: 999px;
+		background: rgba(118, 194, 255, 0.16);
+		color: #4ea5f0;
+		font-weight: 800;
+	}
+
+	.flow-grid {
+		display: grid;
+		gap: 0.85rem;
+		margin-top: 1rem;
+	}
+
+	.flow-card {
+		padding: 1.1rem 1rem;
+		border-radius: 1.55rem;
+		background: rgba(255, 255, 255, 0.8);
+		border: 1px solid rgba(214, 223, 246, 0.92);
+		box-shadow:
+			0 18px 36px rgba(109, 117, 174, 0.08),
+			inset 0 1px 0 rgba(255, 255, 255, 0.96);
+	}
+
+	.flow-index {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 2.4rem;
+		height: 2.4rem;
+		border-radius: 999px;
+		background: linear-gradient(135deg, #5c78e1, #63c2ef);
+		color: #fff;
+		font-weight: 800;
+	}
+
+	.flow-card h3 {
+		margin-top: 0.8rem;
+		font-size: 1.18rem;
+		color: #30449f;
+	}
+
+	.flow-card p {
+		margin-top: 0.4rem;
+	}
+
+	.bottom-cta {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) auto;
+		gap: 1rem;
+		align-items: end;
+		margin-top: 1.95rem;
+		padding: 1.35rem 1.2rem;
+		border-radius: 2rem;
+		background: rgba(255, 255, 255, 0.56);
+		border: 1px solid rgba(255, 255, 255, 0.8);
+		box-shadow: 0 18px 44px rgba(118, 126, 182, 0.08);
+	}
+
+	.cta-actions {
+		margin-top: 0;
+		justify-content: flex-end;
+	}
+
+	@media (max-width: 980px) {
+		.coverage-hero,
+		.insight-grid,
+		.bottom-cta {
+			grid-template-columns: 1fr;
+		}
+
+		.service-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.cta-actions {
+			justify-content: flex-start;
+		}
+	}
+
+	@media (max-width: 720px) {
+		.stats-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	@media (max-width: 640px) {
+		.coverage-shell {
+			padding: 1rem;
+			border-radius: 1.7rem;
+		}
+
+		.coverage-panel,
+		.service-card,
+		.insight-card,
+		.flow-shell,
+		.flow-card,
+		.bottom-cta {
+			border-radius: 1.4rem;
+		}
+
+		.coverage-copy h1 {
+			max-width: none;
+		}
+
+		.hero-actions,
+		.cta-actions {
+			flex-direction: column;
+			align-items: stretch;
+		}
 	}
 </style>

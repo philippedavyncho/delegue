@@ -24,17 +24,19 @@ const organizationSchema = {
 	},
 	areaServed: ['Abidjan', 'Cote d Ivoire', 'Afrique de l Ouest'],
 	knowsAbout: [
-		'grossiste pharmaceutique Cote d Ivoire',
-		'distribution medicaments Abidjan',
-		'fournisseur pharmaceutique Afrique de l Ouest'
+		'promotion medicale et pharmaceutique',
+		'representation de laboratoires pharmaceutiques',
+		'affaires reglementaires pharmaceutiques',
+		'formation des delegues medicaux'
 	]
 };
 
 const serviceSchema = {
 	'@context': 'https://schema.org',
 	'@type': 'Service',
-	name: 'Distribution pharmaceutique B2B',
-	serviceType: 'Grossiste pharmaceutique et distribution de medicaments',
+	name: 'Accompagnement pharmaceutique B2B',
+	serviceType:
+		'Promotion medicale, representation de laboratoires, affaires reglementaires et formation des delegues medicaux',
 	provider: {
 		'@type': 'Organization',
 		name: 'DASMARK PHARMA',
@@ -45,8 +47,8 @@ const serviceSchema = {
 ---
 
 <Layout
-	title="Grossiste pharmaceutique Cote d Ivoire | DASMARK PHARMA"
-	description="DASMARK PHARMA assure la distribution pharmaceutique B2B a Abidjan pour pharmacies, hopitaux, cliniques et laboratoires en Cote d Ivoire."
+	title="Promotion medicale et accompagnement pharmaceutique | DASMARK PHARMA"
+	description="DASMARK PHARMA accompagne les laboratoires et acteurs de sante avec la promotion medicale, la representation, les affaires reglementaires et la formation en Cote d Ivoire."
 	canonical="https://dasmarkpharma.ci/"
 	structuredData={[organizationSchema, serviceSchema]}
 >

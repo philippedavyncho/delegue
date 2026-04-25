@@ -1,14 +1,79 @@
-﻿---
-import Layout from '../layouts/Layout.astro';
+---
 import Header from '../components/Header.astro';
+import Layout from '../layouts/Layout.astro';
+import { contactDetails } from '../data/contact';
+
+const nationalStats = [
+	{ value: 'Abidjan', label: 'base d ancrage' },
+	{ value: 'Cote d Ivoire', label: 'couverture prioritaire' },
+	{ value: 'Progressif', label: 'deploiement adapte au projet' }
+];
+
+const nationalServices = [
+	{
+		title: 'Representation de laboratoires',
+		text: 'Nous aidons les marques et laboratoires a gagner une presence plus lisible en Cote d Ivoire, avec un point d appui local et un relais terrain.'
+	},
+	{
+		title: 'Coordination des actions multi-zones',
+		text: 'Quand le projet ne se limite pas a Abidjan, nous structurons la priorisation, les relais et le rythme de deploiement.'
+	},
+	{
+		title: 'Lien entre strategie et execution',
+		text: 'Notre valeur vient de la capacite a relier le cadre strategique, la conformite attendue et la mise en mouvement du terrain.'
+	}
+];
+
+const nationalAnchors = [
+	'les laboratoires qui veulent structurer leur presence sur le marche ivoirien',
+	'les partenaires qui cherchent un point d entree fiable a Abidjan avec une projection nationale',
+	'les projets qui combinent representation, promotion, reglementaire et suivi terrain',
+	'les demandes qui doivent s inscrire dans un rythme realiste et durable'
+];
+
+const nationalPath = [
+	{
+		title: 'Ancrer a Abidjan',
+		text: 'Le projet trouve d abord son point d appui local pour clarifier les priorites et la mise en mouvement.'
+	},
+	{
+		title: 'Etendre intelligemment',
+		text: 'Nous definissons les relais, les zones et la logique d extension la plus pertinente selon votre objectif.'
+	},
+	{
+		title: 'Suivre et ajuster',
+		text: 'Les retours terrain servent a consolider le dispositif plutot qu a avancer a l aveugle.'
+	}
+];
+
+const breadcrumbSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'BreadcrumbList',
+	itemListElement: [
+		{
+			'@type': 'ListItem',
+			position: 1,
+			name: 'Accueil',
+			item: 'https://dasmarkpharma.ci/'
+		},
+		{
+			'@type': 'ListItem',
+			position: 2,
+			name: 'Accompagnement pharmaceutique Cote d Ivoire',
+			item: 'https://dasmarkpharma.ci/fournisseur-pharmaceutique-cote-divoire/'
+		}
+	]
+};
 
 const supplierSchema = {
 	'@context': 'https://schema.org',
 	'@type': 'Service',
-	name: 'Fournisseur pharmaceutique en Cote d Ivoire',
+	name: 'Couverture pharmaceutique en Cote d Ivoire',
+	serviceType:
+		'Representation de laboratoires, coordination terrain et accompagnement des acteurs de sante en Cote d Ivoire',
 	provider: {
 		'@type': 'Organization',
-		name: 'DASMARK PHARMA',
+		name: contactDetails.companyName,
 		url: 'https://dasmarkpharma.ci'
 	},
 	areaServed: ['Cote d Ivoire', 'Afrique de l Ouest']
@@ -16,78 +81,561 @@ const supplierSchema = {
 ---
 
 <Layout
-	title="Fournisseur pharmaceutique CI | DASMARK PHARMA"
-	description="DASMARK PHARMA, fournisseur pharmaceutique en Cote d Ivoire, accompagne pharmacies, hopitaux, cliniques et laboratoires en Afrique de l Ouest."
+	title="Accompagnement pharmaceutique Cote d Ivoire | DASMARK PHARMA"
+	description="DASMARK PHARMA accompagne les laboratoires et acteurs de sante en Cote d Ivoire avec un ancrage a Abidjan et une logique de deploiement nationale."
 	canonical="https://dasmarkpharma.ci/fournisseur-pharmaceutique-cote-divoire/"
-	structuredData={supplierSchema}
+	structuredData={[supplierSchema, breadcrumbSchema]}
 >
 	<Header />
 	<main id="top">
-		<section class="section">
-			<div class="container seo-page">
-				<h1>Fournisseur pharmaceutique en Cote d Ivoire</h1>
-				<p>
-					DASMARK PHARMA opere comme grossiste pharmaceutique Cote d Ivoire pour la distribution
-					B2B a destination des structures de sante.
-				</p>
+		<section class="territory-page section">
+			<div class="container territory-shell">
+				<div class="territory-hero">
+					<div class="territory-copy">
+						<span class="page-kicker">Cote d Ivoire</span>
+						<h1>Une couverture nationale qui garde un ancrage fort a Abidjan.</h1>
+						<p class="territory-lead">
+							DASMARK PHARMA accompagne les projets pharmaceutiques qui veulent exister en Cote
+							d Ivoire avec une logique simple: partir d une base locale solide, structurer les
+							actions utiles puis deployer avec methode. La couverture nationale n est pas un
+							slogan, c est une facon d organiser la progression.
+						</p>
 
-				<h2>Accompagnement des acteurs de sante</h2>
-				<h3>Pharmacies et groupements officinaux</h3>
-				<p>
-					Approvisionnement structure et suivi des references pour la distribution medicaments Abidjan.
-				</p>
-				<h3>Hopitaux, cliniques et laboratoires</h3>
-				<p>
-					Coordination logistique et deploiement des produits en Cote d Ivoire.
-				</p>
+						<div class="hero-actions">
+							<a class="hero-btn" href={contactDetails.whatsappHref}>Echanger avec l equipe</a>
+							<a class="hero-btn hero-btn-alt" href="/zones/abidjan/">Voir notre base Abidjan</a>
+						</div>
 
-				<h2>Rayonnement Afrique de l Ouest</h2>
-				<p>
-					Notre organisation repond aux attentes des partenaires cherchant un fournisseur
-					pharmaceutique Afrique de l Ouest avec ancrage local a Abidjan.
-				</p>
+						<div class="stats-grid" aria-label="Repere Cote d Ivoire">
+							{
+								nationalStats.map((stat) => (
+									<article class="stat-card">
+										<strong>{stat.value}</strong>
+										<span>{stat.label}</span>
+									</article>
+								))
+							}
+						</div>
+					</div>
 
-				<h2>Continuer la navigation</h2>
-				<p>
-					Consultez la page
-					<a href="/distribution-pharmaceutique-abidjan/">distribution pharmaceutique a Abidjan</a>
-					ou contactez notre <a href="/contact/">equipe commerciale</a>.
-				</p>
+					<div class="territory-panel">
+						<span class="panel-kicker">Lecture du territoire</span>
+						<h2>Une presence qui s etend sans perdre la maitrise du terrain.</h2>
+						<p>
+							Nous aidons a faire le lien entre l ambition nationale d un projet et les realites
+							du marche ivoirien, avec un point d entree concret depuis {contactDetails.city}.
+						</p>
+
+						<div class="panel-stack">
+							<div class="panel-card">
+								<strong>Point d appui</strong>
+								<span>{contactDetails.fullAddress}</span>
+							</div>
+							<div class="panel-card">
+								<strong>Contact direct</strong>
+								<a href={contactDetails.whatsappHref}>{contactDetails.phoneDisplay}</a>
+							</div>
+							<div class="panel-card">
+								<strong>Portee</strong>
+								<span>Cote d Ivoire avec ouverture sur les projets regionaux</span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="section-heading">
+					<span class="section-kicker">Positionnement</span>
+					<h2>Un partenaire pour relier presence locale, couverture nationale et execution lisible.</h2>
+					<p>
+						La force de cette page est de montrer que la Cote d Ivoire n est pas traite comme un
+						bloc abstrait. Le travail part du terrain, s organise depuis Abidjan et se deploie
+						avec un cadre plus large quand le projet le demande.
+					</p>
+				</div>
+
+				<div class="service-grid">
+					{
+						nationalServices.map((service, index) => (
+							<article class="service-card">
+								<span class="service-number">0{index + 1}</span>
+								<h3>{service.title}</h3>
+								<p>{service.text}</p>
+							</article>
+						))
+					}
+				</div>
+
+				<div class="territory-grid">
+					<article class="territory-card">
+						<span class="section-kicker">Pour quels projets</span>
+						<h2>Les besoins qui demandent une lecture plus large du marche ivoirien</h2>
+						<ul class="anchor-list">
+							{
+								nationalAnchors.map((anchor) => (
+									<li>{anchor}</li>
+								))
+							}
+						</ul>
+					</article>
+
+					<div class="path-shell">
+						<span class="section-kicker">Mode operatoire</span>
+						<h2>Une progression nationale qui reste concrete a chaque etape.</h2>
+						<div class="path-grid">
+							{
+								nationalPath.map((item, index) => (
+									<article class="path-card">
+										<span class="path-index">0{index + 1}</span>
+										<h3>{item.title}</h3>
+										<p>{item.text}</p>
+									</article>
+								))
+							}
+						</div>
+					</div>
+				</div>
+
+				<div class="bottom-cta">
+					<div>
+						<span class="section-kicker">Entrer par le bon niveau</span>
+						<h2>Vous pouvez commencer par Abidjan ou directement par une logique Cote d Ivoire.</h2>
+						<p>
+							Si votre besoin est deja national, nous cadrons le projet a cette echelle. S il
+							doit d abord s ancrer localement, nous pouvons aussi demarrer depuis Abidjan puis
+							elargir ensuite.
+						</p>
+					</div>
+
+					<div class="cta-actions">
+						<a class="hero-btn" href="/contact/">Contacter Dasmark Pharma</a>
+						<a class="hero-btn hero-btn-alt" href="/zones/abidjan/">Revenir a Abidjan</a>
+					</div>
+				</div>
 			</div>
 		</section>
 	</main>
 </Layout>
 
 <style>
-	.seo-page h1,
-	.seo-page h2,
-	.seo-page h3 {
-		line-height: 1.25;
+	.territory-page {
+		padding-top: 1.05rem;
 	}
 
-	.seo-page h1 {
-		margin-bottom: 0.8rem;
+	.territory-shell {
+		position: relative;
+		padding: 1.45rem 1.3rem 1.9rem;
+		border-radius: 3rem;
+		background: rgba(255, 255, 255, 0.62);
+		border: 1px solid rgba(255, 255, 255, 0.84);
+		box-shadow:
+			0 30px 82px rgba(136, 143, 205, 0.16),
+			inset 0 1px 0 rgba(255, 255, 255, 0.88);
+		overflow: hidden;
 	}
 
-	.seo-page h2 {
-		margin-top: 1.6rem;
-		margin-bottom: 0.6rem;
+	.territory-shell::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background:
+			radial-gradient(42% 50% at 8% 14%, rgba(123, 173, 255, 0.18), transparent 72%),
+			radial-gradient(34% 46% at 94% 82%, rgba(190, 166, 255, 0.18), transparent 72%);
+		pointer-events: none;
 	}
 
-	.seo-page h3 {
-		margin-top: 1rem;
-		margin-bottom: 0.4rem;
-		font-size: 1.05rem;
+	.territory-hero,
+	.section-heading,
+	.service-grid,
+	.territory-grid,
+	.bottom-cta {
+		position: relative;
+		z-index: 1;
 	}
 
-	.seo-page p {
-		margin: 0;
-		max-width: 70ch;
+	.territory-hero {
+		display: grid;
+		grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+		gap: 1.1rem;
+		align-items: start;
 	}
 
-	.seo-page a {
+	.page-kicker,
+	.section-kicker,
+	.panel-kicker {
+		display: inline-flex;
+		align-items: center;
+		padding: 0.4rem 0.76rem;
+		border-radius: 999px;
+		font-size: 0.8rem;
+		font-weight: 800;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+	}
+
+	.page-kicker,
+	.section-kicker {
+		background: rgba(255, 255, 255, 0.82);
+		border: 1px solid rgba(152, 171, 234, 0.34);
+		box-shadow: 0 10px 24px rgba(118, 130, 198, 0.08);
 		color: #0e5ea8;
-		text-decoration: underline;
+	}
+
+	.panel-kicker {
+		background: rgba(255, 255, 255, 0.16);
+		border: 1px solid rgba(255, 255, 255, 0.24);
+		color: rgba(255, 255, 255, 0.92);
+	}
+
+	.territory-copy h1,
+	.territory-panel h2,
+	.section-heading h2,
+	.territory-card h2,
+	.path-shell h2,
+	.bottom-cta h2,
+	.service-card h3,
+	.path-card h3 {
+		margin: 0;
+		font-family: 'Plus Jakarta Sans', 'Segoe UI', sans-serif;
+		line-height: 1.03;
+		letter-spacing: -0.05em;
+	}
+
+	.territory-copy h1 {
+		margin-top: 0.95rem;
+		font-size: clamp(2.35rem, 5vw, 4.1rem);
+		color: #30449f;
+		max-width: 12ch;
+	}
+
+	.territory-lead,
+	.territory-panel p,
+	.section-heading p,
+	.service-card p,
+	.territory-card p,
+	.path-card p,
+	.bottom-cta p {
+		margin: 0.95rem 0 0;
+		color: #556286;
+		line-height: 1.75;
+	}
+
+	.hero-actions,
+	.cta-actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.8rem;
+		margin-top: 1.2rem;
+	}
+
+	.hero-btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0.82rem 1.2rem;
+		border-radius: 999px;
+		background: linear-gradient(135deg, #365bc8, #1f8ccb);
+		color: #fff;
+		font-weight: 800;
+		box-shadow: 0 16px 34px rgba(44, 97, 187, 0.2);
+	}
+
+	.hero-btn-alt {
+		background: rgba(255, 255, 255, 0.84);
+		border: 1px solid rgba(173, 187, 236, 0.6);
+		color: #3056a7;
+		box-shadow: 0 14px 28px rgba(118, 130, 198, 0.08);
+	}
+
+	.stats-grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 0.85rem;
+		margin-top: 1.35rem;
+	}
+
+	.stat-card {
+		padding: 1rem 1.05rem;
+		border-radius: 1.4rem;
+		background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(246, 249, 255, 0.84));
+		border: 1px solid rgba(219, 226, 245, 0.94);
+		box-shadow:
+			0 18px 40px rgba(114, 123, 180, 0.1),
+			inset 0 1px 0 rgba(255, 255, 255, 0.98);
+	}
+
+	.stat-card strong,
+	.stat-card span {
+		display: block;
+	}
+
+	.stat-card strong {
+		font-family: 'Plus Jakarta Sans', 'Segoe UI', sans-serif;
+		font-size: clamp(1.35rem, 2.8vw, 2.1rem);
+		line-height: 1.05;
+		color: #30449f;
+	}
+
+	.stat-card span {
+		margin-top: 0.35rem;
+		color: #66739e;
+		font-size: 0.92rem;
+	}
+
+	.territory-panel {
+		padding: 1.35rem 1.2rem;
+		border-radius: 2rem;
+		background:
+			radial-gradient(circle at top right, rgba(255, 255, 255, 0.16), transparent 28%),
+			linear-gradient(145deg, rgba(83, 108, 220, 0.96), rgba(116, 106, 222, 0.93) 54%, rgba(83, 176, 225, 0.9));
+		color: #fff;
+		box-shadow: 0 24px 52px rgba(110, 114, 197, 0.2);
+	}
+
+	.territory-panel h2 {
+		margin-top: 0.9rem;
+		font-size: clamp(1.8rem, 3vw, 2.35rem);
+		color: #fff;
+	}
+
+	.territory-panel p {
+		color: rgba(255, 255, 255, 0.92);
+	}
+
+	.panel-stack {
+		display: grid;
+		gap: 0.8rem;
+		margin-top: 1.05rem;
+	}
+
+	.panel-card {
+		padding: 0.9rem 0.95rem;
+		border-radius: 1.3rem;
+		background: rgba(255, 255, 255, 0.12);
+		border: 1px solid rgba(255, 255, 255, 0.16);
+	}
+
+	.panel-card strong,
+	.panel-card span,
+	.panel-card a {
+		display: block;
+	}
+
+	.panel-card strong {
+		font-size: 0.82rem;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: rgba(255, 255, 255, 0.84);
+	}
+
+	.panel-card span,
+	.panel-card a {
+		margin-top: 0.24rem;
+		color: #fff;
 		font-weight: 700;
+		line-height: 1.55;
+	}
+
+	.section-heading {
+		max-width: 54rem;
+		margin-top: 1.95rem;
+	}
+
+	.section-heading h2,
+	.territory-card h2,
+	.path-shell h2,
+	.bottom-cta h2 {
+		margin-top: 0.85rem;
+		font-size: clamp(2rem, 4vw, 3.1rem);
+		color: #30449f;
+	}
+
+	.service-grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 1rem;
+		margin-top: 1.2rem;
+	}
+
+	.service-card,
+	.territory-card,
+	.path-shell {
+		position: relative;
+		padding: 1.3rem 1.2rem 1.25rem;
+		border-radius: 2rem;
+		background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(247, 249, 255, 0.9));
+		border: 1px solid rgba(219, 226, 245, 0.98);
+		box-shadow:
+			0 24px 48px rgba(115, 122, 180, 0.1),
+			inset 0 1px 0 rgba(255, 255, 255, 0.98);
+	}
+
+	.service-card::before,
+	.territory-card::before,
+	.path-shell::before {
+		content: '';
+		position: absolute;
+		inset: 0 0 auto 0;
+		height: 4px;
+		background: linear-gradient(90deg, rgba(72, 112, 219, 0.92), rgba(108, 194, 231, 0.82));
+	}
+
+	.service-number {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 2.45rem;
+		height: 2.45rem;
+		border-radius: 999px;
+		background: rgba(53, 92, 203, 0.08);
+		color: #365bc8;
+		font-size: 0.88rem;
+		font-weight: 800;
+		letter-spacing: 0.08em;
+	}
+
+	.service-card h3 {
+		margin-top: 0.95rem;
+		font-size: clamp(1.45rem, 2.2vw, 1.85rem);
+		color: #30449f;
+	}
+
+	.territory-grid {
+		display: grid;
+		grid-template-columns: minmax(0, 0.94fr) minmax(0, 1.06fr);
+		gap: 1rem;
+		margin-top: 1.95rem;
+	}
+
+	.anchor-list {
+		display: grid;
+		gap: 0.78rem;
+		padding: 0;
+		margin: 1rem 0 0;
+		list-style: none;
+	}
+
+	.anchor-list li {
+		display: flex;
+		gap: 0.7rem;
+		align-items: flex-start;
+		color: #44517d;
+	}
+
+	.anchor-list li::before {
+		content: '+';
+		flex: 0 0 auto;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 1.55rem;
+		height: 1.55rem;
+		border-radius: 999px;
+		background: rgba(118, 194, 255, 0.16);
+		color: #4ea5f0;
+		font-weight: 800;
+	}
+
+	.path-grid {
+		display: grid;
+		gap: 0.85rem;
+		margin-top: 1rem;
+	}
+
+	.path-card {
+		padding: 1.1rem 1rem;
+		border-radius: 1.55rem;
+		background: rgba(255, 255, 255, 0.8);
+		border: 1px solid rgba(214, 223, 246, 0.92);
+		box-shadow:
+			0 18px 36px rgba(109, 117, 174, 0.08),
+			inset 0 1px 0 rgba(255, 255, 255, 0.96);
+	}
+
+	.path-index {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 2.4rem;
+		height: 2.4rem;
+		border-radius: 999px;
+		background: linear-gradient(135deg, #5c78e1, #63c2ef);
+		color: #fff;
+		font-weight: 800;
+	}
+
+	.path-card h3 {
+		margin-top: 0.8rem;
+		font-size: 1.18rem;
+		color: #30449f;
+	}
+
+	.path-card p {
+		margin-top: 0.4rem;
+	}
+
+	.bottom-cta {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) auto;
+		gap: 1rem;
+		align-items: end;
+		margin-top: 1.95rem;
+		padding: 1.35rem 1.2rem;
+		border-radius: 2rem;
+		background: rgba(255, 255, 255, 0.56);
+		border: 1px solid rgba(255, 255, 255, 0.8);
+		box-shadow: 0 18px 44px rgba(118, 126, 182, 0.08);
+	}
+
+	.cta-actions {
+		margin-top: 0;
+		justify-content: flex-end;
+	}
+
+	@media (max-width: 980px) {
+		.territory-hero,
+		.territory-grid,
+		.bottom-cta {
+			grid-template-columns: 1fr;
+		}
+
+		.service-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.cta-actions {
+			justify-content: flex-start;
+		}
+	}
+
+	@media (max-width: 720px) {
+		.stats-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	@media (max-width: 640px) {
+		.territory-shell {
+			padding: 1rem;
+			border-radius: 1.7rem;
+		}
+
+		.territory-panel,
+		.service-card,
+		.territory-card,
+		.path-shell,
+		.path-card,
+		.bottom-cta {
+			border-radius: 1.4rem;
+		}
+
+		.territory-copy h1 {
+			max-width: none;
+		}
+
+		.hero-actions,
+		.cta-actions {
+			flex-direction: column;
+			align-items: stretch;
+		}
 	}
 </style>

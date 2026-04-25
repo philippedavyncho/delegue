@@ -9,6 +9,21 @@ const PARTNERS_PAGE_TEMPLATE = resolve(PAGES_ROOT, 'partenaires', '[slug].astro'
 const PARTNERS_DATA_FILE = resolve(process.cwd(), 'src', 'data', 'partners.ts');
 const PAGE_EXTENSIONS = new Set(['.astro', '.md', '.mdx']);
 const EXCLUDED_FILES = new Set(['sitemap.xml.ts']);
+const DEFAULT_CHANGEFREQ = 'monthly';
+const DEFAULT_PRIORITY = '0.7';
+
+const ROUTE_METADATA: Record<string, { changefreq: string; priority: string }> = {
+	'/': { changefreq: 'weekly', priority: '1.0' },
+	'/services/': { changefreq: 'weekly', priority: '0.9' },
+	'/contact/': { changefreq: 'monthly', priority: '0.9' },
+	'/a-propos/': { changefreq: 'monthly', priority: '0.8' },
+	'/formation/': { changefreq: 'weekly', priority: '0.8' },
+	'/formation/delegue-medical/': { changefreq: 'weekly', priority: '0.8' },
+	'/services/marketing-pharmaceutique/': { changefreq: 'monthly', priority: '0.8' },
+	'/zones/abidjan/': { changefreq: 'monthly', priority: '0.8' },
+	'/distribution-pharmaceutique-abidjan/': { changefreq: 'monthly', priority: '0.7' },
+	'/fournisseur-pharmaceutique-cote-divoire/': { changefreq: 'monthly', priority: '0.7' }
+};
 
 const filePathToRoute = (filePath: string) => {
 	const normalized = filePath.replace(/\.(astro|md|mdx)$/i, '').split(sep).join('/');
@@ -79,15 +94,31 @@ const sitemapEntries = [...collectStaticPageEntries(PAGES_ROOT), ...partnerPageE
 export const GET: APIRoute = () => {
 	const urls = sitemapEntries
 		.map(({ route, lastmod }) => {
-			return `<url><loc>${BASE_URL}${route}</loc><lastmod>${lastmod}</lastmod></url>`;
+			const metadata = route.startsWith('/partenaires/')
+				? { changefreq: 'weekly', priority: '0.7' }
+				: (ROUTE_METADATA[route] ?? {
+						changefreq: DEFAULT_CHANGEFREQ,
+						priority: DEFAULT_PRIORITY
+					});
+
+			return [
+				'<url>',
+				`<loc>${BASE_URL}${route}</loc>`,
+				`<lastmod>${lastmod}</lastmod>`,
+				`<changefreq>${metadata.changefreq}</changefreq>`,
+				`<priority>${metadata.priority}</priority>`,
+				'</url>'
+			].join('');
 		})
 		.join('');
 
 	const body =
-		'<?xml version="1.0" encoding="UTF-8"?>' +
-		'<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' +
-		urls +
-		'</urlset>';
+		[
+			'<?xml version="1.0" encoding="UTF-8"?>',
+			'<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+			urls,
+			'</urlset>'
+		].join('');
 
 	return new Response(body, {
 		headers: {

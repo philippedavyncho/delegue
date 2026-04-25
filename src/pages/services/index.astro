@@ -1,66 +1,330 @@
-﻿---
-import Layout from '../../layouts/Layout.astro';
+---
 import Header from '../../components/Header.astro';
+import Layout from '../../layouts/Layout.astro';
+import { aboutContent } from '../../data/about';
+
+const missionItems = [
+	'Promotion medicale, pharmaceutique et materiels medicaux.',
+	'Representation de laboratoires pharmaceutiques.',
+	'Affaires reglementaires.',
+	'Formations aux metiers de la delegation medicale.'
+];
+
+const serviceStats = [
+	{ value: '4', label: 'piliers d accompagnement' },
+	{ value: '2022', label: 'annee de creation' },
+	{ value: 'CI + AO', label: 'ancrage local et regional' }
+];
+
+const servicePillars = [
+	{
+		number: '01',
+		title: 'Promotion medicale et pharmaceutique',
+		description:
+			'Nous faisons connaitre vos produits de sante avec des actions terrain pensees pour les professionnels de sante, les circuits de prescription et les points de contact les plus utiles.',
+		points: [
+			'ciblage des etablissements, prescripteurs et relais prioritaires',
+			'construction d un discours clair, scientifique et adapte au marche',
+			'animation terrain pour renforcer la visibilite et l adoption'
+		]
+	},
+	{
+		number: '02',
+		title: 'Representation de laboratoires',
+		description:
+			'Dasmark Pharma agit comme un relais local de confiance pour porter votre laboratoire, installer sa presence en Cote d Ivoire et faire vivre la relation avec les acteurs de sante.',
+		points: [
+			'presence commerciale et institutionnelle de proximite',
+			'mise en avant de vos gammes aupres des pharmacies, cliniques et hopitaux',
+			'retours terrain reguliers pour affiner les decisions'
+		]
+	},
+	{
+		number: '03',
+		title: 'Affaires reglementaires et enregistrement',
+		description:
+			'Nous accompagnons la mise en conformite et l enregistrement de vos produits afin de fluidifier leur introduction sur le marche et de reduire les freins administratifs.',
+		points: [
+			'preparation des dossiers et des pieces utiles',
+			'lecture des exigences locales avec une approche pratique',
+			'suivi du processus jusqu aux etapes de validation'
+		]
+	},
+	{
+		number: '04',
+		title: 'Formation des delegues medicaux',
+		description:
+			'Nous structurons des formations pour renforcer la posture terrain, la maitrise des produits et la qualite du dialogue avec les medecins, pharmacies et equipes commerciales.',
+		points: [
+			'fondamentaux du metier et argumentation produit',
+			'simulations, coaching et preparation a la visite medicale',
+			'programmes adaptes aux nouveaux profils comme aux equipes en relance'
+		],
+		href: '/services/marketing-pharmaceutique/',
+		linkLabel: 'Voir aussi notre accompagnement marketing pharmaceutique'
+	}
+];
+
+const interventionSteps = [
+	{
+		step: 'Diagnostiquer',
+		text: 'Nous clarifions votre produit, le contexte du marche et le resultat concret que vous voulez obtenir.'
+	},
+	{
+		step: 'Structurer',
+		text: 'Nous definissons les priorites, les cibles, les messages et le dispositif le plus utile pour votre projet.'
+	},
+	{
+		step: 'Deployer',
+		text: 'Nous passons a l execution avec une presence terrain, un suivi clair et une coordination constante.'
+	},
+	{
+		step: 'Suivre',
+		text: 'Nous analysons les retours, ajustons les actions et consolidons la progression dans la duree.'
+	}
+];
+
+const audiences = [
+	'les laboratoires pharmaceutiques qui souhaitent gagner en presence locale',
+	'les marques qui ont besoin d un relais terrain fiable pour leurs produits',
+	'les structures qui veulent cadrer un enregistrement ou un volet reglementaire',
+	'les equipes commerciales et medicales a former ou a remettre a niveau'
+];
+
+const strengths = [
+	'Une lecture terrain et operationnelle du secteur pharmaceutique.',
+	'Une offre qui relie marketing, representation, reglementaire et formation.',
+	'Un accompagnement pense pour la Cote d Ivoire et les projets regionaux.'
+];
+
+const breadcrumbSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'BreadcrumbList',
+	itemListElement: [
+		{
+			'@type': 'ListItem',
+			position: 1,
+			name: 'Accueil',
+			item: 'https://dasmarkpharma.ci/'
+		},
+		{
+			'@type': 'ListItem',
+			position: 2,
+			name: 'Services',
+			item: 'https://dasmarkpharma.ci/services/'
+		}
+	]
+};
 
 const serviceSchema = {
 	'@context': 'https://schema.org',
 	'@type': 'Service',
-	name: 'Services de distribution pharmaceutique B2B',
-	serviceType: 'Grossiste pharmaceutique et accompagnement laboratoires',
+	name: 'Services pharmaceutiques DASMARK PHARMA',
+	serviceType:
+		'Promotion medicale, representation de laboratoires, affaires reglementaires et formation des delegues medicaux',
 	provider: {
 		'@type': 'Organization',
 		name: 'DASMARK PHARMA',
 		url: 'https://dasmarkpharma.ci'
 	},
-	areaServed: ['Abidjan', 'Cote d Ivoire', 'Afrique de l Ouest']
+	areaServed: ['Abidjan', 'Cote d Ivoire', 'Afrique de l Ouest'],
+	hasOfferCatalog: {
+		'@type': 'OfferCatalog',
+		name: 'Offre de services DASMARK PHARMA',
+		itemListElement: servicePillars.map((pillar, index) => ({
+			'@type': 'ListItem',
+			position: index + 1,
+			item: {
+				'@type': 'Service',
+				name: pillar.title,
+				description: pillar.description
+			}
+		}))
+	}
 };
 ---
 
 <Layout
-	title="Services B2B pharma en Cote d Ivoire | DASMARK PHARMA"
-	description="Nos services couvrent la distribution pharmaceutique B2B, le support reglementaire et l accompagnement commercial des laboratoires en Cote d Ivoire."
+	title="Services pharmaceutiques en Cote d Ivoire | DASMARK PHARMA"
+	description="Decouvrez les services de DASMARK PHARMA : promotion medicale, representation de laboratoires, affaires reglementaires et formation des delegues medicaux."
 	canonical="https://dasmarkpharma.ci/services/"
-	structuredData={serviceSchema}
+	structuredData={[serviceSchema, breadcrumbSchema]}
 >
 	<Header />
 	<main id="top">
-		<section class="section">
-			<div class="container seo-page">
-				<h1>Services de distribution medicaments a Abidjan</h1>
-				<p>
-					DASMARK PHARMA accompagne les pharmacies, hopitaux, cliniques et laboratoires en tant que
-					grossiste pharmaceutique Cote d Ivoire.
-				</p>
+		<section class="services-page section">
+			<div class="container services-page-shell">
+				<div class="services-hero">
+					<div class="services-copy">
+						<span class="page-kicker">Services DASMARK PHARMA</span>
+						<h1>
+							Une offre claire pour lancer, representer, conformer et faire grandir vos
+							produits de sante.
+						</h1>
+						<p class="services-lead">
+							DASMARK PHARMA accompagne les laboratoires et les acteurs de sante avec une
+							approche qui relie la promotion medicale, la representation locale, les affaires
+							reglementaires et la formation des equipes terrain. Ici, chaque service prolonge
+							la meme ambition: mieux positionner vos produits et mieux preparer leur
+							deploiement.
+						</p>
 
-				<h2>Distribution pharmaceutique en Cote d Ivoire</h2>
-				<h3>Approvisionnement B2B des etablissements de sante</h3>
-				<p>
-					Nous organisons la distribution medicaments Abidjan avec une logique de continuite,
-					de tracabilite et de performance operationnelle.
-				</p>
-				<h3>Support des laboratoires pharmaceutiques</h3>
-				<p>
-					Nos equipes pilotent le deploiement terrain, la couverture des acteurs de sante
-					et le suivi commercial.
-				</p>
+						<div class="services-actions">
+							<a class="page-btn" href="https://wa.me/2250749942744">Parler a l equipe</a>
+							<a class="page-btn page-btn-alt" href="/contact/">Demander un accompagnement</a>
+						</div>
 
-				<h2>Rayonnement regional</h2>
-				<p>
-					Nous intervenons egalement comme fournisseur pharmaceutique Afrique de l Ouest
-					pour des projets cibles.
-				</p>
+						<div class="services-stats" aria-label="Points clefs">
+							{
+								serviceStats.map((stat) => (
+									<article class="stat-card">
+										<strong>{stat.value}</strong>
+										<span>{stat.label}</span>
+									</article>
+								))
+							}
+						</div>
+					</div>
 
-				<h2>Continuer votre demande</h2>
-				<p>
-					Consultez nos services de
-					<a href="/services/marketing-pharmaceutique/">marketing pharmaceutique</a>
-					ou <a href="/contact/">contactez notre equipe</a> pour un accompagnement dedie.
-				</p>
+					<div class="services-showcase">
+						<article class="showcase-panel">
+							<span class="showcase-label">Vision</span>
+							<h2>Etre les As du Marketing medical et Pharmaceutique.</h2>
+							<p>{aboutContent.paragraphs[1]}</p>
+							<p class="showcase-founded">{aboutContent.founded}</p>
+						</article>
 
-				<div class="seo-cta-row">
-					<a class="seo-btn" href="https://wa.me/2250749942744">Parler sur WhatsApp</a>
-					<a class="seo-btn seo-btn-alt" href="/services/marketing-pharmaceutique/">Voir le marketing pharma</a>
-					<a class="seo-btn seo-btn-alt" href="/contact/">Contacter l equipe</a>
+						<div class="showcase-grid">
+							<div class="showcase-image-card showcase-image-card-large">
+								<img src="/dasmark.jpeg" alt="Equipe Dasmark Pharma" loading="eager" />
+							</div>
+							<div class="showcase-image-card">
+								<img src="/bga.jpeg" alt="Reunion avec un partenaire pharmaceutique" />
+							</div>
+							<div class="showcase-mission-card">
+								<span class="showcase-label">Mission</span>
+								<ul>
+									{
+										missionItems.map((item) => (
+											<li>{item}</li>
+										))
+									}
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="section-heading">
+					<span class="section-kicker">Offre centrale</span>
+					<h2>Les services qui definissent vraiment Dasmark Pharma</h2>
+					<p>
+						La page services devait raconter l essentiel. Nous la recentrons donc sur les
+						expertises visibles a l accueil et sur la page a propos: celles qui font la valeur
+						reelle de votre accompagnement.
+					</p>
+				</div>
+
+				<div class="services-grid">
+					{
+						servicePillars.map((pillar) => (
+							<article class="service-card">
+								<span class="service-number">{pillar.number}</span>
+								<h3>{pillar.title}</h3>
+								<p>{pillar.description}</p>
+								<ul class="service-points">
+									{
+										pillar.points.map((point) => (
+											<li>{point}</li>
+										))
+									}
+								</ul>
+								{
+									pillar.href && (
+										<a class="service-link" href={pillar.href}>{pillar.linkLabel}</a>
+									)
+								}
+							</article>
+						))
+					}
+				</div>
+
+				<div class="journey-shell">
+					<div class="journey-copy">
+						<span class="section-kicker">Methode</span>
+						<h2>Un accompagnement pense pour le terrain, pas seulement pour la theorie</h2>
+						<p>
+							Nous ne vendons pas des services isoles. Nous construisons un chemin de travail
+							coherent, du cadrage initial jusqu au suivi des resultats, avec un niveau
+							d exigence adapte au secteur de la sante.
+						</p>
+						<p class="journey-note">{aboutContent.paragraphs[3]}</p>
+					</div>
+
+					<div class="journey-steps">
+						{
+							interventionSteps.map((item, index) => (
+								<article class="step-card">
+									<span class="step-index">0{index + 1}</span>
+									<div>
+										<h3>{item.step}</h3>
+										<p>{item.text}</p>
+									</div>
+								</article>
+							))
+						}
+					</div>
+				</div>
+
+				<div class="focus-grid">
+					<article class="focus-card">
+						<span class="section-kicker">Pour qui</span>
+						<h2>Nos interventions s adressent en priorite a</h2>
+						<ul class="audience-list">
+							{
+								audiences.map((audience) => (
+									<li>{audience}</li>
+								))
+							}
+						</ul>
+					</article>
+
+					<article class="focus-card focus-card-accent">
+						<span class="section-kicker section-kicker-light">Pourquoi nous choisir</span>
+						<h2>Un partenaire qui relie strategie, execution et conformite.</h2>
+						<p>
+							Depuis {aboutContent.founded.replace('Cree en ', '').toLowerCase()}, Dasmark
+							Pharma construit une presence utile pour les laboratoires qui veulent avancer
+							avec un partenaire local engage, lisible et proche du terrain.
+						</p>
+						<div class="strength-list">
+							{
+								strengths.map((strength) => (
+									<p>{strength}</p>
+								))
+							}
+						</div>
+						<a class="accent-link" href="/a-propos/">Decouvrir notre histoire</a>
+					</article>
+				</div>
+
+				<div class="bottom-cta">
+					<div>
+						<span class="section-kicker">Passons a l action</span>
+						<h2>Vous avez un laboratoire, un produit ou une equipe a structurer ?</h2>
+						<p>
+							Nous pouvons vous aider a choisir le bon point d entree entre representation,
+							promotion, reglementaire et formation, puis construire un plan simple et
+							actionnable.
+						</p>
+					</div>
+
+					<div class="bottom-cta-actions">
+						<a class="page-btn" href="https://wa.me/2250749942744">Echanger sur WhatsApp</a>
+						<a class="page-btn page-btn-alt" href="/services/marketing-pharmaceutique/">
+							Explorer le marketing pharma
+						</a>
+					</div>
 				</div>
 			</div>
 		</section>
@@ -68,58 +332,584 @@ const serviceSchema = {
 </Layout>
 
 <style>
-	.seo-page h1,
-	.seo-page h2,
-	.seo-page h3 {
-		line-height: 1.25;
+	.services-page {
+		padding-top: 1.05rem;
 	}
 
-	.seo-page h1 {
-		margin-bottom: 0.8rem;
+	.services-page-shell {
+		position: relative;
+		padding: 1.4rem 1.3rem 1.8rem;
+		border-radius: 3rem;
+		background: rgba(255, 255, 255, 0.62);
+		border: 1px solid rgba(255, 255, 255, 0.84);
+		box-shadow:
+			0 30px 82px rgba(136, 143, 205, 0.16),
+			inset 0 1px 0 rgba(255, 255, 255, 0.88);
+		overflow: hidden;
 	}
 
-	.seo-page h2 {
-		margin-top: 1.6rem;
-		margin-bottom: 0.6rem;
+	.services-page-shell::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background:
+			radial-gradient(40% 48% at 10% 14%, rgba(123, 173, 255, 0.18), transparent 72%),
+			radial-gradient(36% 46% at 94% 80%, rgba(190, 166, 255, 0.18), transparent 72%);
+		pointer-events: none;
 	}
 
-	.seo-page h3 {
-		margin-top: 1rem;
-		margin-bottom: 0.4rem;
-		font-size: 1.05rem;
+	.services-hero,
+	.section-heading,
+	.services-grid,
+	.journey-shell,
+	.focus-grid,
+	.bottom-cta {
+		position: relative;
+		z-index: 1;
 	}
 
-	.seo-page p {
-		margin: 0;
-		max-width: 70ch;
+	.services-hero {
+		display: grid;
+		grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+		gap: 1.2rem;
+		align-items: start;
 	}
 
-	.seo-page a {
+	.page-kicker,
+	.section-kicker {
+		display: inline-flex;
+		align-items: center;
+		padding: 0.42rem 0.78rem;
+		border-radius: 999px;
+		background: rgba(255, 255, 255, 0.8);
+		border: 1px solid rgba(152, 171, 234, 0.34);
+		box-shadow: 0 10px 24px rgba(118, 130, 198, 0.08);
 		color: #0e5ea8;
-		text-decoration: underline;
-		font-weight: 700;
+		font-size: 0.8rem;
+		font-weight: 800;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
 	}
 
-	.seo-cta-row {
+	.section-kicker-light {
+		background: rgba(255, 255, 255, 0.14);
+		border-color: rgba(255, 255, 255, 0.26);
+		color: rgba(255, 255, 255, 0.92);
+	}
+
+	.services-copy h1,
+	.section-heading h2,
+	.journey-copy h2,
+	.focus-card h2,
+	.bottom-cta h2,
+	.showcase-panel h2 {
+		margin: 0;
+		font-family: 'Plus Jakarta Sans', 'Segoe UI', sans-serif;
+		line-height: 1.03;
+		letter-spacing: -0.05em;
+	}
+
+	.services-copy h1 {
+		margin-top: 0.95rem;
+		font-size: clamp(2.45rem, 5vw, 4.4rem);
+		color: #30449f;
+		max-width: 12ch;
+	}
+
+	.services-lead {
+		margin: 1rem 0 0;
+		max-width: 64ch;
+		font-size: 1.06rem;
+		line-height: 1.78;
+		color: #4a5780;
+	}
+
+	.services-actions,
+	.bottom-cta-actions {
 		display: flex;
-		gap: 0.8rem;
-		margin-top: 1.6rem;
 		flex-wrap: wrap;
+		gap: 0.8rem;
+		margin-top: 1.2rem;
 	}
 
-	.seo-btn {
+	.page-btn {
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		padding: 0.7rem 1.1rem;
+		padding: 0.82rem 1.2rem;
 		border-radius: 999px;
-		background: #0e5ea8;
+		background: linear-gradient(135deg, #365bc8, #1f8ccb);
 		color: #fff;
-		font-weight: 700;
+		font-weight: 800;
+		box-shadow: 0 16px 34px rgba(44, 97, 187, 0.2);
 	}
 
-	.seo-btn-alt {
-		background: #fff;
+	.page-btn-alt {
+		background: rgba(255, 255, 255, 0.84);
+		border: 1px solid rgba(173, 187, 236, 0.6);
+		color: #3056a7;
+		box-shadow: 0 14px 28px rgba(118, 130, 198, 0.08);
+	}
+
+	.services-stats {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 0.9rem;
+		margin-top: 1.35rem;
+	}
+
+	.stat-card {
+		padding: 1rem 1.05rem;
+		border-radius: 1.35rem;
+		background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(246, 249, 255, 0.82));
+		border: 1px solid rgba(219, 226, 245, 0.94);
+		box-shadow:
+			0 18px 40px rgba(114, 123, 180, 0.1),
+			inset 0 1px 0 rgba(255, 255, 255, 0.98);
+	}
+
+	.stat-card strong,
+	.stat-card span {
+		display: block;
+	}
+
+	.stat-card strong {
+		font-family: 'Plus Jakarta Sans', 'Segoe UI', sans-serif;
+		font-size: clamp(1.7rem, 3vw, 2.4rem);
+		line-height: 1;
+		color: #30449f;
+	}
+
+	.stat-card span {
+		margin-top: 0.35rem;
+		color: #65739b;
+		font-size: 0.92rem;
+	}
+
+	.services-showcase {
+		display: grid;
+		gap: 1rem;
+	}
+
+	.showcase-panel {
+		padding: 1.35rem 1.25rem;
+		border-radius: 2rem;
+		background:
+			radial-gradient(circle at top right, rgba(255, 255, 255, 0.16), transparent 28%),
+			linear-gradient(145deg, rgba(83, 108, 220, 0.96), rgba(116, 106, 222, 0.93) 54%, rgba(83, 176, 225, 0.9));
+		color: #fff;
+		box-shadow: 0 24px 52px rgba(110, 114, 197, 0.2);
+	}
+
+	.showcase-panel h2 {
+		margin-top: 0.85rem;
+		font-size: clamp(1.7rem, 2.5vw, 2.3rem);
+		color: #fff;
+	}
+
+	.showcase-panel p {
+		margin: 0.95rem 0 0;
+		color: rgba(255, 255, 255, 0.92);
+	}
+
+	.showcase-label {
+		display: inline-flex;
+		align-items: center;
+		padding: 0.38rem 0.68rem;
+		border-radius: 999px;
+		background: rgba(255, 255, 255, 0.16);
+		border: 1px solid rgba(255, 255, 255, 0.22);
+		color: rgba(255, 255, 255, 0.9);
+		font-size: 0.76rem;
+		font-weight: 800;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
+
+	.showcase-founded {
+		font-size: 0.88rem;
+		font-weight: 800;
+		letter-spacing: 0.05em;
+		text-transform: uppercase;
+	}
+
+	.showcase-grid {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 0.95rem;
+	}
+
+	.showcase-image-card,
+	.showcase-mission-card {
+		border-radius: 1.8rem;
+		overflow: hidden;
+	}
+
+	.showcase-image-card {
+		padding: 0.38rem;
+		background: rgba(255, 255, 255, 0.78);
+		border: 1px solid rgba(220, 227, 246, 0.95);
+		box-shadow: 0 18px 42px rgba(117, 126, 186, 0.12);
+	}
+
+	.showcase-image-card img {
+		width: 100%;
+		height: 100%;
+		min-height: 170px;
+		object-fit: cover;
+		border-radius: 1.45rem;
+	}
+
+	.showcase-image-card-large {
+		grid-column: 1 / -1;
+	}
+
+	.showcase-image-card-large img {
+		min-height: 250px;
+	}
+
+	.showcase-mission-card {
+		padding: 1.2rem 1.1rem;
+		background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(248, 250, 255, 0.9));
+		border: 1px solid rgba(214, 223, 246, 0.92);
+		box-shadow:
+			0 22px 46px rgba(109, 117, 174, 0.12),
+			inset 0 1px 0 rgba(255, 255, 255, 0.96);
+	}
+
+	.showcase-mission-card .showcase-label {
+		background: rgba(14, 94, 168, 0.08);
+		border-color: rgba(14, 94, 168, 0.12);
 		color: #0e5ea8;
+	}
+
+	.showcase-mission-card ul {
+		display: grid;
+		gap: 0.78rem;
+		padding: 0;
+		margin: 1rem 0 0;
+		list-style: none;
+	}
+
+	.showcase-mission-card li {
+		display: flex;
+		gap: 0.7rem;
+		align-items: flex-start;
+		color: #44517d;
+	}
+
+	.showcase-mission-card li::before,
+	.service-points li::before,
+	.audience-list li::before {
+		content: '+';
+		flex: 0 0 auto;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 1.6rem;
+		height: 1.6rem;
+		border-radius: 999px;
+		background: rgba(118, 194, 255, 0.16);
+		color: #4ea5f0;
+		font-weight: 800;
+	}
+
+	.section-heading {
+		margin-top: 1.95rem;
+		max-width: 48rem;
+	}
+
+	.section-heading h2,
+	.journey-copy h2,
+	.focus-card h2,
+	.bottom-cta h2 {
+		margin-top: 0.85rem;
+		font-size: clamp(2rem, 4vw, 3.2rem);
+		color: #30449f;
+	}
+
+	.section-heading p,
+	.journey-copy p,
+	.focus-card p,
+	.bottom-cta p {
+		margin: 0.95rem 0 0;
+		color: #566388;
+		line-height: 1.75;
+	}
+
+	.services-grid {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 1rem;
+		margin-top: 1.25rem;
+	}
+
+	.service-card {
+		position: relative;
+		padding: 1.35rem 1.2rem 1.25rem;
+		border-radius: 2rem;
+		background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(247, 249, 255, 0.9));
+		border: 1px solid rgba(219, 226, 245, 0.98);
+		box-shadow:
+			0 24px 48px rgba(115, 122, 180, 0.1),
+			inset 0 1px 0 rgba(255, 255, 255, 0.98);
+		overflow: hidden;
+	}
+
+	.service-card::before {
+		content: '';
+		position: absolute;
+		inset: 0 0 auto 0;
+		height: 4px;
+		background: linear-gradient(90deg, rgba(72, 112, 219, 0.92), rgba(108, 194, 231, 0.82));
+	}
+
+	.service-number {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 2.5rem;
+		height: 2.5rem;
+		border-radius: 999px;
+		background: rgba(53, 92, 203, 0.08);
+		color: #365bc8;
+		font-size: 0.9rem;
+		font-weight: 800;
+		letter-spacing: 0.08em;
+	}
+
+	.service-card h3 {
+		margin: 1rem 0 0;
+		font-family: 'Plus Jakarta Sans', 'Segoe UI', sans-serif;
+		font-size: clamp(1.45rem, 2.2vw, 1.95rem);
+		line-height: 1.08;
+		letter-spacing: -0.04em;
+		color: #30449f;
+	}
+
+	.service-card p {
+		margin: 0.9rem 0 0;
+		color: #4e5b81;
+	}
+
+	.service-points,
+	.audience-list {
+		display: grid;
+		gap: 0.78rem;
+		padding: 0;
+		margin: 1.1rem 0 0;
+		list-style: none;
+	}
+
+	.service-points li,
+	.audience-list li {
+		display: flex;
+		gap: 0.72rem;
+		align-items: flex-start;
+		color: #44517d;
+	}
+
+	.service-link,
+	.accent-link {
+		display: inline-flex;
+		align-items: center;
+		margin-top: 1.1rem;
+		color: #2f6bc0;
+		font-weight: 800;
+	}
+
+	.journey-shell {
+		display: grid;
+		grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+		gap: 1rem;
+		margin-top: 1.9rem;
+	}
+
+	.journey-copy {
+		padding: 1.35rem 1.25rem;
+		border-radius: 2rem;
+		background: rgba(255, 255, 255, 0.58);
+		border: 1px solid rgba(255, 255, 255, 0.82);
+		box-shadow: 0 18px 44px rgba(118, 126, 182, 0.08);
+	}
+
+	.journey-note {
+		padding: 1rem 1.05rem;
+		border-radius: 1.4rem;
+		background: rgba(14, 94, 168, 0.06);
+		border: 1px solid rgba(14, 94, 168, 0.1);
+		color: #355d8f;
+	}
+
+	.journey-steps {
+		display: grid;
+		gap: 0.9rem;
+	}
+
+	.step-card {
+		display: grid;
+		grid-template-columns: auto 1fr;
+		gap: 0.9rem;
+		align-items: start;
+		padding: 1.2rem 1.15rem;
+		border-radius: 1.7rem;
+		background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(248, 250, 255, 0.9));
+		border: 1px solid rgba(214, 223, 246, 0.92);
+		box-shadow:
+			0 20px 42px rgba(109, 117, 174, 0.1),
+			inset 0 1px 0 rgba(255, 255, 255, 0.96);
+	}
+
+	.step-index {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 2.8rem;
+		height: 2.8rem;
+		border-radius: 999px;
+		background: linear-gradient(135deg, #5c78e1, #63c2ef);
+		color: #fff;
+		font-weight: 800;
+	}
+
+	.step-card h3 {
+		margin: 0;
+		font-family: 'Plus Jakarta Sans', 'Segoe UI', sans-serif;
+		font-size: 1.22rem;
+		color: #30449f;
+	}
+
+	.step-card p {
+		margin: 0.4rem 0 0;
+		color: #556286;
+	}
+
+	.focus-grid {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 1rem;
+		margin-top: 1.9rem;
+	}
+
+	.focus-card {
+		padding: 1.3rem 1.2rem;
+		border-radius: 2rem;
+		background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(248, 250, 255, 0.9));
+		border: 1px solid rgba(214, 223, 246, 0.92);
+		box-shadow:
+			0 22px 46px rgba(109, 117, 174, 0.1),
+			inset 0 1px 0 rgba(255, 255, 255, 0.96);
+	}
+
+	.focus-card-accent {
+		background:
+			radial-gradient(circle at top right, rgba(255, 255, 255, 0.16), transparent 30%),
+			linear-gradient(145deg, rgba(84, 108, 221, 0.97), rgba(116, 110, 226, 0.94) 56%, rgba(75, 176, 224, 0.9));
+		border-color: rgba(255, 255, 255, 0.18);
+		color: #fff;
+		box-shadow: 0 26px 54px rgba(110, 114, 197, 0.2);
+	}
+
+	.focus-card-accent h2,
+	.focus-card-accent p,
+	.focus-card-accent .accent-link,
+	.focus-card-accent .strength-list p {
+		color: #fff;
+	}
+
+	.strength-list {
+		display: grid;
+		gap: 0.7rem;
+		margin-top: 1.1rem;
+	}
+
+	.strength-list p {
+		margin: 0;
+		padding: 0.85rem 0.9rem;
+		border-radius: 1.2rem;
+		background: rgba(255, 255, 255, 0.12);
+		border: 1px solid rgba(255, 255, 255, 0.16);
+		color: rgba(255, 255, 255, 0.94);
+	}
+
+	.bottom-cta {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) auto;
+		gap: 1rem;
+		align-items: end;
+		margin-top: 1.9rem;
+		padding: 1.35rem 1.2rem;
+		border-radius: 2rem;
+		background: rgba(255, 255, 255, 0.56);
+		border: 1px solid rgba(255, 255, 255, 0.8);
+		box-shadow: 0 18px 44px rgba(118, 126, 182, 0.08);
+	}
+
+	.bottom-cta-actions {
+		margin-top: 0;
+		justify-content: flex-end;
+	}
+
+	@media (max-width: 980px) {
+		.services-hero,
+		.journey-shell,
+		.focus-grid,
+		.bottom-cta {
+			grid-template-columns: 1fr;
+		}
+
+		.services-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.bottom-cta-actions {
+			justify-content: flex-start;
+		}
+	}
+
+	@media (max-width: 720px) {
+		.services-stats,
+		.showcase-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.showcase-image-card-large {
+			grid-column: auto;
+		}
+	}
+
+	@media (max-width: 640px) {
+		.services-page-shell {
+			padding: 1rem;
+			border-radius: 1.7rem;
+		}
+
+		.showcase-panel,
+		.service-card,
+		.journey-copy,
+		.step-card,
+		.focus-card,
+		.bottom-cta,
+		.showcase-image-card,
+		.showcase-mission-card {
+			border-radius: 1.4rem;
+		}
+
+		.services-copy h1 {
+			max-width: none;
+		}
+
+		.stat-card {
+			padding: 0.9rem;
+		}
+
+		.step-card {
+			grid-template-columns: 1fr;
+		}
+
+		.step-index {
+			width: 2.5rem;
+			height: 2.5rem;
+		}
 	}
 </style>
