@@ -1,40 +1,28 @@
+---
+import { aboutContent } from '../data/about';
+---
+
 <section class="about section" id="apropos">
 	<div class="container about-shell">
 		<div class="about-copy">
-			<h2>A propos de DASMARK Pharma</h2>
-			<p class="about-founded">Cree en avril 2022</p>
-			<p>
-				DASMARK Pharma est une agence spécialisée dans la promotion médicale et
-				pharmaceutique.
-			</p>
-			<p>
-				Nous accompagnons les laboratoires dans le développement et la valorisation de leurs
-				produits à travers des stratégies adaptées aux exigences du secteur de la sante.
-			</p>
-			<p>
-				Forte de son expertise, DASMARK pharma intervient dans plusieurs domaines clés,
-			    notamment la représentation de laboratoires pharmaceutiques, l'enregistrement de produits auprès des autorités compétentes,
-				ainsi que la formation de délégués médicaux.
-			</p>
-			<p>
-				Notre mission est de contribuer a l'amélioration de l'accès aux produits de santé en assurant
-				leur promotion éfficace, leur conformité réglementaire et le renforcement des compétences des acteurs du secteur.
-			</p>
+			<h2>{aboutContent.title}</h2>
+			<p class="about-founded">{aboutContent.founded}</p>
+			{
+				aboutContent.paragraphs.map((paragraph) => (
+					<p>{paragraph}</p>
+				))
+			}
 		</div>
 
 		<div class="about-cards">
-			<article class="about-card">
-				<h3>Representation de Laboratoires</h3>
-				<p>Partenaire des laboratoires pharmaceutiques.</p>
-			</article>
-			<article class="about-card">
-				<h3>Enregistrement de Produits</h3>
-				<p>Enregistrement et conformite reglementaire.</p>
-			</article>
-			<article class="about-card">
-				<h3>Formation des Delegues Medical</h3>
-				<p>Formation et developpement des competences.</p>
-			</article>
+			{
+				aboutContent.cards.map((card) => (
+					<article class="about-card">
+						<h3>{card.title}</h3>
+						<p>{card.text}</p>
+					</article>
+				))
+			}
 		</div>
 	</div>
 </section>

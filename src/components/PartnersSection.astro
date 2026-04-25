@@ -1,26 +1,29 @@
+---
+import { partnerCatalog } from '../data/partners';
+---
+
 <section class="partners section" id="partenaires">
 	<div class="container partners-shell">
 		<h2>Nos Partenaires</h2>
 
 		<div class="partners-grid">
-			<div class="partner-card">
-				<span class="partner-badge">
-					<img src="/partal.png" alt="Logo Partal" />
-				</span>
-				<div>
-					<strong>laboratoire AXA PARENTERALS</strong>
-					<small>Partenaire sante</small>
-				</div>
-			</div>
-			<div class="partner-card">
-				<span class="partner-badge partner-badge-alt">
-					<img src="/niya.png" alt="Logo NIYA" />
-				</span>
-				<div>
-					<strong>laboratoire NIYA HEALTHCARE</strong>
-					<small>partenaire sante</small>
-				</div>
-			</div>
+			{
+				partnerCatalog.map((partner) => (
+					<a
+						class="partner-card"
+						href={`/partenaires/${partner.slug}/`}
+						aria-label={`Voir les produits du ${partner.name}`}
+					>
+						<span class:list={['partner-badge', partner.partnersBadgeClass]}>
+							<img src={partner.logo} alt={partner.logoAlt} />
+						</span>
+						<div>
+							<strong>{partner.name}</strong>
+							<small>{partner.subtitle}</small>
+						</div>
+					</a>
+				))
+			}
 		</div>
 	</div>
 </section>
@@ -70,7 +73,7 @@
 
 	.partners-grid {
 		display: grid;
-		grid-template-columns: repeat(2, minmax(0, 1fr));
+		grid-template-columns: repeat(3, minmax(0, 1fr));
 		gap: 1.2rem;
 		margin-top: 1.6rem;
 	}
@@ -85,6 +88,7 @@
 		border-radius: 2rem;
 		background: rgba(255, 255, 255, 0.82);
 		box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.88);
+		color: inherit;
 	}
 
 	.partner-badge {
@@ -101,6 +105,12 @@
 		font-weight: 800;
 	}
 
+	.partner-badge img {
+		width: 72%;
+		height: 72%;
+		object-fit: contain;
+	}
+
 	.partner-badge-alt {
 		border-color: rgba(90, 173, 110, 0.42);
 		color: #5b8ac8;
@@ -114,7 +124,7 @@
 
 	.partner-card strong {
 		font-family: 'Plus Jakarta Sans', 'Segoe UI', sans-serif;
-		font-size: 1.7rem;
+		font-size: clamp(1.25rem, 1.8vw, 1.7rem);
 		letter-spacing: -0.04em;
 		color: #42539e;
 	}
@@ -123,6 +133,17 @@
 		margin-top: 0.25rem;
 		font-size: 0.95rem;
 		color: #7683af;
+	}
+
+	.partner-card:focus-visible {
+		outline: 3px solid rgba(78, 108, 203, 0.32);
+		outline-offset: 3px;
+	}
+
+	@media (max-width: 960px) {
+		.partners-grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
 	}
 
 	@media (max-width: 700px) {

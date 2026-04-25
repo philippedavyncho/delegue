@@ -1,18 +1,52 @@
 ---
-const slides = [
+import { readdirSync } from 'node:fs';
+import { extname, resolve } from 'node:path';
+
+const imageExtensions = new Set(['.jpg', '.jpeg', '.png', '.webp', '.avif']);
+
+const readPublicImages = (folder) =>
+	readdirSync(resolve(process.cwd(), 'public', folder), { withFileTypes: true })
+		.filter((entry) => entry.isFile() && imageExtensions.has(extname(entry.name).toLowerCase()))
+		.map((entry) => entry.name)
+		.sort((left, right) => left.localeCompare(right, undefined, { numeric: true, sensitivity: 'base' }))
+		.map((name) => `/${folder}/${encodeURIComponent(name)}`);
+
+const partners = [
 	{
-		title: 'Distribution pharmaceutique B2B',
-		text: 'Nous assurons la mise a disposition des produits pour pharmacies, hopitaux et cliniques avec une organisation fiable et orientee resultat.'
+		key: 'galpha',
+		name: 'laboratoire GALPHA',
+		logo: '/dsph.png',
+		logoAlt: 'Logo GALPHA',
+		badgeClass: 'partner-badge-galpha',
+		images: readPublicImages('galpha')
 	},
 	{
-		title: 'Accompagnement des laboratoires',
-		text: 'DASMARK PHARMA accompagne les laboratoires dans le deploiement de leurs gammes sur le terrain avec un suivi commercial structure.'
-	},
-	{
-		title: 'Performance terrain',
-		text: 'Nos equipes renforcent la couverture medicale et officinale a Abidjan et en Cote d Ivoire pour soutenir vos objectifs de croissance.'
+		key: 'axa',
+		name: 'laboratoire AXA PARENTERALS',
+		logo: '/partal.png',
+		logoAlt: 'Logo AXA PARENTERALS',
+		badgeClass: 'partner-badge-axa',
+		images: readPublicImages('axa')
 	}
 ];
+
+const maxImageCount = Math.max(...partners.map((partner) => partner.images.length), 0);
+
+const slides = [];
+
+for (let imageIndex = 0; imageIndex < maxImageCount; imageIndex += 1) {
+	for (const partner of partners) {
+		const image = partner.images[imageIndex];
+
+		if (!image) continue;
+
+		slides.push({
+			...partner,
+			image,
+			imageIndex
+		});
+	}
+}
 ---
 
 <section class="rubrique section" id="rubrique">
@@ -23,26 +57,35 @@ const slides = [
 			<p>Un apercu de nos services et de notre expertise pour les acteurs de sante et les laboratoires partenaires.</p>
 		</div>
 
-		<div class="splide rubrique-carousel" aria-label="Carrousel des produits">
+		<div class="splide rubrique-carousel" aria-label="Carrousel des laboratoires partenaires">
 			<div class="splide__track">
 				<ul class="splide__list">
 					{
 						slides.map((slide, index) => (
 							<li class="splide__slide">
 								<article class="rubrique-card">
-									<div class="rubrique-visual" aria-label={`Emplacement image produit ${index + 1}`}>
-										<div class="visual-placeholder">
-											<svg viewBox="0 0 24 24" aria-hidden="true">
-												<path d="M5 4.5A2.5 2.5 0 0 0 2.5 7v10A2.5 2.5 0 0 0 5 19.5h14a2.5 2.5 0 0 0 2.5-2.5V7A2.5 2.5 0 0 0 19 4.5H5Zm0 1.5h14c.55 0 1 .45 1 1v6.01l-2.63-2.62a1.5 1.5 0 0 0-2.12 0l-1.88 1.88-2.13-2.13a1.5 1.5 0 0 0-2.12 0L4 15.26V7c0-.55.45-1 1-1Zm14 12H5c-.55 0-1-.45-1-1v-.62l4.3-4.3l2.13 2.13a1.5 1.5 0 0 0 2.12 0l1.88-1.88L20 15.13V17c0 .55-.45 1-1 1ZM8 10.25A1.75 1.75 0 1 0 8 6.75a1.75 1.75 0 0 0 0 3.5Z"></path>
-											</svg>
-											<span>Visuel DASMARK PHARMA</span>
+									<div class="rubrique-visual" aria-label={`Visuel ${slide.imageIndex + 1} du ${slide.name}`}>
+										<div class="rubrique-visual-frame">
+											<img
+												src={slide.image}
+												alt={`Produit ${slide.imageIndex + 1} du ${slide.name}`}
+												loading={index < 2 ? 'eager' : 'lazy'}
+												decoding="async"
+											/>
 										</div>
 									</div>
 
 									<div class="rubrique-copy">
-										<span class="rubrique-index">0{index + 1}</span>
-										<h3>{slide.title}</h3>
-										<p>{slide.text}</p>
+										<div class="rubrique-partner-card">
+											<span class:list={['partner-badge', slide.badgeClass]}>
+												<img src={slide.logo} alt={slide.logoAlt} />
+											</span>
+
+											<div class="rubrique-partner-copy">
+												<strong>{slide.name}</strong>
+												<small>Partenaire sante</small>
+											</div>
+										</div>
 									</div>
 								</article>
 							</li>
@@ -60,11 +103,14 @@ const slides = [
 	}
 
 	.rubrique-shell {
-		padding: 1.3rem 1.2rem 1.8rem;
+		padding: 1.2rem 1.2rem 2rem;
+		min-height: 640px;
 		border-radius: 3rem;
-		background: rgba(255, 255, 255, 0.58);
-		border: 1px solid rgba(255, 255, 255, 0.74);
-		box-shadow: 0 24px 68px rgba(166, 156, 235, 0.14);
+		background: rgba(255, 255, 255, 0.64);
+		border: 1px solid rgba(255, 255, 255, 0.86);
+		box-shadow:
+			0 28px 78px rgba(136, 145, 208, 0.16),
+			inset 0 1px 0 rgba(255, 255, 255, 0.78);
 		position: relative;
 		overflow: hidden;
 	}
@@ -79,10 +125,23 @@ const slides = [
 		pointer-events: none;
 	}
 
+	.rubrique-shell::after {
+		content: '';
+		position: absolute;
+		inset: auto 4% 1.1rem 4%;
+		height: 1px;
+		background: linear-gradient(90deg, transparent, rgba(122, 144, 220, 0.22), transparent);
+		pointer-events: none;
+	}
+
 	.rubrique-heading,
 	.rubrique-carousel {
 		position: relative;
 		z-index: 1;
+	}
+
+	.rubrique-carousel {
+		padding-bottom: 1.8rem;
 	}
 
 	.rubrique-heading {
@@ -94,16 +153,19 @@ const slides = [
 		display: inline-flex;
 		padding: 0.38rem 0.72rem;
 		border-radius: 999px;
-		background: rgba(14, 94, 168, 0.1);
+		background: rgba(255, 255, 255, 0.78);
+		border: 1px solid rgba(152, 171, 234, 0.32);
+		box-shadow: 0 10px 24px rgba(118, 130, 198, 0.08);
 		color: #0e5ea8;
 		font-size: 0.78rem;
 		font-weight: 800;
-		letter-spacing: 0.08em;
+		letter-spacing: 0.12em;
 		text-transform: uppercase;
 	}
 
 	.rubrique-heading h2 {
 		margin: 0.85rem 0 0;
+		text-align: left;
 		font-family: 'Plus Jakarta Sans', 'Segoe UI', sans-serif;
 		font-size: clamp(2rem, 4vw, 3rem);
 		line-height: 1;
@@ -113,100 +175,174 @@ const slides = [
 
 	.rubrique-heading p {
 		margin: 0.9rem 0 0;
+		max-width: 62ch;
 		color: #66739e;
 	}
 
 	.rubrique-card {
 		display: grid;
-		grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
-		gap: 1.2rem;
+		grid-template-columns: minmax(0, 1.05fr) minmax(280px, 1fr);
+		gap: 1.1rem;
 		align-items: stretch;
-		padding: 0.35rem;
+		padding: 0.2rem;
+		height: 400px;
 	}
 
 	.rubrique-visual,
 	.rubrique-copy {
-		border-radius: 2rem;
+		border-radius: 2.1rem;
 	}
 
 	.rubrique-visual {
-		min-height: 390px;
-		padding: 1rem;
-		border: 2px dashed rgba(108, 139, 219, 0.4);
+		position: relative;
+		height: 400px;
+		padding: 0.6rem;
+		border: 1px solid rgba(152, 169, 228, 0.34);
 		background:
-			linear-gradient(135deg, rgba(233, 240, 255, 0.95), rgba(248, 250, 255, 0.82)),
-			radial-gradient(circle at top right, rgba(140, 173, 255, 0.18), transparent 32%);
+			linear-gradient(145deg, rgba(243, 247, 255, 0.98), rgba(236, 242, 255, 0.92)),
+			radial-gradient(circle at top right, rgba(140, 173, 255, 0.14), transparent 34%);
+		box-shadow:
+			0 20px 44px rgba(112, 125, 188, 0.14),
+			inset 0 1px 0 rgba(255, 255, 255, 0.95);
+		overflow: hidden;
 	}
 
-	.visual-placeholder {
-		display: grid;
-		place-items: center;
-		gap: 0.85rem;
+	.rubrique-visual::after {
+		content: '';
+		position: absolute;
+		inset: 0.65rem;
+		border-radius: 1.6rem;
+		background: linear-gradient(180deg, rgba(255, 255, 255, 0.24), transparent 28%);
+		pointer-events: none;
+	}
+
+	.rubrique-visual-frame {
+		display: flex;
+		align-items: center;
+		justify-content: center;
 		width: 100%;
 		height: 100%;
+		padding: 0.75rem;
 		border-radius: 1.55rem;
-		background:
-			linear-gradient(135deg, rgba(255, 255, 255, 0.72), rgba(240, 245, 255, 0.88)),
-			repeating-linear-gradient(
-				45deg,
-				rgba(118, 152, 232, 0.08) 0,
-				rgba(118, 152, 232, 0.08) 16px,
-				rgba(255, 255, 255, 0.14) 16px,
-				rgba(255, 255, 255, 0.14) 32px
-			);
-		text-align: center;
-		color: #6880b2;
+		background: #fff;
+		border: 1px solid rgba(222, 228, 244, 0.95);
+		box-shadow:
+			inset 0 1px 0 rgba(255, 255, 255, 0.98),
+			0 8px 24px rgba(118, 130, 190, 0.08);
+		overflow: hidden;
 	}
 
-	.visual-placeholder svg {
-		width: 4rem;
-		height: 4rem;
-		fill: currentColor;
-	}
-
-	.visual-placeholder span {
-		font-size: 1rem;
-		font-weight: 700;
+	.rubrique-visual img {
+		display: block;
+		width: auto;
+		height: auto;
+		max-width: 100%;
+		max-height: 100%;
+		object-fit: contain;
+		object-position: center;
 	}
 
 	.rubrique-copy {
+		position: relative;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
-		padding: 1.5rem;
-		background:
-			radial-gradient(circle at top right, rgba(255, 255, 255, 0.26), transparent 25%),
-			linear-gradient(135deg, rgba(87, 121, 229, 0.94), rgba(143, 119, 238, 0.92));
-		color: #fff;
-		box-shadow: 0 20px 48px rgba(101, 103, 202, 0.2);
+		align-items: stretch;
+		gap: 0.8rem;
+		padding: 1.15rem;
+		background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(248, 250, 255, 0.9));
+		border: 1px solid rgba(214, 223, 246, 0.92);
+		box-shadow:
+			0 22px 46px rgba(109, 117, 174, 0.12),
+			inset 0 1px 0 rgba(255, 255, 255, 0.96);
+		overflow: hidden;
 	}
 
-	.rubrique-index {
+	.rubrique-copy::before {
+		content: '';
+		position: absolute;
+		inset: 0 0 auto 0;
+		height: 4px;
+		background: linear-gradient(90deg, rgba(94, 126, 222, 0.92), rgba(116, 184, 195, 0.82));
+	}
+
+	.rubrique-partner-card {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 1rem;
+		width: 100%;
+		flex: 1;
+		max-width: none;
+		padding: 1rem 1.05rem;
+		border-radius: 1.8rem;
+		background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(247, 249, 255, 0.9));
+		border: 1px solid rgba(221, 227, 244, 0.96);
+		box-shadow:
+			inset 0 1px 0 rgba(255, 255, 255, 0.98),
+			0 14px 34px rgba(108, 118, 176, 0.08);
+	}
+
+	.partner-badge {
 		display: inline-flex;
-		margin-bottom: 0.8rem;
-		font-size: 0.88rem;
-		font-weight: 800;
-		letter-spacing: 0.14em;
-		text-transform: uppercase;
-		color: rgba(255, 255, 255, 0.78);
+		flex: 0 0 auto;
+		align-items: center;
+		justify-content: center;
+		width: 5.6rem;
+		height: 5.6rem;
+		padding: 0.4rem;
+		border-radius: 999px;
+		border: 3px solid rgba(179, 123, 168, 0.42);
+		background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(245, 248, 255, 0.9));
+		box-shadow:
+			0 12px 26px rgba(111, 120, 181, 0.12),
+			inset 0 1px 0 rgba(255, 255, 255, 0.98);
 	}
 
-	.rubrique-copy h3 {
-		margin: 0;
+	.partner-badge img {
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+	}
+
+	.partner-badge-galpha {
+		border-color: rgba(90, 173, 110, 0.42);
+	}
+
+	.partner-badge-axa {
+		border-color: rgba(179, 123, 168, 0.42);
+	}
+
+	.rubrique-partner-copy strong,
+	.rubrique-partner-copy small {
+		display: block;
+		text-align: left;
+	}
+
+	.rubrique-partner-copy {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	.rubrique-partner-copy strong {
 		font-family: 'Plus Jakarta Sans', 'Segoe UI', sans-serif;
-		font-size: clamp(1.8rem, 3vw, 2.5rem);
-		line-height: 1.02;
-		letter-spacing: -0.05em;
+		font-size: clamp(1.24rem, 1.75vw, 1.6rem);
+		line-height: 1.08;
+		letter-spacing: -0.04em;
+		color: #394c93;
 	}
 
-	.rubrique-copy p {
-		margin: 0.75rem 0 0;
-		font-size: 1rem;
-		color: rgba(255, 255, 255, 0.9);
+	.rubrique-partner-copy small {
+		margin-top: 0.3rem;
+		font-size: 0.88rem;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: #7683af;
 	}
 
 	.rubrique-carousel :global(.splide__pagination) {
-		bottom: -1.1rem;
+		bottom: 0.15rem;
 	}
 
 	.rubrique-carousel :global(.splide__pagination__page) {
@@ -221,6 +357,12 @@ const slides = [
 		transform: scale(1.15);
 	}
 
+	.rubrique-carousel :global(.splide__track),
+	.rubrique-carousel :global(.splide__list),
+	.rubrique-carousel :global(.splide__slide) {
+		height: 400px;
+	}
+
 	.rubrique-carousel :global(.splide__slide) {
 		transition-timing-function: ease-in-out;
 	}
@@ -230,33 +372,77 @@ const slides = [
 	}
 
 	@media (max-width: 900px) {
+		.rubrique-shell {
+			min-height: auto;
+		}
+
 		.rubrique-card {
 			grid-template-columns: 1fr;
+			height: auto;
 		}
 
 		.rubrique-visual {
-			min-height: 300px;
+			height: 300px;
+		}
+
+		.rubrique-visual img {
+			max-width: 100%;
+			height: 100%;
+			max-height: none;
+		}
+
+		.rubrique-carousel :global(.splide__track),
+		.rubrique-carousel :global(.splide__list),
+		.rubrique-carousel :global(.splide__slide) {
+			height: auto;
 		}
 	}
 
 	@media (max-width: 640px) {
 		.rubrique-shell {
-			padding: 1rem 1rem 1.5rem;
+			padding: 1rem 1rem 1.4rem;
+			min-height: auto;
 			border-radius: 1.6rem;
 		}
 
+		.rubrique-carousel {
+			padding-bottom: 1.5rem;
+		}
+
 		.rubrique-visual,
-		.rubrique-copy {
+		.rubrique-copy,
+		.rubrique-partner-card {
 			border-radius: 1.4rem;
 		}
 
 		.rubrique-visual {
-			min-height: 220px;
-			padding: 0.8rem;
+			height: 240px;
+			padding: 0.55rem;
+		}
+
+		.rubrique-visual-frame {
+			padding: 0.65rem;
+		}
+
+		.rubrique-visual img {
+			width: auto;
+			height: auto;
+			max-width: 100%;
+			max-height: 100%;
 		}
 
 		.rubrique-copy {
-			padding: 1.15rem;
+			padding: 0.9rem;
+		}
+
+		.rubrique-partner-card {
+			flex-direction: column;
+			text-align: center;
+		}
+
+		.rubrique-partner-copy strong,
+		.rubrique-partner-copy small {
+			text-align: center;
 		}
 	}
 </style>

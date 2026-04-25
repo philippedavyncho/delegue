@@ -1,6 +1,7 @@
-﻿---
-import Layout from '../layouts/Layout.astro';
+---
+import { aboutContent } from '../data/about';
 import Header from '../components/Header.astro';
+import Layout from '../layouts/Layout.astro';
 
 const aboutSchema = {
 	'@context': 'https://schema.org',
@@ -26,79 +27,200 @@ const aboutSchema = {
 >
 	<Header />
 	<main id="top">
-		<section class="section">
-			<div class="container seo-page">
-				<h1>A propos de DASMARK PHARMA</h1>
-				<p>
-					DASMARK PHARMA est un grossiste pharmaceutique Cote d Ivoire dedie aux professionnels de
-					sante, aux pharmacies, aux hopitaux, aux cliniques et aux laboratoires.
-				</p>
+		<section class="about-page section">
+			<div class="container about-page-shell">
+				<div class="about-page-heading">
+					<h1>{aboutContent.title}</h1>
+					<p class="about-page-founded">{aboutContent.founded}</p>
+				</div>
 
-				<h2>Positionnement institutionnel</h2>
-				<h3>Partenaire B2B du secteur pharmaceutique</h3>
-				<p>
-					Nous structurons les operations de distribution medicaments Abidjan avec une approche
-					conforme, durable et orientee performance.
-				</p>
-				<h3>Couverture locale et regionale</h3>
-				<p>
-					Nos services couvrent Abidjan, la Cote d Ivoire et des projets cibles en Afrique de l Ouest.
-				</p>
+				<div class="about-page-grid">
+					<div class="about-page-story">
+						{
+							aboutContent.paragraphs.map((paragraph, index) => (
+								<p class:list={['about-page-paragraph', index === 0 && 'is-lead']}>{paragraph}</p>
+							))
+						}
+					</div>
 
-				<h2>Informations entreprise</h2>
-				<ul>
-					<li>Adresse: Cocody Angre Djrorobite 2, derriere la pharmacie Sainte Clementine, Abidjan.</li>
-					<li>Telephone: +225 07 49 94 27 44.</li>
-					<li>Zones desservies: Abidjan, Cote d Ivoire, Afrique de l Ouest.</li>
-				</ul>
-
-				<h2>Pages associees</h2>
-				<p>
-					Consultez nos services de
-					<a href="/services/">distribution pharmaceutique en Cote d Ivoire</a>
-					et notre offre de <a href="/produits/">produits pharmaceutiques B2B</a>.
-				</p>
+					<div class="about-page-cards">
+						{
+							aboutContent.cards.map((card) => (
+								<article class="about-page-card">
+									<h2>{card.title}</h2>
+									<p>{card.text}</p>
+								</article>
+							))
+						}
+					</div>
+				</div>
 			</div>
 		</section>
 	</main>
 </Layout>
 
 <style>
-	.seo-page h1,
-	.seo-page h2,
-	.seo-page h3 {
-		line-height: 1.25;
+	.about-page {
+		padding-top: 1.1rem;
 	}
 
-	.seo-page h1 {
-		margin-bottom: 0.8rem;
+	.about-page-shell {
+		position: relative;
+		padding: 1.45rem 1.3rem 1.7rem;
+		border-radius: 3rem;
+		background: rgba(255, 255, 255, 0.6);
+		border: 1px solid rgba(255, 255, 255, 0.82);
+		box-shadow:
+			0 30px 82px rgba(137, 144, 207, 0.15),
+			inset 0 1px 0 rgba(255, 255, 255, 0.84);
+		overflow: hidden;
 	}
 
-	.seo-page h2 {
-		margin-top: 1.6rem;
-		margin-bottom: 0.6rem;
+	.about-page-shell::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background:
+			radial-gradient(38% 48% at 10% 12%, rgba(123, 173, 255, 0.18), transparent 70%),
+			radial-gradient(44% 52% at 100% 100%, rgba(197, 174, 255, 0.18), transparent 72%);
+		pointer-events: none;
 	}
 
-	.seo-page h3 {
-		margin-top: 1rem;
-		margin-bottom: 0.4rem;
-		font-size: 1.05rem;
+	.about-page-heading,
+	.about-page-grid {
+		position: relative;
+		z-index: 1;
 	}
 
-	.seo-page p {
+	.about-page-heading {
+		max-width: 44rem;
+	}
+
+	.about-page-heading h1 {
 		margin: 0;
-		max-width: 70ch;
+		font-family: 'Plus Jakarta Sans', 'Segoe UI', sans-serif;
+		font-size: clamp(2.2rem, 4vw, 3.25rem);
+		line-height: 1.03;
+		letter-spacing: -0.05em;
+		color: #30449f;
 	}
 
-	.seo-page ul {
-		margin: 0;
-		padding-left: 1.2rem;
-		max-width: 70ch;
-	}
-
-	.seo-page a {
+	.about-page-founded {
+		display: inline-flex;
+		align-items: center;
+		margin: 0.95rem 0 0;
+		padding: 0.52rem 0.9rem;
+		border-radius: 999px;
+		background: rgba(255, 255, 255, 0.8);
+		border: 1px solid rgba(145, 165, 232, 0.26);
+		box-shadow: 0 14px 30px rgba(113, 125, 193, 0.08);
 		color: #0e5ea8;
-		text-decoration: underline;
-		font-weight: 700;
+		font-size: 0.84rem;
+		font-weight: 800;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+	}
+
+	.about-page-grid {
+		display: grid;
+		grid-template-columns: minmax(0, 1.28fr) minmax(320px, 0.92fr);
+		gap: 1.1rem;
+		margin-top: 1.5rem;
+		align-items: start;
+	}
+
+	.about-page-story {
+		padding: 1.45rem 1.35rem;
+		border-radius: 2rem;
+		background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(247, 249, 255, 0.88));
+		border: 1px solid rgba(221, 227, 245, 0.95);
+		box-shadow:
+			0 22px 50px rgba(121, 128, 182, 0.1),
+			inset 0 1px 0 rgba(255, 255, 255, 0.98);
+	}
+
+	.about-page-paragraph {
+		margin: 0;
+		max-width: 74ch;
+		color: #4b587f;
+		font-size: 1.03rem;
+		line-height: 1.8;
+		text-align: justify;
+	}
+
+	.about-page-paragraph + .about-page-paragraph {
+		margin-top: 1rem;
+		padding-top: 1rem;
+		border-top: 1px solid rgba(212, 219, 239, 0.72);
+	}
+
+	.about-page-paragraph.is-lead {
+		font-size: 1.1rem;
+		color: #3c4f86;
+	}
+
+	.about-page-cards {
+		display: grid;
+		gap: 1rem;
+	}
+
+	.about-page-card {
+		position: relative;
+		padding: 1.3rem 1.2rem 1.25rem;
+		border-radius: 1.7rem;
+		background:
+			radial-gradient(circle at top right, rgba(255, 255, 255, 0.22), transparent 28%),
+			linear-gradient(145deg, rgba(92, 116, 226, 0.96), rgba(131, 115, 224, 0.92) 58%, rgba(96, 177, 230, 0.9));
+		color: #fff;
+		box-shadow: 0 22px 50px rgba(113, 114, 198, 0.18);
+		overflow: hidden;
+	}
+
+	.about-page-card::before {
+		content: '';
+		position: absolute;
+		inset: 0 0 auto 0;
+		height: 4px;
+		background: rgba(255, 255, 255, 0.42);
+	}
+
+	.about-page-card h2 {
+		margin: 0;
+		font-family: 'Plus Jakarta Sans', 'Segoe UI', sans-serif;
+		font-size: clamp(1.45rem, 2vw, 1.9rem);
+		line-height: 1.08;
+		letter-spacing: -0.04em;
+	}
+
+	.about-page-card p {
+		margin: 0.9rem 0 0;
+		font-size: 1rem;
+		color: rgba(255, 255, 255, 0.92);
+	}
+
+	@media (max-width: 900px) {
+		.about-page-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	@media (max-width: 640px) {
+		.about-page-shell {
+			padding: 1rem;
+			border-radius: 1.6rem;
+		}
+
+		.about-page-story,
+		.about-page-card {
+			border-radius: 1.4rem;
+		}
+
+		.about-page-story {
+			padding: 1.1rem 1rem;
+		}
+
+		.about-page-card {
+			padding: 1.1rem 1rem;
+		}
 	}
 </style>
