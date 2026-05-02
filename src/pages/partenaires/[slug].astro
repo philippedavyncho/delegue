@@ -68,7 +68,7 @@ const partnerSchema = {
 					<div class="partner-stats">
 						<div class="partner-stat">
 							<strong>{String(partner.images.length).padStart(2, '0')}</strong>
-							<span>{partner.images.length ? 'visuels produits disponibles' : 'catalogue visuel a venir'}</span>
+							<span>{partner.images.length ? 'visuels de produits disponibles' : 'catalogue visuel à venir'}</span>
 						</div>
 						<div class="partner-stat">
 							<strong>{partner.shortName}</strong>
@@ -80,7 +80,7 @@ const partnerSchema = {
 				<div class="partner-products">
 					<div class="partner-section-head">
 						<h2>Produits du laboratoire</h2>
-						<p>Une presentation dediee aux produits actuellement disponibles pour ce laboratoire partenaire.</p>
+						<p>Une présentation dédiée aux produits actuellement disponibles pour ce laboratoire partenaire.</p>
 					</div>
 
 					{
@@ -107,11 +107,11 @@ const partnerSchema = {
 							</div>
 						) : (
 							<div class="catalog-empty">
-								<h2>Catalogue visuel en preparation</h2>
+								<h2>Catalogue visuel en préparation</h2>
 								<p>{partner.emptyStateText}</p>
 								<div class="empty-actions">
 									<a class="page-btn" href="https://wa.me/2250749942744">Contacter sur WhatsApp</a>
-									<a class="page-btn page-btn-alt" href="/contact/">Parler a l equipe</a>
+									<a class="page-btn page-btn-alt" href="/contact/">Parler à l'équipe</a>
 								</div>
 							</div>
 						)

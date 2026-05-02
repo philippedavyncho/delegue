@@ -4,45 +4,45 @@ import Layout from '../layouts/Layout.astro';
 import { contactDetails } from '../data/contact';
 
 const nationalStats = [
-	{ value: 'Abidjan', label: 'base d ancrage' },
-	{ value: 'Cote d Ivoire', label: 'couverture prioritaire' },
-	{ value: 'Progressif', label: 'deploiement adapte au projet' }
+	{ value: 'Abidjan', label: "base d'ancrage" },
+	{ value: "Côte d'Ivoire", label: 'couverture prioritaire' },
+	{ value: 'Progressif', label: 'déploiement adapté au projet' }
 ];
 
 const nationalServices = [
 	{
-		title: 'Representation de laboratoires',
-		text: 'Nous aidons les marques et laboratoires a gagner une presence plus lisible en Cote d Ivoire, avec un point d appui local et un relais terrain.'
+		title: 'Représentation de laboratoires',
+		text: "Nous aidons les marques et laboratoires à gagner une présence plus lisible en Côte d'Ivoire, avec un point d'appui local et un relais terrain."
 	},
 	{
 		title: 'Coordination des actions multi-zones',
-		text: 'Quand le projet ne se limite pas a Abidjan, nous structurons la priorisation, les relais et le rythme de deploiement.'
+		text: "Quand le projet ne se limite pas à Abidjan, nous structurons la priorisation, les relais et le rythme de déploiement."
 	},
 	{
-		title: 'Lien entre strategie et execution',
-		text: 'Notre valeur vient de la capacite a relier le cadre strategique, la conformite attendue et la mise en mouvement du terrain.'
+		title: 'Lien entre stratégie et exécution',
+		text: 'Notre valeur vient de la capacité à relier le cadre stratégique, la conformité attendue et la mise en mouvement du terrain.'
 	}
 ];
 
 const nationalAnchors = [
-	'les laboratoires qui veulent structurer leur presence sur le marche ivoirien',
-	'les partenaires qui cherchent un point d entree fiable a Abidjan avec une projection nationale',
-	'les projets qui combinent representation, promotion, reglementaire et suivi terrain',
-	'les demandes qui doivent s inscrire dans un rythme realiste et durable'
+	'les laboratoires qui veulent structurer leur présence sur le marché ivoirien',
+	"les partenaires qui cherchent un point d'entrée fiable à Abidjan avec une projection nationale",
+	'les projets qui combinent représentation, promotion, réglementaire et suivi terrain',
+	"les demandes qui doivent s'inscrire dans un rythme réaliste et durable"
 ];
 
 const nationalPath = [
 	{
-		title: 'Ancrer a Abidjan',
-		text: 'Le projet trouve d abord son point d appui local pour clarifier les priorites et la mise en mouvement.'
+		title: 'Ancrer à Abidjan',
+		text: "Le projet trouve d'abord son point d'appui local pour clarifier les priorités et la mise en mouvement."
 	},
 	{
 		title: 'Etendre intelligemment',
-		text: 'Nous definissons les relais, les zones et la logique d extension la plus pertinente selon votre objectif.'
+		text: "Nous définissons les relais, les zones et la logique d'extension la plus pertinente selon votre objectif."
 	},
 	{
 		title: 'Suivre et ajuster',
-		text: 'Les retours terrain servent a consolider le dispositif plutot qu a avancer a l aveugle.'
+		text: "Les retours terrain servent à consolider le dispositif plutôt qu'à avancer à l'aveugle."
 	}
 ];
 
@@ -59,7 +59,7 @@ const breadcrumbSchema = {
 		{
 			'@type': 'ListItem',
 			position: 2,
-			name: 'Accompagnement pharmaceutique Cote d Ivoire',
+			name: "Accompagnement pharmaceutique Côte d'Ivoire",
 			item: 'https://dasmarkpharma.ci/fournisseur-pharmaceutique-cote-divoire/'
 		}
 	]
@@ -68,21 +68,21 @@ const breadcrumbSchema = {
 const supplierSchema = {
 	'@context': 'https://schema.org',
 	'@type': 'Service',
-	name: 'Couverture pharmaceutique en Cote d Ivoire',
+	name: "Couverture pharmaceutique en Côte d'Ivoire",
 	serviceType:
-		'Representation de laboratoires, coordination terrain et accompagnement des acteurs de sante en Cote d Ivoire',
+		"Représentation de laboratoires, coordination terrain et accompagnement des acteurs de santé en Côte d'Ivoire",
 	provider: {
 		'@type': 'Organization',
 		name: contactDetails.companyName,
 		url: 'https://dasmarkpharma.ci'
 	},
-	areaServed: ['Cote d Ivoire', 'Afrique de l Ouest']
+	areaServed: ["Côte d'Ivoire", "Afrique de l'Ouest"]
 };
 ---
 
 <Layout
-	title="Accompagnement pharmaceutique Cote d Ivoire | DASMARK PHARMA"
-	description="DASMARK PHARMA accompagne les laboratoires et acteurs de sante en Cote d Ivoire avec un ancrage a Abidjan et une logique de deploiement nationale."
+	title="Accompagnement pharmaceutique Côte d'Ivoire | DASMARK PHARMA"
+	description="DASMARK PHARMA accompagne les laboratoires et acteurs de santé en Côte d'Ivoire avec un ancrage à Abidjan et une logique de déploiement nationale."
 	canonical="https://dasmarkpharma.ci/fournisseur-pharmaceutique-cote-divoire/"
 	structuredData={[supplierSchema, breadcrumbSchema]}
 >
@@ -92,21 +92,21 @@ const supplierSchema = {
 			<div class="container territory-shell">
 				<div class="territory-hero">
 					<div class="territory-copy">
-						<span class="page-kicker">Cote d Ivoire</span>
-						<h1>Une couverture nationale qui garde un ancrage fort a Abidjan.</h1>
+						<span class="page-kicker">Côte d'Ivoire</span>
+						<h1>Une couverture nationale qui garde un ancrage fort à Abidjan.</h1>
 						<p class="territory-lead">
-							DASMARK PHARMA accompagne les projets pharmaceutiques qui veulent exister en Cote
-							d Ivoire avec une logique simple: partir d une base locale solide, structurer les
-							actions utiles puis deployer avec methode. La couverture nationale n est pas un
-							slogan, c est une facon d organiser la progression.
+							DASMARK PHARMA accompagne les projets pharmaceutiques qui veulent exister en Côte
+							d'Ivoire avec une logique simple : partir d'une base locale solide, structurer les
+							actions utiles puis déployer avec méthode. La couverture nationale n'est pas un
+							slogan, c'est une façon d'organiser la progression.
 						</p>
 
 						<div class="hero-actions">
-							<a class="hero-btn" href={contactDetails.whatsappHref}>Echanger avec l equipe</a>
+							<a class="hero-btn" href={contactDetails.whatsappHref}>Échanger avec l'équipe</a>
 							<a class="hero-btn hero-btn-alt" href="/zones/abidjan/">Voir notre base Abidjan</a>
 						</div>
 
-						<div class="stats-grid" aria-label="Repere Cote d Ivoire">
+						<div class="stats-grid" aria-label="Repère Côte d'Ivoire">
 							{
 								nationalStats.map((stat) => (
 									<article class="stat-card">
@@ -120,15 +120,15 @@ const supplierSchema = {
 
 					<div class="territory-panel">
 						<span class="panel-kicker">Lecture du territoire</span>
-						<h2>Une presence qui s etend sans perdre la maitrise du terrain.</h2>
+						<h2>Une présence qui s'étend sans perdre la maîtrise du terrain.</h2>
 						<p>
-							Nous aidons a faire le lien entre l ambition nationale d un projet et les realites
-							du marche ivoirien, avec un point d entree concret depuis {contactDetails.city}.
+							Nous aidons à faire le lien entre l'ambition nationale d'un projet et les réalités
+							du marché ivoirien, avec un point d'entrée concret depuis {contactDetails.city}.
 						</p>
 
 						<div class="panel-stack">
 							<div class="panel-card">
-								<strong>Point d appui</strong>
+								<strong>Point d'appui</strong>
 								<span>{contactDetails.fullAddress}</span>
 							</div>
 							<div class="panel-card">
@@ -136,8 +136,8 @@ const supplierSchema = {
 								<a href={contactDetails.whatsappHref}>{contactDetails.phoneDisplay}</a>
 							</div>
 							<div class="panel-card">
-								<strong>Portee</strong>
-								<span>Cote d Ivoire avec ouverture sur les projets regionaux</span>
+								<strong>Portée</strong>
+								<span>Côte d'Ivoire avec ouverture sur les projets régionaux</span>
 							</div>
 						</div>
 					</div>
@@ -145,10 +145,10 @@ const supplierSchema = {
 
 				<div class="section-heading">
 					<span class="section-kicker">Positionnement</span>
-					<h2>Un partenaire pour relier presence locale, couverture nationale et execution lisible.</h2>
+					<h2>Un partenaire pour relier présence locale, couverture nationale et exécution lisible.</h2>
 					<p>
-						La force de cette page est de montrer que la Cote d Ivoire n est pas traite comme un
-						bloc abstrait. Le travail part du terrain, s organise depuis Abidjan et se deploie
+						La force de cette page est de montrer que la Côte d'Ivoire n'est pas traitée comme un
+						bloc abstrait. Le travail part du terrain, s'organise depuis Abidjan et se déploie
 						avec un cadre plus large quand le projet le demande.
 					</p>
 				</div>
@@ -168,7 +168,7 @@ const supplierSchema = {
 				<div class="territory-grid">
 					<article class="territory-card">
 						<span class="section-kicker">Pour quels projets</span>
-						<h2>Les besoins qui demandent une lecture plus large du marche ivoirien</h2>
+						<h2>Les besoins qui demandent une lecture plus large du marché ivoirien</h2>
 						<ul class="anchor-list">
 							{
 								nationalAnchors.map((anchor) => (
@@ -179,8 +179,8 @@ const supplierSchema = {
 					</article>
 
 					<div class="path-shell">
-						<span class="section-kicker">Mode operatoire</span>
-						<h2>Une progression nationale qui reste concrete a chaque etape.</h2>
+						<span class="section-kicker">Mode opératoire</span>
+						<h2>Une progression nationale qui reste concrète à chaque étape.</h2>
 						<div class="path-grid">
 							{
 								nationalPath.map((item, index) => (
@@ -198,17 +198,17 @@ const supplierSchema = {
 				<div class="bottom-cta">
 					<div>
 						<span class="section-kicker">Entrer par le bon niveau</span>
-						<h2>Vous pouvez commencer par Abidjan ou directement par une logique Cote d Ivoire.</h2>
+						<h2>Vous pouvez commencer par Abidjan ou directement par une logique Côte d'Ivoire.</h2>
 						<p>
-							Si votre besoin est deja national, nous cadrons le projet a cette echelle. S il
-							doit d abord s ancrer localement, nous pouvons aussi demarrer depuis Abidjan puis
-							elargir ensuite.
+							Si votre besoin est déjà national, nous cadrons le projet à cette échelle. S'il
+							doit d'abord s'ancrer localement, nous pouvons aussi démarrer depuis Abidjan puis
+							élargir ensuite.
 						</p>
 					</div>
 
 					<div class="cta-actions">
 						<a class="hero-btn" href="/contact/">Contacter Dasmark Pharma</a>
-						<a class="hero-btn hero-btn-alt" href="/zones/abidjan/">Revenir a Abidjan</a>
+						<a class="hero-btn hero-btn-alt" href="/zones/abidjan/">Revenir à Abidjan</a>
 					</div>
 				</div>
 			</div>

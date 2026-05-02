@@ -4,61 +4,61 @@ import Layout from '../../layouts/Layout.astro';
 import { aboutContent } from '../../data/about';
 
 const missionItems = [
-	'Promotion medicale, pharmaceutique et materiels medicaux.',
-	'Representation de laboratoires pharmaceutiques.',
-	'Affaires reglementaires.',
-	'Formations aux metiers de la delegation medicale.'
+	'Promotion médicale, pharmaceutique et de matériels médicaux.',
+	'Représentation de laboratoires pharmaceutiques.',
+	'Affaires réglementaires.',
+	'Formations aux métiers de la délégation médicale.'
 ];
 
 const serviceStats = [
-	{ value: '4', label: 'piliers d accompagnement' },
-	{ value: '2022', label: 'annee de creation' },
-	{ value: 'CI + AO', label: 'ancrage local et regional' }
+	{ value: '4', label: "piliers d'accompagnement" },
+	{ value: '2022', label: 'année de création' },
+	{ value: 'CI + AO', label: 'ancrage local et régional' }
 ];
 
 const servicePillars = [
 	{
 		number: '01',
-		title: 'Promotion medicale et pharmaceutique',
+		title: 'Promotion médicale et pharmaceutique',
 		description:
-			'Nous faisons connaitre vos produits de sante avec des actions terrain pensees pour les professionnels de sante, les circuits de prescription et les points de contact les plus utiles.',
+			'Nous faisons connaître vos produits de santé avec des actions terrain pensées pour les professionnels de santé, les circuits de prescription et les points de contact les plus utiles.',
 		points: [
-			'ciblage des etablissements, prescripteurs et relais prioritaires',
-			'construction d un discours clair, scientifique et adapte au marche',
-			'animation terrain pour renforcer la visibilite et l adoption'
+			'ciblage des établissements, prescripteurs et relais prioritaires',
+			"construction d'un discours clair, scientifique et adapté au marché",
+			"animation terrain pour renforcer la visibilité et l'adoption"
 		]
 	},
 	{
 		number: '02',
-		title: 'Representation de laboratoires',
+		title: 'Représentation de laboratoires',
 		description:
-			'Dasmark Pharma agit comme un relais local de confiance pour porter votre laboratoire, installer sa presence en Cote d Ivoire et faire vivre la relation avec les acteurs de sante.',
+			"Dasmark Pharma agit comme un relais local de confiance pour porter votre laboratoire, installer sa présence en Côte d'Ivoire et faire vivre la relation avec les acteurs de santé.",
 		points: [
-			'presence commerciale et institutionnelle de proximite',
-			'mise en avant de vos gammes aupres des pharmacies, cliniques et hopitaux',
-			'retours terrain reguliers pour affiner les decisions'
+			'présence commerciale et institutionnelle de proximité',
+			'mise en avant de vos gammes auprès des pharmacies, cliniques et hôpitaux',
+			'retours terrain réguliers pour affiner les décisions'
 		]
 	},
 	{
 		number: '03',
-		title: 'Affaires reglementaires et enregistrement',
+		title: 'Affaires réglementaires et enregistrement',
 		description:
-			'Nous accompagnons la mise en conformite et l enregistrement de vos produits afin de fluidifier leur introduction sur le marche et de reduire les freins administratifs.',
+			"Nous accompagnons la mise en conformité et l'enregistrement de vos produits afin de fluidifier leur introduction sur le marché et de réduire les freins administratifs.",
 		points: [
-			'preparation des dossiers et des pieces utiles',
+			'préparation des dossiers et des pièces utiles',
 			'lecture des exigences locales avec une approche pratique',
-			'suivi du processus jusqu aux etapes de validation'
+			"suivi du processus jusqu'aux étapes de validation"
 		]
 	},
 	{
 		number: '04',
-		title: 'Formation des delegues medicaux',
+		title: 'Formation des délégués médicaux',
 		description:
-			'Nous structurons des formations pour renforcer la posture terrain, la maitrise des produits et la qualite du dialogue avec les medecins, pharmacies et equipes commerciales.',
+			'Nous structurons des formations pour renforcer la posture terrain, la maîtrise des produits et la qualité du dialogue avec les médecins, pharmacies et équipes commerciales.',
 		points: [
-			'fondamentaux du metier et argumentation produit',
-			'simulations, coaching et preparation a la visite medicale',
-			'programmes adaptes aux nouveaux profils comme aux equipes en relance'
+			'fondamentaux du métier et argumentation produit',
+			'préparation à la visite médicale, simulations et coaching',
+			"programmes adaptés aux nouveaux profils comme aux équipes en relance"
 		],
 		href: '/services/marketing-pharmaceutique/',
 		linkLabel: 'Voir aussi notre accompagnement marketing pharmaceutique'
@@ -68,33 +68,33 @@ const servicePillars = [
 const interventionSteps = [
 	{
 		step: 'Diagnostiquer',
-		text: 'Nous clarifions votre produit, le contexte du marche et le resultat concret que vous voulez obtenir.'
+		text: 'Nous clarifions votre produit, le contexte du marché et le résultat concret que vous voulez obtenir.'
 	},
 	{
 		step: 'Structurer',
-		text: 'Nous definissons les priorites, les cibles, les messages et le dispositif le plus utile pour votre projet.'
+		text: 'Nous définissons les priorités, les cibles, les messages et le dispositif le plus utile pour votre projet.'
 	},
 	{
 		step: 'Deployer',
-		text: 'Nous passons a l execution avec une presence terrain, un suivi clair et une coordination constante.'
+		text: "Nous passons à l'exécution avec une présence terrain, un suivi clair et une coordination constante."
 	},
 	{
 		step: 'Suivre',
-		text: 'Nous analysons les retours, ajustons les actions et consolidons la progression dans la duree.'
+		text: 'Nous analysons les retours, ajustons les actions et consolidons la progression dans la durée.'
 	}
 ];
 
 const audiences = [
-	'les laboratoires pharmaceutiques qui souhaitent gagner en presence locale',
-	'les marques qui ont besoin d un relais terrain fiable pour leurs produits',
-	'les structures qui veulent cadrer un enregistrement ou un volet reglementaire',
-	'les equipes commerciales et medicales a former ou a remettre a niveau'
+	'les laboratoires pharmaceutiques qui souhaitent gagner en présence locale',
+	"les marques qui ont besoin d'un relais terrain fiable pour leurs produits",
+	'les structures qui veulent cadrer un enregistrement ou un volet réglementaire',
+	'les équipes commerciales et médicales à former ou à remettre à niveau'
 ];
 
 const strengths = [
-	'Une lecture terrain et operationnelle du secteur pharmaceutique.',
-	'Une offre qui relie marketing, representation, reglementaire et formation.',
-	'Un accompagnement pense pour la Cote d Ivoire et les projets regionaux.'
+	'Une lecture terrain et opérationnelle du secteur pharmaceutique.',
+	'Une offre qui relie marketing, représentation, réglementaire et formation.',
+	"Un accompagnement pensé pour la Côte d'Ivoire et les projets régionaux."
 ];
 
 const breadcrumbSchema = {
@@ -121,13 +121,13 @@ const serviceSchema = {
 	'@type': 'Service',
 	name: 'Services pharmaceutiques DASMARK PHARMA',
 	serviceType:
-		'Promotion medicale, representation de laboratoires, affaires reglementaires et formation des delegues medicaux',
+		'Promotion médicale, représentation de laboratoires, affaires réglementaires et formation des délégués médicaux',
 	provider: {
 		'@type': 'Organization',
 		name: 'DASMARK PHARMA',
 		url: 'https://dasmarkpharma.ci'
 	},
-	areaServed: ['Abidjan', 'Cote d Ivoire', 'Afrique de l Ouest'],
+	areaServed: ['Abidjan', "Côte d'Ivoire", "Afrique de l'Ouest"],
 	hasOfferCatalog: {
 		'@type': 'OfferCatalog',
 		name: 'Offre de services DASMARK PHARMA',
@@ -145,8 +145,8 @@ const serviceSchema = {
 ---
 
 <Layout
-	title="Services pharmaceutiques en Cote d Ivoire | DASMARK PHARMA"
-	description="Decouvrez les services de DASMARK PHARMA : promotion medicale, representation de laboratoires, affaires reglementaires et formation des delegues medicaux."
+	title="Services pharmaceutiques en Côte d'Ivoire | DASMARK PHARMA"
+	description="Découvrez les services de DASMARK PHARMA : promotion médicale, représentation de laboratoires, affaires réglementaires et formation des délégués médicaux."
 	canonical="https://dasmarkpharma.ci/services/"
 	structuredData={[serviceSchema, breadcrumbSchema]}
 >
@@ -158,19 +158,19 @@ const serviceSchema = {
 					<div class="services-copy">
 						<span class="page-kicker">Services DASMARK PHARMA</span>
 						<h1>
-							Une offre claire pour lancer, representer, conformer et faire grandir vos
-							produits de sante.
+							Une offre claire pour lancer, représenter, mettre en conformité et faire grandir vos
+							produits de santé.
 						</h1>
 						<p class="services-lead">
-							DASMARK PHARMA accompagne les laboratoires et les acteurs de sante avec une
-							approche qui relie la promotion medicale, la representation locale, les affaires
-							reglementaires et la formation des equipes terrain. Ici, chaque service prolonge
-							la meme ambition: mieux positionner vos produits et mieux preparer leur
-							deploiement.
+							DASMARK PHARMA accompagne les laboratoires et les acteurs de santé avec une
+							approche qui relie la promotion médicale, la représentation locale, les affaires
+							réglementaires et la formation des équipes terrain. Ici, chaque service prolonge
+							la même ambition : mieux positionner vos produits et mieux préparer leur
+							déploiement.
 						</p>
 
 						<div class="services-actions">
-							<a class="page-btn" href="https://wa.me/2250749942744">Parler a l equipe</a>
+							<a class="page-btn" href="https://wa.me/2250749942744">Parler à l'équipe</a>
 							<a class="page-btn page-btn-alt" href="/contact/">Demander un accompagnement</a>
 						</div>
 
@@ -189,7 +189,7 @@ const serviceSchema = {
 					<div class="services-showcase">
 						<article class="showcase-panel">
 							<span class="showcase-label">Vision</span>
-							<h2>Etre les As du Marketing medical et Pharmaceutique.</h2>
+							<h2>Être les As du Marketing médical et pharmaceutique.</h2>
 							<p>{aboutContent.paragraphs[1]}</p>
 							<p class="showcase-founded">{aboutContent.founded}</p>
 						</article>
@@ -217,11 +217,11 @@ const serviceSchema = {
 
 				<div class="section-heading">
 					<span class="section-kicker">Offre centrale</span>
-					<h2>Les services qui definissent vraiment Dasmark Pharma</h2>
+					<h2>Les services qui définissent vraiment Dasmark Pharma</h2>
 					<p>
-						La page services devait raconter l essentiel. Nous la recentrons donc sur les
-						expertises visibles a l accueil et sur la page a propos: celles qui font la valeur
-						reelle de votre accompagnement.
+						La page services devait raconter l'essentiel. Nous la recentrons donc sur les
+						expertises visibles à l'accueil et sur la page à propos : celles qui font la valeur
+						réelle de votre accompagnement.
 					</p>
 				</div>
 
@@ -251,12 +251,12 @@ const serviceSchema = {
 
 				<div class="journey-shell">
 					<div class="journey-copy">
-						<span class="section-kicker">Methode</span>
-						<h2>Un accompagnement pense pour le terrain, pas seulement pour la theorie</h2>
+						<span class="section-kicker">Méthode</span>
+						<h2>Un accompagnement pensé pour le terrain, pas seulement pour la théorie</h2>
 						<p>
-							Nous ne vendons pas des services isoles. Nous construisons un chemin de travail
-							coherent, du cadrage initial jusqu au suivi des resultats, avec un niveau
-							d exigence adapte au secteur de la sante.
+							Nous ne vendons pas des services isolés. Nous construisons un chemin de travail
+							cohérent, du cadrage initial jusqu'au suivi des résultats, avec un niveau
+							d'exigence adapté au secteur de la santé.
 						</p>
 						<p class="journey-note">{aboutContent.paragraphs[3]}</p>
 					</div>
@@ -279,7 +279,7 @@ const serviceSchema = {
 				<div class="focus-grid">
 					<article class="focus-card">
 						<span class="section-kicker">Pour qui</span>
-						<h2>Nos interventions s adressent en priorite a</h2>
+						<h2>Nos interventions s'adressent en priorité à</h2>
 						<ul class="audience-list">
 							{
 								audiences.map((audience) => (
@@ -291,11 +291,11 @@ const serviceSchema = {
 
 					<article class="focus-card focus-card-accent">
 						<span class="section-kicker section-kicker-light">Pourquoi nous choisir</span>
-						<h2>Un partenaire qui relie strategie, execution et conformite.</h2>
+						<h2>Un partenaire qui relie stratégie, exécution et conformité.</h2>
 						<p>
-							Depuis {aboutContent.founded.replace('Cree en ', '').toLowerCase()}, Dasmark
-							Pharma construit une presence utile pour les laboratoires qui veulent avancer
-							avec un partenaire local engage, lisible et proche du terrain.
+							Depuis {aboutContent.founded.replace('Créée en ', '').toLowerCase()}, Dasmark
+							Pharma construit une présence utile pour les laboratoires qui veulent avancer
+							avec un partenaire local engagé, lisible et proche du terrain.
 						</p>
 						<div class="strength-list">
 							{
@@ -304,23 +304,23 @@ const serviceSchema = {
 								))
 							}
 						</div>
-						<a class="accent-link" href="/a-propos/">Decouvrir notre histoire</a>
+						<a class="accent-link" href="/a-propos/">Découvrir notre histoire</a>
 					</article>
 				</div>
 
 				<div class="bottom-cta">
 					<div>
-						<span class="section-kicker">Passons a l action</span>
-						<h2>Vous avez un laboratoire, un produit ou une equipe a structurer ?</h2>
+						<span class="section-kicker">Passons à l'action</span>
+						<h2>Vous avez un laboratoire, un produit ou une équipe à structurer ?</h2>
 						<p>
-							Nous pouvons vous aider a choisir le bon point d entree entre representation,
-							promotion, reglementaire et formation, puis construire un plan simple et
+							Nous pouvons vous aider à choisir le bon point d'entrée entre représentation,
+							promotion, réglementaire et formation, puis construire un plan simple et
 							actionnable.
 						</p>
 					</div>
 
 					<div class="bottom-cta-actions">
-						<a class="page-btn" href="https://wa.me/2250749942744">Echanger sur WhatsApp</a>
+						<a class="page-btn" href="https://wa.me/2250749942744">Échanger sur WhatsApp</a>
 						<a class="page-btn page-btn-alt" href="/services/marketing-pharmaceutique/">
 							Explorer le marketing pharma
 						</a>

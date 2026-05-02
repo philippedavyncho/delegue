@@ -18,16 +18,16 @@ const organizationSchema = {
 	telephone: '+2250749942744',
 	address: {
 		'@type': 'PostalAddress',
-		streetAddress: 'Cocody Angre Djrorobite 2, derriere la pharmacie Sainte Clementine',
+		streetAddress: 'Cocody Angré Djorobité 2, derrière la pharmacie Sainte Clémentine',
 		addressLocality: 'Abidjan',
 		addressCountry: 'CI'
 	},
-	areaServed: ['Abidjan', 'Cote d Ivoire', 'Afrique de l Ouest'],
+	areaServed: ['Abidjan', "Côte d'Ivoire", "Afrique de l'Ouest"],
 	knowsAbout: [
-		'promotion medicale et pharmaceutique',
-		'representation de laboratoires pharmaceutiques',
-		'affaires reglementaires pharmaceutiques',
-		'formation des delegues medicaux'
+		'promotion médicale et pharmaceutique',
+		'représentation de laboratoires pharmaceutiques',
+		'affaires réglementaires pharmaceutiques',
+		'formation des délégués médicaux'
 	]
 };
 
@@ -36,19 +36,19 @@ const serviceSchema = {
 	'@type': 'Service',
 	name: 'Accompagnement pharmaceutique B2B',
 	serviceType:
-		'Promotion medicale, representation de laboratoires, affaires reglementaires et formation des delegues medicaux',
+		'Promotion médicale, représentation de laboratoires, affaires réglementaires et formation des délégués médicaux',
 	provider: {
 		'@type': 'Organization',
 		name: 'DASMARK PHARMA',
 		url: 'https://dasmarkpharma.ci'
 	},
-	areaServed: ['Abidjan', 'Cote d Ivoire', 'Afrique de l Ouest']
+	areaServed: ['Abidjan', "Côte d'Ivoire", "Afrique de l'Ouest"]
 };
 ---
 
 <Layout
-	title="Promotion medicale et accompagnement pharmaceutique | DASMARK PHARMA"
-	description="DASMARK PHARMA accompagne les laboratoires et acteurs de sante avec la promotion medicale, la representation, les affaires reglementaires et la formation en Cote d Ivoire."
+	title="Promotion médicale et accompagnement pharmaceutique | DASMARK PHARMA"
+	description="DASMARK PHARMA accompagne les laboratoires et acteurs de santé avec la promotion médicale, la représentation, les affaires réglementaires et la formation en Côte d'Ivoire."
 	canonical="https://dasmarkpharma.ci/"
 	structuredData={[organizationSchema, serviceSchema]}
 >

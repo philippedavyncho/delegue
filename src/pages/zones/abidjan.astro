@@ -4,45 +4,45 @@ import Layout from '../../layouts/Layout.astro';
 import { contactDetails } from '../../data/contact';
 
 const localStats = [
-	{ value: 'Cocody Angre', label: 'point d ancrage local' },
-	{ value: 'Abidjan', label: 'zone coeur de coordination' },
-	{ value: 'Terrain', label: 'approche orientee execution' }
+	{ value: 'Cocody Angré', label: "point d'ancrage local" },
+	{ value: 'Abidjan', label: 'zone cœur de coordination' },
+	{ value: 'Terrain', label: 'approche orientée exécution' }
 ];
 
 const localServices = [
 	{
-		title: 'Presence de proximite',
-		text: 'Nous pilotons les echanges, la representation et les prises de contact depuis Abidjan avec une lecture concrete du terrain.'
+		title: 'Présence de proximité',
+		text: "Nous pilotons les échanges, la représentation et les prises de contact depuis Abidjan avec une lecture concrète du terrain."
 	},
 	{
-		title: 'Relation avec les structures de sante',
-		text: 'Pharmacies, cliniques, hopitaux et partenaires locaux peuvent etre accompagnes avec un point d entree clair.'
+		title: 'Relation avec les structures de santé',
+		text: "Pharmacies, cliniques, hôpitaux et partenaires locaux peuvent être accompagnés avec un point d'entrée clair."
 	},
 	{
 		title: 'Coordination des actions',
-		text: 'Lancements, suivis, activations et relais d information peuvent etre organises plus rapidement a l echelle d Abidjan.'
+		text: "Lancements, suivis, activations et relais d'information peuvent être organisés plus rapidement à l'échelle d'Abidjan."
 	}
 ];
 
 const localTargets = [
-	'les laboratoires qui veulent une implantation ou une representation locale',
-	'les structures de sante qui cherchent un partenaire present a Abidjan',
-	'les equipes qui ont besoin d un relais terrain pour deploiement ou suivi',
-	'les projets qui doivent commencer a Abidjan avant extension plus large'
+	'les laboratoires qui veulent une implantation ou une représentation locale',
+	'les structures de santé qui cherchent un partenaire présent à Abidjan',
+	"les équipes qui ont besoin d'un relais terrain pour déploiement ou suivi",
+	'les projets qui doivent commencer à Abidjan avant extension plus large'
 ];
 
 const localFlow = [
 	{
 		title: 'Prise de contact',
-		text: 'Vous partagez votre besoin et votre zone d intervention cible.'
+		text: "Vous partagez votre besoin et votre zone d'intervention cible."
 	},
 	{
 		title: 'Lecture du contexte local',
-		text: 'Nous identifions les points de contact, les structures et le mode de deploiement le plus pertinent a Abidjan.'
+		text: 'Nous identifions les points de contact, les structures et le mode de déploiement le plus pertinent à Abidjan.'
 	},
 	{
-		title: 'Execution et suivi',
-		text: 'Nous lancons les actions retenues puis nous suivons les retours terrain pour ajuster la suite.'
+		title: 'Exécution et suivi',
+		text: 'Nous lançons les actions retenues puis nous suivons les retours terrain pour ajuster la suite.'
 	}
 ];
 
@@ -74,21 +74,21 @@ const breadcrumbSchema = {
 const localServiceSchema = {
 	'@context': 'https://schema.org',
 	'@type': 'Service',
-	name: 'Accompagnement pharmaceutique a Abidjan',
+	name: 'Accompagnement pharmaceutique à Abidjan',
 	serviceType:
-		'Representation de laboratoires, promotion medicale, coordination terrain et accompagnement des acteurs de sante',
+		'Représentation de laboratoires, promotion médicale, coordination terrain et accompagnement des acteurs de santé',
 	provider: {
 		'@type': 'Organization',
 		name: contactDetails.companyName,
 		url: 'https://dasmarkpharma.ci'
 	},
-	areaServed: ['Abidjan', 'Cote d Ivoire']
+	areaServed: ['Abidjan', "Côte d'Ivoire"]
 };
 ---
 
 <Layout
 	title="Zone desservie Abidjan | DASMARK PHARMA"
-	description="DASMARK PHARMA accompagne les laboratoires et acteurs de sante a Abidjan avec une presence terrain, un ancrage local et une execution claire."
+	description="DASMARK PHARMA accompagne les laboratoires et acteurs de santé à Abidjan avec une présence terrain, un ancrage local et une exécution claire."
 	canonical="https://dasmarkpharma.ci/zones/abidjan/"
 	structuredData={[localServiceSchema, breadcrumbSchema]}
 >
@@ -99,16 +99,16 @@ const localServiceSchema = {
 				<div class="coverage-hero">
 					<div class="coverage-copy">
 						<span class="page-kicker">Zone desservie</span>
-						<h1>Abidjan est notre base d action pour deployer les projets pharmaceutiques avec precision.</h1>
+						<h1>Abidjan est notre base d'action pour déployer les projets pharmaceutiques avec précision.</h1>
 						<p class="coverage-lead">
-							Depuis Cocody Angre, DASMARK PHARMA accompagne les laboratoires, pharmacies,
-							cliniques et hopitaux qui ont besoin d une presence locale solide. Ici, nous
-							organisons le lien entre la strategie, les prises de contact et l execution
+							Depuis Cocody Angré, DASMARK PHARMA accompagne les laboratoires, pharmacies,
+							cliniques et hôpitaux qui ont besoin d'une présence locale solide. Ici, nous
+							organisons le lien entre la stratégie, les prises de contact et l'exécution
 							terrain.
 						</p>
 
 						<div class="hero-actions">
-							<a class="hero-btn" href={contactDetails.whatsappHref}>Parler a l equipe</a>
+							<a class="hero-btn" href={contactDetails.whatsappHref}>Parler à l'équipe</a>
 							<a class="hero-btn hero-btn-alt" href="/contact/">Voir la page contact</a>
 						</div>
 
@@ -126,10 +126,10 @@ const localServiceSchema = {
 
 					<div class="coverage-panel">
 						<span class="panel-kicker">Ancrage local</span>
-						<h2>Une lecture terrain qui commence a Abidjan.</h2>
+						<h2>Une lecture terrain qui commence à Abidjan.</h2>
 						<p>
-							Notre implantation locale facilite la coordination des echanges, la proximite
-							avec les structures de sante et le suivi des actions sur le terrain.
+							Notre implantation locale facilite la coordination des échanges, la proximité
+							avec les structures de santé et le suivi des actions sur le terrain.
 						</p>
 
 						<div class="panel-details">
@@ -143,7 +143,7 @@ const localServiceSchema = {
 							</div>
 							<div class="detail-card">
 								<strong>Couverture</strong>
-								<span>Grand Abidjan et projets relies a la Cote d Ivoire</span>
+								<span>Grand Abidjan et projets reliés à la Côte d'Ivoire</span>
 							</div>
 						</div>
 					</div>
@@ -151,10 +151,10 @@ const localServiceSchema = {
 
 				<div class="section-heading">
 					<span class="section-kicker">Ce que cela change</span>
-					<h2>Une implantation locale donne plus de vitesse, plus de lisibilite et plus de suivi.</h2>
+					<h2>Une implantation locale donne plus de vitesse, plus de lisibilité et plus de suivi.</h2>
 					<p>
-						Au lieu d une promesse abstraite, la couverture Abidjan devient ici un avantage
-						operationnel. C est ce qui permet de mieux lancer, mieux representer et mieux suivre
+						Au lieu d'une promesse abstraite, la couverture Abidjan devient ici un avantage
+						opérationnel. C'est ce qui permet de mieux lancer, mieux représenter et mieux suivre
 						les actions mises en place.
 					</p>
 				</div>
@@ -174,7 +174,7 @@ const localServiceSchema = {
 				<div class="insight-grid">
 					<article class="insight-card">
 						<span class="section-kicker">Pour qui</span>
-						<h2>Les demandes les plus frequentes a Abidjan</h2>
+						<h2>Les demandes les plus fréquentes à Abidjan</h2>
 						<ul class="target-list">
 							{
 								localTargets.map((target) => (
@@ -185,7 +185,7 @@ const localServiceSchema = {
 					</article>
 
 					<div class="flow-shell">
-						<span class="section-kicker">Comment nous operons</span>
+						<span class="section-kicker">Comment nous opérons</span>
 						<h2>Une intervention simple, du premier echange au suivi local.</h2>
 						<div class="flow-grid">
 							{
@@ -204,16 +204,16 @@ const localServiceSchema = {
 				<div class="bottom-cta">
 					<div>
 						<span class="section-kicker">Suite logique</span>
-						<h2>Besoin d aller au dela d Abidjan ?</h2>
+						<h2>Besoin d'aller au-delà d'Abidjan ?</h2>
 						<p>
-							Nous pouvons aussi vous orienter vers notre couverture plus large de la Cote d
-							Ivoire, tout en gardant Abidjan comme point d appui principal.
+							Nous pouvons aussi vous orienter vers notre couverture plus large de la Côte
+							d'Ivoire, tout en gardant Abidjan comme point d'appui principal.
 						</p>
 					</div>
 
 					<div class="cta-actions">
 						<a class="hero-btn" href="/fournisseur-pharmaceutique-cote-divoire/">
-							Voir la couverture Cote d Ivoire
+							Voir la couverture Côte d'Ivoire
 						</a>
 						<a class="hero-btn hero-btn-alt" href="/contact/">Contacter Dasmark Pharma</a>
 					</div>
